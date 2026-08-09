@@ -8,9 +8,18 @@ export const siteConfig = {
     github: "https://github.com/ashuraalyy",
     linkedin: "https://www.linkedin.com",
   },
+  credly: "https://www.credly.com/users/arafat-sulaiman-m",
   tagline: "Bridging the Physical and the Digital.",
   subhead: "From specialty coffee cultivation to autonomous web deployment.",
+  heroImage: "/photos/portrait-selfie.png",
 };
+
+export const contactSkills = [
+  { label: "Barista", icon: "Coffee" as const },
+  { label: "Code", icon: "Terminal" as const },
+  { label: "IT Support", icon: "Headset" as const },
+  { label: "Illustrator Pro", icon: "PenTool" as const },
+] as const;
 
 export const timeline = [
   {
@@ -18,30 +27,40 @@ export const timeline = [
     date: "Origins",
     title: "Curiosity & Cultivation",
     body: "Grew up hands-on — soil under nails, seasons as teachers. Agriculture was never a hobby. It was the first operating system I learned.",
+    image: "/photos/coffee-sapling.png",
+    imageAlt: "Young coffee sapling growing in dark soil",
   },
   {
     id: "barista",
     date: "Jan 2024",
     title: "Frontlines, Not Theory",
     body: "Stepped into Senior Barista and Customer Service Specialist roles. Specialty V60. Arabic coffee. High pressure, real clients, no resets. Content around the craft followed the craft — not the other way around.",
+    image: "/photos/v60-pour.png",
+    imageAlt: "Barista pouring a V60 specialty coffee on a scale",
   },
   {
     id: "ged",
     date: "Early 2026",
     title: "Academic Grit",
     body: "Took the GED head-on. Mapped study sequences like a campaign. Hit 159 on practice tests. Proof that persistence outruns polish.",
+    image: null,
+    imageAlt: null,
   },
   {
     id: "milestones",
     date: "Mid 2026",
     title: "Physical & Financial Milestones",
     body: "Scaled the land: 300 coffee trees and vanilla vines under management. Hit daily 15km road cycling on Continental GP5000s with a Cycplus computer. Started tracking long-term equity plays in VOO and JEPI.",
+    image: "/photos/cycling-bike.png",
+    imageAlt: "Road cyclist with an Aval bike after a ride",
   },
   {
     id: "digital",
     date: "Aug 2026 → Present",
     title: "The Digital Transition",
     body: "New M5 MacBook Air. Agentic AI environments — Cursor, Cline, Gemini, Claude. Shipping web apps through GitHub and Cloudflare Pages. Same grit. New toolchain.",
+    image: "/photos/code-editor.png",
+    imageAlt: "Code editor open to a Hello World program",
   },
 ] as const;
 
@@ -57,6 +76,8 @@ export const projects = [
       "Mapped real agricultural signals into a clean operator UI. Built for the field, not a demo reel.",
     fails:
       "Over-modeled weather first and under-modeled soil reality. Lesson: ground truth before graph polish. Agent drafts moved fast — validation still had to be human.",
+    image: "/photos/vanilla-farm.png",
+    imageAlt: "Rows of young vanilla vines on mesh support poles",
   },
   {
     id: "cycling",
@@ -69,6 +90,8 @@ export const projects = [
       "Turned daily 15km grind into readable patterns — cadence spikes, fatigue dips, consistency streaks.",
     fails:
       "Chased every metric and drowned the signal. Lesson: one primary KPI per view. Friction taught me less dashboard, more decision.",
+    image: "/photos/cycling-road.png",
+    imageAlt: "First-person view of a road bike ride with cycling computer",
   },
   {
     id: "equity",
@@ -81,6 +104,8 @@ export const projects = [
       "Designed for patience: clear growth arcs without the casino UI. Built for holding, not hype.",
     fails:
       "First pass looked like a trading terminal. Wrong energy. Lesson: long-term investing deserves quieter design.",
+    image: null,
+    imageAlt: null,
   },
   {
     id: "refactor",
@@ -93,6 +118,8 @@ export const projects = [
       "Got a repeatable ship path working: generate, review, push, deploy. Speed without losing ownership of the outcome.",
     fails:
       "Agent confidence ≠ production readiness. Broken env vars, bad cache headers, over-eager refactors. Lesson: agents accelerate; you still own the blast radius.",
+    image: "/photos/code-editor.png",
+    imageAlt: "Development environment with code on screen",
   },
 ] as const;
 
@@ -101,28 +128,32 @@ export const gallery = [
     id: "v60",
     label: "V60 pours",
     caption: "Specialty coffee — ritual, precision, steam.",
-    icon: "Coffee" as const,
+    image: "/photos/v60-pour.png",
+    imageAlt: "Close-up of a V60 pour-over brew in progress",
     span: "md:col-span-2 md:row-span-2",
   },
   {
     id: "cycling-setup",
     label: "Road cycling setup",
     caption: "GP5000s. Cycplus. 15km daily.",
-    icon: "Bike" as const,
+    image: "/photos/cycling-computer.png",
+    imageAlt: "Bicycle handlebars with mounted cycling computer",
     span: "md:col-span-1 md:row-span-1",
   },
   {
     id: "land",
     label: "Agricultural land",
     caption: "300 coffee trees. Vanilla vines. Dirt-first.",
-    icon: "Sprout" as const,
+    image: "/photos/vanilla-pods.png",
+    imageAlt: "Cluster of green vanilla pods on the vine",
     span: "md:col-span-1 md:row-span-2",
   },
   {
     id: "portrait",
-    label: "Portrait gift",
-    caption: "Hand-drawn portrait — gifted by my girlfriend.",
-    icon: "Heart" as const,
+    label: "Portrait",
+    caption: "Dubai light. Cap on. Stories ahead.",
+    image: "/photos/portrait-selfie.png",
+    imageAlt: "Portrait of Arafat outdoors in Dubai",
     span: "md:col-span-2 md:row-span-1",
     featured: true,
   },

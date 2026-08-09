@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { useRef } from "react";
 import { SectionHeading } from "@/components/section-heading";
 import { timeline } from "@/lib/site-data";
@@ -64,6 +65,22 @@ export function Timeline() {
                     <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">
                       {node.body}
                     </p>
+
+                    {node.image ? (
+                      <div
+                        className={`relative mt-5 aspect-[4/3] overflow-hidden rounded-xl border border-border ${
+                          isLeft ? "sm:ml-auto" : ""
+                        } max-w-md`}
+                      >
+                        <Image
+                          src={node.image}
+                          alt={node.imageAlt ?? ""}
+                          fill
+                          sizes="(max-width: 768px) 90vw, 28rem"
+                          className="object-cover"
+                        />
+                      </div>
+                    ) : null}
                   </div>
                 </motion.li>
               );

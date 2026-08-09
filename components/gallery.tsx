@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ImagePlaceholder } from "@/components/image-placeholder";
+import { SitePhoto } from "@/components/image-placeholder";
 import { SectionHeading } from "@/components/section-heading";
 import { gallery } from "@/lib/site-data";
 
@@ -12,7 +12,7 @@ export function Gallery() {
         <SectionHeading
           eyebrow="03 — Human"
           title="The personal corner."
-          description="Coffee steam. Road miles. Living soil. And the portrait that still stops me — drawn by my girlfriend."
+          description="Coffee steam. Road miles. Living soil. And the light that still stops me mid-scroll."
         />
 
         <div className="mt-14 grid auto-rows-[220px] gap-4 md:grid-cols-3 md:auto-rows-[240px]">
@@ -25,12 +25,19 @@ export function Gallery() {
               transition={{ duration: 0.45, delay: index * 0.06 }}
               className={item.span}
             >
-              <ImagePlaceholder
+              <SitePhoto
+                src={item.image}
+                alt={item.imageAlt}
                 label={item.label}
                 caption={item.caption}
-                icon={item.icon}
                 featured={"featured" in item ? item.featured : false}
                 className="h-full"
+                sizes={
+                  item.span.includes("col-span-2")
+                    ? "(max-width: 768px) 100vw, 66vw"
+                    : "(max-width: 768px) 100vw, 33vw"
+                }
+                priority={index === 0}
               />
             </motion.div>
           ))}

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowDownRight, Coffee, Terminal } from "lucide-react";
+import Image from "next/image";
 import { siteConfig } from "@/lib/site-data";
 
 const terminalLines = [
@@ -29,9 +30,17 @@ export function Hero() {
     >
       <div className="grid min-h-[calc(100svh-4rem)] lg:grid-cols-2">
         <div className="relative flex flex-col justify-end overflow-hidden bg-physical px-6 py-12 sm:px-10 lg:py-16">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(196,164,132,0.22),transparent_55%)]" />
-          <div className="absolute inset-0 opacity-30 grain" />
-          <div className="absolute -right-16 top-24 size-64 rounded-full bg-physical-warm/10 blur-3xl" />
+          <Image
+            src={siteConfig.heroImage}
+            alt={`${siteConfig.shortName} — portrait`}
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover object-[center_20%]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-physical via-physical/75 to-physical/35" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(196,164,132,0.18),transparent_55%)]" />
+          <div className="absolute inset-0 opacity-20 grain" />
 
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -45,13 +54,13 @@ export function Hero() {
             </div>
 
             <div className="space-y-4">
-              <p className="font-mono text-xs uppercase tracking-[0.24em] text-physical-warm/80">
+              <p className="font-mono text-xs uppercase tracking-[0.24em] text-physical-warm/90">
                 {siteConfig.name}
               </p>
               <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-[3.4rem]">
                 {siteConfig.tagline}
               </h1>
-              <p className="max-w-md text-base leading-relaxed text-zinc-300 sm:text-lg">
+              <p className="max-w-md text-base leading-relaxed text-zinc-200 sm:text-lg">
                 {siteConfig.subhead}
               </p>
             </div>
@@ -65,7 +74,7 @@ export function Hero() {
               </a>
               <a
                 href="#timeline"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-md border border-physical-warm/30 px-7 text-base font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-md border border-physical-warm/40 bg-black/20 px-7 text-base font-medium text-foreground backdrop-blur-sm transition-colors hover:border-accent hover:text-accent"
               >
                 Read the Timeline
                 <ArrowDownRight className="size-4" />
@@ -84,7 +93,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="relative z-10 w-full max-w-lg"
           >
-            <div className="overflow-hidden rounded-lg border border-border bg-surface shadow-[0_0_80px_-20px_rgba(0,180,255,0.45)]">
+            <div className="overflow-hidden rounded-xl border border-border bg-surface shadow-[0_0_80px_-20px_rgba(0,180,255,0.45)]">
               <div className="flex items-center gap-2 border-b border-border px-4 py-3">
                 <span className="size-2.5 rounded-full bg-zinc-600" />
                 <span className="size-2.5 rounded-full bg-zinc-600" />
