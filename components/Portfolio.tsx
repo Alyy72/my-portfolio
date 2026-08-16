@@ -1,0 +1,418 @@
+"use client";
+
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  Atom,
+  Award,
+  Braces,
+  Cloud,
+  Code2,
+  ExternalLink,
+  Frame,
+  FileCode2,
+  GitBranch,
+  Layers,
+  Paintbrush,
+  Palette,
+  PenTool,
+  Server,
+  Sparkles,
+  Wind,
+  X,
+  type LucideIcon,
+} from "lucide-react";
+import { Reveal } from "@/components/Reveal";
+import { certificates, projects, techStack } from "@/lib/site-data";
+import { cn } from "@/lib/utils";
+
+type Tab = "projects" | "certificates" | "stack" | "graphics";
+
+const iconMap: Record<string, LucideIcon> = {
+  FileCode2,
+  Atom,
+  Layers,
+  Wind,
+  Code2,
+  Palette,
+  Braces,
+  Server,
+  Cloud,
+  GitBranch,
+  Sparkles,
+};
+
+const floatingDesignIcons = [
+  { Icon: PenTool, className: "left-[12%] top-[18%]", delay: 0 },
+  { Icon: Palette, className: "right-[14%] top-[22%]", delay: 0.4 },
+  { Icon: Paintbrush, className: "left-[18%] bottom-[20%]", delay: 0.8 },
+  { Icon: Frame, className: "right-[16%] bottom-[18%]", delay: 1.2 },
+] as const;
+
+export function Portfolio() {
+  const [tab, setTab] = useState<Tab>("projects");
+  const [activeProject, setActiveProject] = useState<
+    (typeof projects)[number] | null
+  >(null);
+  const [activeCert, setActiveCert] = useState<
+    (typeof certificates)[number] | null
+  >(null);
+
+  return (
+    <section id="portfolio" className="relative px-4 py-20 sm:px-6 sm:py-28">
+      <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-35" />
+      <div className="relative mx-auto max-w-6xl">
+        <Reveal>
+          <p className="font-mono text-xs uppercase tracking-[0.22em] text-purple-300">
+            Portfolio
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            Selected work & credentials.
+          </h2>
+        </Reveal>
+
+        <Reveal delay={0.08}>
+          <div className="mt-8 inline-flex max-w-full flex-wrap rounded-full border border-white/10 bg-white/5 p-1">
+            {(
+              [
+                ["projects", "Projects"],
+                ["certificates", "Certificates"],
+                ["stack", "Tech Stack"],
+                ["graphics", "Graphics Design"],
+              ] as const
+            ).map(([key, label]) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => setTab(key)}
+                className={cn(
+                  "rounded-full px-4 py-2 text-sm font-medium transition",
+                  tab === key
+                    ? "bg-purple-500 text-white"
+                    : "text-muted hover:text-white",
+                )}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </Reveal>
+
+        <div className="mt-10">
+          <AnimatePresence mode="wait">
+            {tab === "projects" ? (
+              <motion.div
+                key="projects"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                className="grid gap-4 sm:grid-cols-2"
+              >
+                {projects.map((project) => (
+                  <button
+                    key={project.id}
+                    type="button"
+                    onClick={() => setActiveProject(project)}
+                    className="glass group rounded-3xl p-5 text-left transition hover:border-purple-400/40 hover:bg-white/[0.07]"
+                  >
+                    <p className="font-mono text-xs text-purple-300">Project</p>
+                    <h3 className="mt-2 text-xl font-semibold text-white">
+                      {project.title}
+                    </h3>
+                    <p className="mt-2 line-clamp-2 text-sm text-muted">
+                      {project.description}
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {project.stack.slice(0, 3).map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-white/10 px-2.5 py-1 text-[11px] text-gray-300"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    {project.liveUrl ? (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-purple-300 hover:text-purple-200"
+                      >
+                        Live Demo
+                        <ExternalLink className="size-3.5" />
+                      </a>
+                    ) : null}
+                  </button>
+                ))}
+              </motion.div>
+            ) : null}
+
+            {tab === "certificates" ? (
+              <motion.div
+                key="certificates"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+              >
+                {certificates.map((cert) => (
+                  <button
+                    key={cert.id}
+                    type="button"
+                    onClick={() => setActiveCert(cert)}
+                    className="glass rounded-3xl p-5 text-left transition hover:border-purple-400/40"
+                  >
+                    <div className="flex size-11 items-center justify-center rounded-2xl bg-purple-500/15 text-purple-300">
+                      <Award className="size-5" />
+                    </div>
+                    <h3 className="mt-4 text-base font-semibold text-white">
+                      {cert.title}
+                    </h3>
+                    <p className="mt-1 text-sm text-muted">{cert.issuer}</p>
+                    <p className="mt-3 text-xs text-purple-300">
+                      {cert.pdf ? "Click to preview PDF →" : "Open Credly →"}
+                    </p>
+                  </button>
+                ))}
+              </motion.div>
+            ) : null}
+
+            {tab === "stack" ? (
+              <motion.div
+                key="stack"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4"
+              >
+                {techStack.map((item) => {
+                  const Icon = iconMap[item.icon] ?? Code2;
+                  return (
+                    <div
+                      key={item.name}
+                      className="glass flex items-center gap-3 rounded-2xl px-4 py-3"
+                    >
+                      <Icon className="size-4 text-purple-300" />
+                      <span className="text-sm text-white">{item.name}</span>
+                    </div>
+                  );
+                })}
+              </motion.div>
+            ) : null}
+
+            {tab === "graphics" ? (
+              <motion.div
+                key="graphics"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                className="relative"
+              >
+                <div className="glass relative overflow-hidden rounded-[2rem] px-6 py-16 text-center sm:px-10 sm:py-20">
+                  <div className="pointer-events-none absolute inset-0 aura-purple opacity-80" />
+                  <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-40" />
+
+                  {floatingDesignIcons.map(({ Icon, className, delay }) => (
+                    <motion.div
+                      key={className}
+                      className={`pointer-events-none absolute ${className} flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-purple-300`}
+                      animate={{ y: [0, -12, 0] }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay,
+                      }}
+                    >
+                      <Icon className="size-5" />
+                    </motion.div>
+                  ))}
+
+                  <div className="relative z-10 mx-auto max-w-xl">
+                    <span className="inline-flex items-center rounded-full border border-purple-400/40 bg-purple-500/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-purple-200 shadow-[0_0_24px_rgba(168,85,247,0.35)]">
+                      Coming Soon
+                    </span>
+                    <h3 className="mt-5 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                      Graphics Design
+                    </h3>
+                    <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
+                      A curated gallery of visual design work, brand identity
+                      assets, and graphics projects is currently being prepared.
+                      Check back soon!
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* Project modal */}
+      <AnimatePresence>
+        {activeProject ? (
+          <motion.div
+            className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveProject(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 8 }}
+              onClick={(e) => e.stopPropagation()}
+              className="glass max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-3xl p-6"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="font-mono text-xs text-purple-300">Project</p>
+                  <h3 className="mt-1 text-2xl font-semibold text-white">
+                    {activeProject.title}
+                  </h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setActiveProject(null)}
+                  className="rounded-full border border-white/10 p-2 text-muted hover:text-white"
+                  aria-label="Close"
+                >
+                  <X className="size-4" />
+                </button>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-muted">
+                {activeProject.description}
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {activeProject.stack.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-white/10 px-2.5 py-1 text-[11px] text-gray-300"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <ul className="mt-5 space-y-2">
+                {activeProject.features.map((feature) => (
+                  <li
+                    key={feature}
+                    className="flex gap-2 text-sm text-muted"
+                  >
+                    <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-purple-400" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 flex flex-wrap gap-3">
+                {activeProject.liveUrl ? (
+                  <a
+                    href={activeProject.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-10 items-center gap-2 rounded-full bg-purple-500 px-4 text-sm font-semibold text-white"
+                  >
+                    Live Demo
+                    <ExternalLink className="size-3.5" />
+                  </a>
+                ) : (
+                  <span className="inline-flex h-10 items-center rounded-full border border-white/10 px-4 text-sm text-muted">
+                    Private / In Progress
+                  </span>
+                )}
+                <a
+                  href={activeProject.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-10 items-center rounded-full border border-white/10 px-4 text-sm text-white"
+                >
+                  GitHub
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+
+      {/* Certificate modal */}
+      <AnimatePresence>
+        {activeCert ? (
+          <motion.div
+            className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveCert(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              onClick={(e) => e.stopPropagation()}
+              className="glass flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-3xl"
+            >
+              <div className="flex items-start justify-between gap-3 border-b border-white/10 p-5">
+                <div>
+                  <p className="font-mono text-xs text-purple-300">Certificate</p>
+                  <h3 className="mt-1 text-xl font-semibold text-white">
+                    {activeCert.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-muted">{activeCert.issuer}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setActiveCert(null)}
+                  className="rounded-full border border-white/10 p-2 text-muted hover:text-white"
+                  aria-label="Close"
+                >
+                  <X className="size-4" />
+                </button>
+              </div>
+
+              {activeCert.pdf ? (
+                <iframe
+                  src={`${activeCert.pdf}#toolbar=1`}
+                  title={activeCert.title}
+                  className="min-h-[60vh] w-full flex-1 bg-black/40"
+                />
+              ) : (
+                <div className="flex flex-col items-center justify-center gap-4 p-10 text-center">
+                  <Award className="size-12 text-purple-300" />
+                  <p className="max-w-sm text-sm text-muted">
+                    View all verified badges on my Credly profile.
+                  </p>
+                </div>
+              )}
+
+              <div className="flex flex-wrap justify-end gap-3 border-t border-white/10 p-4">
+                {activeCert.pdf ? (
+                  <a
+                    href={activeCert.pdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-10 items-center gap-2 rounded-full bg-purple-500 px-4 text-sm font-semibold text-white"
+                  >
+                    Open PDF
+                    <ExternalLink className="size-3.5" />
+                  </a>
+                ) : null}
+                <a
+                  href={activeCert.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-10 items-center gap-2 rounded-full border border-white/10 px-4 text-sm text-white"
+                >
+                  View on Credly
+                  <ExternalLink className="size-3.5" />
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+    </section>
+  );
+}

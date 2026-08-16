@@ -1,160 +1,335 @@
 export const siteConfig = {
-  name: "Arafat Sulaiman Nawanda",
-  shortName: "Arafat",
-  age: 22,
-  location: "Dubai",
+  name: "Arafat Sulaiman",
+  brand: "arafat.dev",
+  title: "Full-Stack Developer",
+  location: "Dubai, UAE",
   email: "arafatalyy.it@gmail.com",
+  whatsapp: "https://wa.me/971529033466",
+  whatsappDisplay: "+971529033466",
+  resumeUrl: "/resume.pdf",
+  profileImage: "/images/profile.jpg",
+  siteUrl: "https://arafat.dev",
   socials: {
-    github: "https://github.com/ashuraalyy",
-    linkedin: "https://www.linkedin.com",
+    linkedin: "https://www.linkedin.com/in/arafat-sulaiman-60066636a",
+    github: "https://github.com/Alyy72",
+    whatsapp: "https://wa.me/971529033466",
+    credly: "https://www.credly.com/users/arafat-sulaiman-m",
+    instagram: "https://www.instagram.com/alyy.77?igsh=MXRtaTZrZzEyM2ducQ==",
   },
-  credly: "https://www.credly.com/users/arafat-sulaiman-m",
-  tagline: "Bridging the Physical and the Digital.",
-  subhead: "From specialty coffee cultivation to autonomous web deployment.",
-  heroImage: "/photos/portrait-selfie.png",
+  rotatingRoles: [
+    "Full-Stack Developer",
+    "System Developer",
+    "Web Engineer",
+    "E-Commerce Specialist",
+  ],
+  seoRoles: [
+    "Full-Stack Developer",
+    "System Developer",
+    "Web Engineer",
+    "E-Commerce Specialist",
+  ],
+  techBadges: ["TypeScript", "React.js", "Next.js", "Tailwind CSS"],
+  hook: {
+    eyebrow: "Stop scrolling.",
+    line: "I didn't wait for a degree to ship real products.",
+    sub: "While others were still drafting portfolios, I was deploying live storefronts, ops systems, and payment flows for real businesses — from Dubai to the field.",
+  },
+  summary:
+    "I build responsive web apps, clean codebases, and elegant digital experiences — from e-commerce storefronts to internal business systems.",
+  about:
+    "I'm a Full-Stack Developer based in Dubai, UAE. I design and ship web applications, e-commerce platforms, and internal business tools with a focus on performance, clarity, and production-ready delivery.",
 };
 
-export const contactSkills = [
-  { label: "Barista", icon: "Coffee" as const },
-  { label: "Code", icon: "Terminal" as const },
-  { label: "IT Support", icon: "Headset" as const },
-  { label: "Illustrator Pro", icon: "PenTool" as const },
+export const socialLinks = [
+  {
+    id: "linkedin",
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/arafat-sulaiman-60066636a",
+    color:
+      "text-blue-400 hover:border-blue-500/50 hover:bg-blue-500/10 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)]",
+  },
+  {
+    id: "github",
+    label: "GitHub",
+    href: "https://github.com/Alyy72",
+    color:
+      "text-slate-200 hover:border-white/30 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(255,255,255,0.12)]",
+  },
+  {
+    id: "whatsapp",
+    label: "WhatsApp",
+    href: "https://wa.me/971529033466",
+    color:
+      "text-emerald-400 hover:border-emerald-500/50 hover:bg-emerald-500/10 hover:shadow-[0_0_20px_rgba(16,185,129,0.25)]",
+  },
+  {
+    id: "credly",
+    label: "Credly",
+    href: "https://www.credly.com/users/arafat-sulaiman-m",
+    color:
+      "text-amber-400 hover:border-amber-500/50 hover:bg-amber-500/10 hover:shadow-[0_0_20px_rgba(245,158,11,0.25)]",
+  },
+  {
+    id: "instagram",
+    label: "Instagram",
+    href: "https://www.instagram.com/alyy.77?igsh=MXRtaTZrZzEyM2ducQ==",
+    color:
+      "text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 hover:shadow-[0_0_20px_rgba(236,72,153,0.25)]",
+  },
+  {
+    id: "email",
+    label: "Email",
+    href: "mailto:arafatalyy.it@gmail.com",
+    color:
+      "text-purple-400 hover:border-purple-500/50 hover:bg-purple-500/10 hover:shadow-[0_0_20px_rgba(168,85,247,0.25)]",
+  },
 ] as const;
 
-export const timeline = [
+export const navLinks = [
+  { href: "#home", label: "Home" },
+  { href: "#about", label: "About" },
+  { href: "#experience", label: "Experience" },
+  { href: "#capabilities", label: "Capabilities" },
+  { href: "#portfolio", label: "Portfolio" },
+  { href: "#contact", label: "Contact" },
+] as const;
+
+export const capabilities = [
   {
-    id: "origins",
-    date: "Origins",
-    title: "Curiosity & Cultivation",
-    body: "Grew up hands-on — soil under nails, seasons as teachers. Agriculture was never a hobby. It was the first operating system I learned.",
-    image: "/photos/coffee-sapling.png",
-    imageAlt: "Young coffee sapling growing in dark soil",
+    id: "ai-apis",
+    title: "Custom AI APIs & Agent Integration",
+    description:
+      "Engineering custom REST endpoints, function-calling schemas, and autonomous webhooks that allow AI models to interact directly with web platforms.",
+    stack: [
+      "Next.js",
+      "REST APIs",
+      "Claude API",
+      "Gemini API",
+      "Cloudflare Workers",
+      "JSON-LD",
+    ],
+    features: [
+      "Function-calling schemas for tool-using agents",
+      "Webhook bridges between models and live platforms",
+      "Secure REST endpoints with status telemetry",
+      "Claude + Gemini dual-provider orchestration",
+      "Edge workers for low-latency inference routes",
+    ],
+    mockup: "ai" as const,
   },
   {
-    id: "barista",
-    date: "Jan 2024",
-    title: "Frontlines, Not Theory",
-    body: "Stepped into Senior Barista and Customer Service Specialist roles. Specialty V60. Arabic coffee. High pressure, real clients, no resets. Content around the craft followed the craft — not the other way around.",
-    image: "/photos/v60-pour.png",
-    imageAlt: "Barista pouring a V60 specialty coffee on a scale",
+    id: "google-cloud",
+    title: "Google Pages, SEO & Cloud Infrastructure",
+    description:
+      "Building search-optimized web applications with structured JSON-LD schemas, Google Analytics 4 integration, and instant Cloudflare Pages edge deployments.",
+    stack: [
+      "Cloudflare Pages",
+      "GA4 Analytics",
+      "SEO / JSON-LD",
+      "Google APIs",
+      "Open Graph",
+    ],
+    features: [
+      "JSON-LD + Open Graph structured data for SERP richness",
+      "GA4 event and traffic instrumentation",
+      "Cloudflare Pages CI/CD edge deploy pipelines",
+      "Search-indexed page architecture",
+      "Google Workspace / API automation hooks",
+    ],
+    mockup: "seo" as const,
   },
   {
-    id: "ged",
-    date: "Early 2026",
-    title: "Academic Grit",
-    body: "Took the GED head-on. Mapped study sequences like a campaign. Hit 159 on practice tests. Proof that persistence outruns polish.",
-    image: null,
-    imageAlt: null,
+    id: "dashboards",
+    title: "Interactive Visual Decks & Custom Dashboards",
+    description:
+      "Designing responsive web-based presentation decks, executive dashboards, and interactive visual interfaces built with React and Framer Motion.",
+    stack: [
+      "React.js",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Recharts / SVG",
+      "UI/UX",
+    ],
+    features: [
+      "Animated KPI rings and metric tiles",
+      "Interactive bar/line chart surfaces",
+      "Presentation control bars for live decks",
+      "Motion-driven storytelling interfaces",
+      "Executive-ready glassmorphic layouts",
+    ],
+    mockup: "dashboard" as const,
   },
   {
-    id: "milestones",
-    date: "Mid 2026",
-    title: "Physical & Financial Milestones",
-    body: "Scaled the land: 300 coffee trees and vanilla vines under management. Hit daily 15km road cycling on Continental GP5000s with a Cycplus computer. Started tracking long-term equity plays in VOO and JEPI.",
-    image: "/photos/cycling-bike.png",
-    imageAlt: "Road cyclist with an Aval bike after a ride",
+    id: "fullstack",
+    title: "Full-Stack Web Apps & Management Systems",
+    description:
+      "Developing custom e-commerce storefronts and operational management platforms featuring built-in CRMs, automated invoicing, and instant lead routing.",
+    stack: [
+      "React.js",
+      "Next.js",
+      "Ziina Payments",
+      "CRM Logic",
+      "Inventory Tracker",
+    ],
+    features: [
+      "E-commerce checkout with Ziina payment links",
+      "WhatsApp lead redirection flows",
+      "PIN-secured ops dashboards",
+      "CRM + inventory tracking modules",
+      "Automated invoicing pipelines",
+    ],
+    mockup: "commerce" as const,
+  },
+] as const;
+
+export const experience = [
+  {
+    id: "tia-daamc",
+    title: "TIA Tier 1 IT Support Intern",
+    company: "DAAMC",
+    duration: "6 Months",
+    highlights: [
+      "Provided Tier 1 technical support, hardware/software troubleshooting, and network access management across the organization.",
+      "Resolved end-user tickets efficiently, maintaining high satisfaction and minimal system downtime.",
+    ],
   },
   {
-    id: "digital",
-    date: "Aug 2026 → Present",
-    title: "The Digital Transition",
-    body: "New M5 MacBook Air. Agentic AI environments — Cursor, Cline, Gemini, Claude. Shipping web apps through GitHub and Cloudflare Pages. Same grit. New toolchain.",
-    image: "/photos/code-editor.png",
-    imageAlt: "Code editor open to a Hello World program",
+    id: "mantra-helpdesk",
+    title: "Customer Service / Help Desk Specialist",
+    company: "Mantra",
+    duration: "20 Months",
+    highlights: [
+      "Delivered high-quality front-line support and customer service, diagnosing user issues and escalating complex technical tickets.",
+      "Streamlined help desk operations and communication workflows to ensure rapid response times.",
+    ],
   },
+] as const;
+
+export const stats = [
+  { label: "Total Projects", value: 4 },
+  { label: "Certificates", value: 5 },
+  { label: "Completed Works", value: 3 },
 ] as const;
 
 export const projects = [
   {
-    id: "agri-dash",
-    title: "Agri-Dash",
-    status: "Concept",
-    summary:
-      "A growth-cycle dashboard for vanilla vines and coffee trees — weather impact, irrigation windows, and harvest readiness in one view.",
-    stack: ["Next.js", "Charts", "Agentic AI"],
-    success:
-      "Mapped real agricultural signals into a clean operator UI. Built for the field, not a demo reel.",
-    fails:
-      "Over-modeled weather first and under-modeled soil reality. Lesson: ground truth before graph polish. Agent drafts moved fast — validation still had to be human.",
-    image: "/photos/vanilla-farm.png",
-    imageAlt: "Rows of young vanilla vines on mesh support poles",
+    id: "golden-vanilla-web",
+    title: "Golden Vanilla Website",
+    description:
+      "High-conversion marketing site for Golden Vanilla with payments, SEO, and AI-assisted content.",
+    liveUrl: "https://goldenvanilla-ae.com/",
+    githubUrl: "https://github.com/Alyy72",
+    stack: [
+      "Static HTML",
+      "Cloudflare Pages",
+      "GitHub CI/CD",
+      "GA4",
+      "Ziina",
+      "Opinly AI",
+      "JSON-LD SEO",
+    ],
+    features: [
+      "Cloudflare Pages deployment with GitHub CI/CD",
+      "WhatsApp lead redirection",
+      "Ziina payment link integration",
+      "Open Graph / JSON-LD SEO structure",
+      "Blog automation via Opinly AI",
+    ],
   },
   {
-    id: "cycling",
-    title: "Cycling Analytics",
-    status: "Concept",
-    summary:
-      "Performance UI reading Cycplus computer metrics and GP5000 tire telemetry into pace, load, and recovery signals.",
-    stack: ["TypeScript", "Telemetry UI", "Motion"],
-    success:
-      "Turned daily 15km grind into readable patterns — cadence spikes, fatigue dips, consistency streaks.",
-    fails:
-      "Chased every metric and drowned the signal. Lesson: one primary KPI per view. Friction taught me less dashboard, more decision.",
-    image: "/photos/cycling-road.png",
-    imageAlt: "First-person view of a road bike ride with cycling computer",
+    id: "golden-vanilla-system",
+    title: "Golden Vanilla System",
+    description:
+      "Operations management app with CRM, invoicing, inventory, and an embedded Claude assistant.",
+    liveUrl: null,
+    githubUrl: "https://github.com/Alyy72",
+    stack: ["React.js", "Tailwind CSS", "CRM", "Claude AI API", "Inventory"],
+    features: [
+      "PIN security login",
+      "Lead / client CRM tracking",
+      "Automated invoicing",
+      "Inventory tracking",
+      "Floating Claude assistant for ops aid",
+    ],
   },
   {
-    id: "equity",
-    title: "Equity Tracker",
-    status: "Concept",
-    summary:
-      "Long-horizon interface for VOO and JEPI — compounding curves, allocation notes, and calm market context.",
-    stack: ["React", "Finance UI", "Charts"],
-    success:
-      "Designed for patience: clear growth arcs without the casino UI. Built for holding, not hype.",
-    fails:
-      "First pass looked like a trading terminal. Wrong energy. Lesson: long-term investing deserves quieter design.",
-    image: null,
-    imageAlt: null,
+    id: "himba-coffee",
+    title: "HIMBA COFFEE",
+    description:
+      "Custom e-commerce experience for a travel tumbler and specialty coffee brand.",
+    liveUrl: "https://himba-coffee-live.pages.dev",
+    githubUrl: "https://github.com/Alyy72",
+    stack: ["Next.js", "Tailwind CSS", "Cloudflare"],
+    features: [
+      "Custom storefront UX",
+      "Fast checkout-oriented flows",
+      "Mobile-first product presentation",
+    ],
   },
   {
-    id: "refactor",
-    title: "The Refactor",
-    status: "Live Pipeline",
-    summary:
-      "kram-collection deployment pipeline — Cursor → GitHub → Cloudflare. Autonomous build loops with human taste at the gate.",
-    stack: ["Cursor", "GitHub", "Cloudflare Pages"],
-    success:
-      "Got a repeatable ship path working: generate, review, push, deploy. Speed without losing ownership of the outcome.",
-    fails:
-      "Agent confidence ≠ production readiness. Broken env vars, bad cache headers, over-eager refactors. Lesson: agents accelerate; you still own the blast radius.",
-    image: "/photos/code-editor.png",
-    imageAlt: "Development environment with code on screen",
+    id: "ikram-collection",
+    title: "IKram Collection",
+    description:
+      "Gallery-grade bilingual storefront for luxury jewelry and beauty products.",
+    liveUrl: "https://www.ikramcollection.com",
+    githubUrl: "https://github.com/Alyy72",
+    stack: ["React", "Tailwind CSS", "Cursor AI"],
+    features: [
+      "Bilingual storefront experience",
+      "Gallery-grade product presentation",
+      "Agentic build workflow with Cursor AI",
+    ],
   },
 ] as const;
 
-export const gallery = [
+export const certificates = [
   {
-    id: "v60",
-    label: "V60 pours",
-    caption: "Specialty coffee — ritual, precision, steam.",
-    image: "/photos/v60-pour.png",
-    imageAlt: "Close-up of a V60 pour-over brew in progress",
-    span: "md:col-span-2 md:row-span-2",
+    id: "cyber-threat-management",
+    title: "Cyber Threat Management",
+    issuer: "Cisco / Networking Academy",
+    href: "https://www.credly.com/users/arafat-sulaiman-m",
+    pdf: "/certificates/cyber-threat-management.pdf",
   },
   {
-    id: "cycling-setup",
-    label: "Road cycling setup",
-    caption: "GP5000s. Cycplus. 15km daily.",
-    image: "/photos/cycling-computer.png",
-    imageAlt: "Bicycle handlebars with mounted cycling computer",
-    span: "md:col-span-1 md:row-span-1",
+    id: "comptia-security",
+    title: "CompTIA Security+",
+    issuer: "CompTIA",
+    href: "https://www.credly.com/users/arafat-sulaiman-m",
+    pdf: "/certificates/comptia-security.pdf",
   },
   {
-    id: "land",
-    label: "Agricultural land",
-    caption: "300 coffee trees. Vanilla vines. Dirt-first.",
-    image: "/photos/vanilla-pods.png",
-    imageAlt: "Cluster of green vanilla pods on the vine",
-    span: "md:col-span-1 md:row-span-2",
+    id: "intro-cybersecurity",
+    title: "Introduction to Cybersecurity",
+    issuer: "Cisco Networking Academy",
+    href: "https://www.credly.com/users/arafat-sulaiman-m",
+    pdf: "/certificates/introduction-to-cybersecurity.pdf",
   },
   {
-    id: "portrait",
-    label: "Portrait",
-    caption: "Dubai light. Cap on. Stories ahead.",
-    image: "/photos/portrait-selfie.png",
-    imageAlt: "Portrait of Arafat outdoors in Dubai",
-    span: "md:col-span-2 md:row-span-1",
-    featured: true,
+    id: "networking-basics",
+    title: "Networking Basics",
+    issuer: "Cisco Networking Academy",
+    href: "https://www.credly.com/users/arafat-sulaiman-m",
+    pdf: "/certificates/networking-basics.pdf",
   },
+  {
+    id: "credly-profile",
+    title: "Credly Profile",
+    issuer: "All verified badges",
+    href: "https://www.credly.com/users/arafat-sulaiman-m",
+    pdf: null,
+  },
+] as const;
+
+export const techStack = [
+  { name: "TypeScript", icon: "FileCode2" },
+  { name: "React.js", icon: "Atom" },
+  { name: "Next.js", icon: "Layers" },
+  { name: "Tailwind CSS", icon: "Wind" },
+  { name: "HTML5", icon: "Code2" },
+  { name: "CSS3", icon: "Palette" },
+  { name: "JavaScript", icon: "Braces" },
+  { name: "Node.js", icon: "Server" },
+  { name: "Cloudflare", icon: "Cloud" },
+  { name: "Git / GitHub", icon: "GitBranch" },
+  { name: "Claude API", icon: "Sparkles" },
 ] as const;

@@ -1,37 +1,34 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050505;
-  --foreground: #f4f4f5;
-  --muted: #a1a1aa;
-  --surface: #111113;
-  --surface-raised: #18181b;
-  --border: #27272a;
-  --accent: #00b4ff;
-  --accent-hover: #33c4ff;
-  --accent-dim: rgba(0, 180, 255, 0.12);
-  --physical: #2a1f18;
-  --physical-warm: #c4a484;
+  --background: #0a0a0f;
+  --foreground: #f4f4f8;
+  --muted: #9ca3af;
+  --card: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.1);
+  --accent: #a78bfa;
+  --accent-2: #c084fc;
+  --accent-soft: rgba(167, 139, 250, 0.15);
+  --glow: rgba(168, 85, 247, 0.35);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
-  --color-surface: var(--surface);
-  --color-surface-raised: var(--surface-raised);
+  --color-card: var(--card);
   --color-border: var(--border);
   --color-accent: var(--accent);
-  --color-accent-hover: var(--accent-hover);
-  --color-accent-dim: var(--accent-dim);
-  --color-physical: var(--physical);
-  --color-physical-warm: var(--physical-warm);
+  --color-accent-2: var(--accent-2);
+  --color-accent-soft: var(--accent-soft);
+  --color-glow: var(--glow);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
@@ -41,22 +38,58 @@ body {
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--accent) 40%, transparent);
+  background: color-mix(in oklab, var(--accent) 45%, transparent);
   color: white;
 }
 
-.grain {
-  background-image: radial-gradient(
-    rgba(255, 255, 255, 0.04) 0.5px,
-    transparent 0.5px
-  );
-  background-size: 3px 3px;
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, #1f1f2e 1px, transparent 1px),
+    linear-gradient(to bottom, #1f1f2e 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-.grid-fade {
-  background-image:
-    linear-gradient(to right, rgba(0, 180, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 180, 255, 0.08) 1px, transparent 1px);
-  background-size: 32px 32px;
-  mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.aura-purple {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(168, 85, 247, 0.22),
+    transparent 65%
+  );
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.caret-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes swing {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+.lanyard-swing {
+  transform-origin: top center;
+  animation: swing 5s ease-in-out infinite;
 }
