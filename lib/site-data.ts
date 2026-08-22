@@ -206,9 +206,9 @@ export const experience = [
 ] as const;
 
 export const stats = [
-  { label: "Total Projects", value: 4 },
+  { label: "Total Projects", value: 5 },
   { label: "Certificates", value: 5 },
-  { label: "Completed Works", value: 3 },
+  { label: "Completed Works", value: 4 },
 ] as const;
 
 export const projects = [
@@ -278,6 +278,21 @@ export const projects = [
       "Bilingual storefront experience",
       "Gallery-grade product presentation",
       "Agentic build workflow with Cursor AI",
+    ],
+  },
+  {
+    id: "mihbash-cafe",
+    title: "Mihbash Cafe",
+    description:
+      "Live cafe web experience for Mihbash — menu-driven branding, mobile-first UX, and Cloudflare Workers edge delivery.",
+    liveUrl: "https://mihbash-cafe.alyyconnect.workers.dev",
+    githubUrl: "https://github.com/Alyy72",
+    stack: ["Cloudflare Workers", "Web UI", "Edge Deploy", "AlyyConnect"],
+    features: [
+      "Deployed on Cloudflare Workers via AlyyConnect",
+      "Cafe-focused digital presence and menu presentation",
+      "Fast edge delivery for mobile visitors",
+      "Production-ready live demo",
     ],
   },
 ] as const;
