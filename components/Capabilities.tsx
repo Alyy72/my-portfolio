@@ -29,7 +29,7 @@ export function Capabilities() {
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-30" />
       <div className="relative mx-auto max-w-6xl">
         <Reveal>
-          <p className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-500">
+          <p className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-700">
             Capabilities
           </p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl">

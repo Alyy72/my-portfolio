@@ -62,6 +62,7 @@ export function FloatingNav({ home = true }: { home?: boolean }) {
             <a
               key={link.href}
               href={`${prefix}${link.href}`}
+              aria-label={link.label}
               aria-current={isActive ? "page" : undefined}
               className={cn(
                 "flex min-w-10 flex-col items-center justify-center rounded-full px-2.5 py-2 text-[#F0EDE4] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F0EDE4] sm:min-w-14 sm:px-3",

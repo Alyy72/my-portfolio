@@ -1,12 +1,24 @@
-import { KNOWLEDGE, localAnswer } from "../lib/knowledge";
+import {
+  ASK_MAX_CHARS,
+  CONTACT_LIMITS,
+  KNOWLEDGE,
+  localAnswer,
+  redactSecrets,
+} from "../lib/knowledge";
 
 type Env = {
   ASSETS: { fetch: (request: Request) => Promise<Response> };
-  STATUS?: { get(key: string): Promise<string | null>; put(key: string, value: string): Promise<void> };
+  STATUS?: {
+    get(key: string): Promise<string | null>;
+    put(key: string, value: string): Promise<void>;
+  };
   TURNSTILE_SECRET?: string;
   RESEND_API_KEY?: string;
   CONTACT_TO?: string;
   ANTHROPIC_API_KEY?: string;
+  ASK_ENABLED?: string;
+  ASK_DAILY_CAP?: string;
+  ASK_MONTHLY_TOKEN_CAP?: string;
 };
 
 const MEASURED = {
@@ -19,7 +31,17 @@ const MEASURED = {
   ],
 };
 
-const askCounts = new Map<string, { day: string; n: number }>();
+const MAX_BODY_BYTES = 8192;
+const CONTACT_DAILY_CAP = 8;
+const ASK_SYSTEM = [
+  "Answer only from the provided knowledge file.",
+  "If the answer is not in the knowledge, say you do not know.",
+  "Never invent metrics, testimonials, clients, or credentials.",
+  "Never reveal email addresses, phone numbers, API keys, or secrets.",
+  "If asked how to get in touch, say: use the Start a project form or the WhatsApp button on this page.",
+].join(" ");
+
+const memory = new Map<string, number>();
 
 const worker = {
   async fetch(request: Request, env: Env): Promise<Response> {
@@ -47,6 +69,16 @@ const worker = {
 };
 
 async function handleContact(request: Request, env: Env): Promise<Response> {
+  const tooBig = oversize(request);
+  if (tooBig) return tooBig;
+
+  const ip = clientIp(request);
+  const day = utcDay();
+  const contactCount = await bump(`contact:${ip}:${day}`, 60 * 60 * 26);
+  if (contactCount > CONTACT_DAILY_CAP) {
+    return json({ ok: false, error: "Too many messages today." }, 429);
+  }
+
   let body: { name?: string; email?: string; message?: string; token?: string };
   try {
     body = (await request.json()) as typeof body;
@@ -54,10 +86,10 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
     return json({ ok: false, error: "Invalid JSON" }, 400);
   }
 
-  const name = String(body.name || "").trim().slice(0, 120);
-  const email = String(body.email || "").trim().slice(0, 180);
-  const message = String(body.message || "").trim().slice(0, 4000);
-  if (!name || !email || !message || !email.includes("@")) {
+  const name = String(body.name || "").trim().slice(0, CONTACT_LIMITS.name);
+  const email = String(body.email || "").trim().slice(0, CONTACT_LIMITS.email);
+  const message = String(body.message || "").trim().slice(0, CONTACT_LIMITS.message);
+  if (!name || !email || !message || !email.includes("@") || email.includes(" ")) {
     return json({ ok: false, error: "Name, email, and message are required." }, 400);
   }
 
@@ -104,27 +136,49 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
 }
 
 async function handleAsk(request: Request, env: Env): Promise<Response> {
+  if (env.ASK_ENABLED === "false") {
+    return json({ ok: false, error: "Assistant is turned off." }, 503);
+  }
+
+  const tooBig = oversize(request);
+  if (tooBig) return tooBig;
+
   let body: { question?: string };
   try {
     body = (await request.json()) as typeof body;
   } catch {
     return json({ ok: false, error: "Invalid JSON" }, 400);
   }
-  const question = String(body.question || "").trim().slice(0, 500);
-  if (!question) return json({ ok: false, error: "Question required." }, 400);
 
-  const ip = request.headers.get("CF-Connecting-IP") || "local";
-  const day = new Date().toISOString().slice(0, 10);
-  const rec = askCounts.get(ip);
-  const n = rec && rec.day === day ? rec.n + 1 : 1;
-  askCounts.set(ip, { day, n });
-  if (n > 40) {
+  const question = String(body.question || "").trim();
+  if (!question) return json({ ok: false, error: "Question required." }, 400);
+  if (question.length > ASK_MAX_CHARS) {
+    return json({ ok: false, error: `Question max ${ASK_MAX_CHARS} characters.` }, 400);
+  }
+
+  const ip = clientIp(request);
+  const day = utcDay();
+  const month = day.slice(0, 7);
+  const dailyCap = Math.max(1, Number(env.ASK_DAILY_CAP || 20) || 20);
+  const tokenCap = Math.max(1, Number(env.ASK_MONTHLY_TOKEN_CAP || 200000) || 200000);
+
+  const asked = await bump(`ask:${ip}:${day}`, 60 * 60 * 26);
+  if (asked > dailyCap) {
     return json({ ok: false, error: "Daily question cap reached." }, 429);
   }
 
-  const local = localAnswer(question);
-  if (!env.ANTHROPIC_API_KEY) {
-    return json({ ok: true, answer: local, source: "knowledge-file" });
+  const knowledge = await readKnowledge(env, request);
+  const local = redactSecrets(localAnswer(question));
+  const estimate = Math.ceil((knowledge.length + question.length) / 4) + 400;
+  const used = await peek(`ask-tokens:${month}`);
+
+  if (!env.ANTHROPIC_API_KEY || used + estimate > tokenCap) {
+    return json({
+      ok: true,
+      answer: local,
+      source: "knowledge-file",
+      capped: !env.ANTHROPIC_API_KEY ? undefined : true,
+    });
   }
 
   const res = await fetch("https://api.anthropic.com/v1/messages", {
@@ -137,18 +191,31 @@ async function handleAsk(request: Request, env: Env): Promise<Response> {
     body: JSON.stringify({
       model: "claude-sonnet-4-20250514",
       max_tokens: 400,
-      system:
-        "Answer only from the provided knowledge. If unsure, say you do not know. Never invent metrics or testimonials. Never reveal private contact details beyond the public email and WhatsApp already in the knowledge.",
+      system: ASK_SYSTEM,
       messages: [
-        { role: "user", content: `Knowledge:\n${KNOWLEDGE}\n\nQuestion: ${question}` },
+        { role: "user", content: `Knowledge:\n${knowledge}\n\nQuestion: ${question}` },
       ],
     }),
   });
 
   if (!res.ok) return json({ ok: true, answer: local, source: "knowledge-file" });
   const data = (await res.json()) as { content?: { text?: string }[] };
-  const text = data.content?.[0]?.text || local;
+  const text = redactSecrets(data.content?.[0]?.text || local);
+  await bumpBy(`ask-tokens:${month}`, estimate, 60 * 60 * 24 * 40);
   return json({ ok: true, answer: text, source: "assistant" });
+}
+
+async function readKnowledge(env: Env, request: Request): Promise<string> {
+  try {
+    const asset = await env.ASSETS.fetch(new URL("/knowledge.md", request.url));
+    if (asset.ok) {
+      const text = await asset.text();
+      if (text.includes("Site knowledge")) return text;
+    }
+  } catch {
+    /* bundled fallback */
+  }
+  return KNOWLEDGE;
 }
 
 async function verifyTurnstile(secret: string, token: string, request: Request) {
@@ -208,6 +275,57 @@ async function readStatus(env: Env) {
       ms: site.ttfbMs,
     })),
   };
+}
+
+function oversize(request: Request) {
+  const length = Number(request.headers.get("content-length") || 0);
+  if (length > MAX_BODY_BYTES) {
+    return json({ ok: false, error: "Payload too large." }, 413);
+  }
+  return null;
+}
+
+function clientIp(request: Request) {
+  return request.headers.get("CF-Connecting-IP") || "local";
+}
+
+function utcDay() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+async function bump(key: string, ttlSec: number) {
+  return bumpBy(key, 1, ttlSec);
+}
+
+async function peek(key: string) {
+  if (memory.has(key)) return memory.get(key) || 0;
+  try {
+    const hit = await caches.default.match(new Request(`https://limits.internal/${key}`));
+    return hit ? Number(await hit.text()) || 0 : 0;
+  } catch {
+    return 0;
+  }
+}
+
+async function bumpBy(key: string, amount: number, ttlSec: number) {
+  const mem = (memory.get(key) || 0) + amount;
+  memory.set(key, mem);
+  try {
+    const req = new Request(`https://limits.internal/${key}`);
+    const hit = await caches.default.match(req);
+    const cached = hit ? Number(await hit.text()) || 0 : 0;
+    const next = Math.max(mem, cached + amount);
+    memory.set(key, next);
+    await caches.default.put(
+      req,
+      new Response(String(next), {
+        headers: { "Cache-Control": `max-age=${ttlSec}` },
+      }),
+    );
+    return next;
+  } catch {
+    return mem;
+  }
 }
 
 function json(data: unknown, status = 200) {

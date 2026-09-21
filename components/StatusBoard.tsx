@@ -34,7 +34,7 @@ export function StatusBoard() {
     <section id="status" className="relative px-4 py-20 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <p className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-500">
+          <p className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-700">
             Status
           </p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-neutral-900">

@@ -21,6 +21,7 @@ export default function ArabicPage() {
         أبني أنظمة ويب للإنتاج: متاجر، تدفقات دفع، وأدوات تشغيل، من دبي وعلى
         Cloudflare.
       </p>
+      {/* TODO(owner): Arabic scope — confirm summary-only /ar (current) or a full RTL translation of case studies and writing. Do not invent copy. */}
       <p className="mt-4 text-sm text-muted">
         هذه نسخة عربية مختصرة. دراسات الحالة والملاحظات التقنية ما زالت بالإنجليزية.
       </p>

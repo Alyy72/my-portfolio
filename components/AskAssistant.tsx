@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { MessageCircleQuestion, X } from "lucide-react";
-import { localAnswer } from "@/lib/knowledge";
+import { ASK_MAX_CHARS, localAnswer } from "@/lib/knowledge";
 
 export function AskAssistant() {
   const [open, setOpen] = useState(false);
@@ -21,9 +21,14 @@ export function AskAssistant() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ question: q }),
       });
+      const data = (await res.json().catch(() => ({}))) as {
+        answer?: string;
+        error?: string;
+      };
       if (res.ok) {
-        const data = (await res.json()) as { answer?: string };
         setAnswer(data.answer || localAnswer(q));
+      } else if (res.status === 429 || res.status === 503) {
+        setAnswer(data.error || "The assistant is temporarily unavailable.");
       } else {
         setAnswer(localAnswer(q));
       }
@@ -64,6 +69,7 @@ export function AskAssistant() {
               id="ask-q"
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
+              maxLength={ASK_MAX_CHARS}
               placeholder="HIMBA, ZAHA, booking…"
               className="h-10 w-full rounded-full border border-black/10 px-3 text-sm"
             />

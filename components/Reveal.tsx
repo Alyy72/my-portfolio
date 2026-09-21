@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 const variants: Variants = {
@@ -24,9 +24,16 @@ export function Reveal({
   delay?: number;
 }) {
   const reduced = useReducedMotion();
-  if (reduced) {
+  const [enhance, setEnhance] = useState(false);
+
+  useEffect(() => {
+    setEnhance(true);
+  }, []);
+
+  if (reduced || !enhance) {
     return <div className={cn(className)}>{children}</div>;
   }
+
   return (
     <motion.div
       className={cn(className)}

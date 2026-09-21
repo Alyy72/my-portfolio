@@ -1,5 +1,9 @@
+// TODO(owner): canonical domain decision — keep workers.dev, or connect a
+// custom domain and 301 the Worker URL. Do not invent a live hostname.
 export const SITE_URL = "https://arafat-dev.alyyconnect.workers.dev";
 
+// TODO(owner): real metrics per project, with dates, beyond this TTFB spot-check.
+// Do not invent orders, conversion, hours saved, or Lighthouse scores.
 export const measuredOn = "21 Sep 2026";
 
 export type CaseStudy = {
@@ -58,6 +62,8 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     liveUrl: "https://goldenvanilla-ae.com/",
+    // TODO(owner): repository link or approved walkthrough recording — do not
+    // point githubUrl at the profile as if it were the project repo.
     repoUrl: null,
     repoNote: "Private repository — walkthrough available.",
     stack: ["Static HTML", "Cloudflare Pages", "GitHub CI/CD", "Ziina", "JSON-LD", "WhatsApp"],
@@ -163,6 +169,7 @@ export const caseStudies: CaseStudy[] = [
         source: "curl -w time_starttransfer against https://www.ikramcollection.com/",
       },
     ],
+    // TODO(owner): IKRAM screenshots — desktop + mobile, no customer PII.
     screenshots: [],
     liveUrl: "https://www.ikramcollection.com",
     repoUrl: null,
@@ -327,8 +334,15 @@ The mobile or HUD app then subscribes to notifications instead of polling. That 
   },
 ] as const;
 
+// TODO(owner): testimonials with permission — name, role, business, written
+// approval. Do not render a testimonials section until two exist.
+// TODO(owner): product demo videos (P5-05) — 60–90s captioned recordings per
+// major project. Do not invent or embed placeholders.
+
 export const certMap = [
   {
+    // TODO(owner): credential verification link — unique Credly (or issuer)
+    // badge URL. Confirm this is the exam credential, not the SY0-701 course PDF.
     credential: "CompTIA Security+",
     issuer: "CompTIA",
     year: "2025",

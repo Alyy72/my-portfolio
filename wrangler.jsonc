@@ -3,6 +3,7 @@
   "name": "arafat-dev",
   "main": "worker/index.ts",
   "compatibility_date": "2026-09-21",
+  "preview_urls": true,
   "assets": {
     "directory": "./out",
     "binding": "ASSETS",
@@ -15,5 +16,10 @@
   },
   "triggers": {
     "crons": ["0 */6 * * *"]
+  },
+  "vars": {
+    "ASK_ENABLED": "true",
+    "ASK_DAILY_CAP": "20",
+    "ASK_MONTHLY_TOKEN_CAP": "200000"
   }
 }

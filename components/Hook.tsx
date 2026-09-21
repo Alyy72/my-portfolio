@@ -17,7 +17,7 @@ export function Hook() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-mono text-xs uppercase tracking-[0.28em] text-neutral-500"
+          className="font-mono text-xs uppercase tracking-[0.28em] text-neutral-700"
         >
           {siteConfig.hook.eyebrow}
         </motion.p>

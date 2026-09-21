@@ -1,6 +1,8 @@
 import { SITE_URL } from "./case-studies";
 
 export const siteConfig = {
+  // TODO(owner): legal / public name — site uses Arafat Sulaiman; CV and one
+  // certificate PDF use Arafat Sulaiman Nawanda; Credly is arafat-sulaiman-m.
   name: "Arafat Sulaiman",
   brand: "arafat.dev",
   title: "Full-Stack Developer",
@@ -8,6 +10,9 @@ export const siteConfig = {
   email: "arafatalyy.it@gmail.com",
   whatsapp: "https://wa.me/971529033466",
   whatsappDisplay: "+971529033466",
+  // TODO(owner): CV rewrite decision — dated PDF is IT Support / L1 Helpdesk
+  // and does not match this site's title, projects, or credentials. Replace
+  // the file or remove the download until it does. Do not invent a CV.
   resumeUrl: "/Arafat-Sulaiman-CV-2026-09.pdf",
   profileImage: "/images/profile.webp",
   siteUrl: SITE_URL,
@@ -120,6 +125,9 @@ export const capabilities = [
     id: "google-cloud",
     title: "Google Pages, SEO & Cloud Infrastructure",
     description:
+      // TODO(owner): analytics decision — supply a GA4 measurement ID, or
+      // confirm analytics stays off. Do not add a fake ID. Cookie copy already
+      // says nothing fires until an ID exists.
       "Search-oriented sites with JSON-LD, Open Graph, and Cloudflare Pages deploys. This portfolio does not fire GA4 until an ID is configured.",
     stack: [
       "Cloudflare Pages",
@@ -210,6 +218,8 @@ export const engineeringWork = [
     ],
   },
   {
+    // TODO(owner): NOTENSION — add a case study + evidence, or drop this card
+    // so project counts match. No public demo on this site today.
     id: "notension",
     slug: null,
     title: "NOTENSION — E-Commerce Web Portal",
@@ -306,6 +316,9 @@ export const projects = [
   },
 ] as const;
 
+// TODO(owner): credential verification links — unique Credly/issuer badge
+// URLs per credential. A+, ITIL 4, Google IT Support, Diploma stay off this
+// site until a file or badge exists. Do not invent them.
 export const certificates = [
   {
     id: "cyber-threat-management",

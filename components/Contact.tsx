@@ -8,6 +8,7 @@ import { QuickLinks } from "@/components/SocialIconBar";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { CONTACT_LIMITS } from "@/lib/knowledge";
 import { siteConfig } from "@/lib/site-data";
 
 const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
@@ -84,7 +85,7 @@ export function Contact() {
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-30" />
       <div className="relative mx-auto max-w-6xl">
         <Reveal>
-          <p className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-500">
+          <p className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-700">
             Contact
           </p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl">
@@ -110,6 +111,7 @@ export function Contact() {
                 <Input
                   name="name"
                   required
+                  maxLength={CONTACT_LIMITS.name}
                   autoComplete="name"
                   placeholder="Your name"
                   className="border-black/10 bg-white/60"
@@ -121,6 +123,7 @@ export function Contact() {
                   name="email"
                   type="email"
                   required
+                  maxLength={CONTACT_LIMITS.email}
                   autoComplete="email"
                   placeholder="you@domain.com"
                   className="border-black/10 bg-white/60"
@@ -131,6 +134,7 @@ export function Contact() {
                 <Textarea
                   name="message"
                   required
+                  maxLength={CONTACT_LIMITS.message}
                   placeholder="Tell me about your project…"
                   className="border-black/10 bg-white/60"
                 />

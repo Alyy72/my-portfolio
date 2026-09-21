@@ -33,7 +33,7 @@ export function Footer() {
   const open = panel ? panelCopy[panel] : null;
 
   const linkClass =
-    "text-xs text-neutral-500 transition-colors hover:text-neutral-900 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004741]";
+    "text-xs text-neutral-700 transition-colors hover:text-neutral-900 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004741]";
 
   return (
     <footer className="w-full border-t border-black/10 bg-[#f0efed] px-6 py-10 pb-28 text-sm text-neutral-600">

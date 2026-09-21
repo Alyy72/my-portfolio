@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "preview:cf": "next build && wrangler dev",
+    "deploy:preview": "next build && wrangler versions upload --message \"preview only, not production\"",
     "deploy": "next build && wrangler deploy"
   },
   "dependencies": {

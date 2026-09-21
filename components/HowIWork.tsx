@@ -6,7 +6,7 @@ export function HowIWork() {
     <section id="method" className="relative px-4 py-20 sm:px-6 sm:py-28">
       <div className="relative mx-auto max-w-6xl">
         <Reveal>
-          <p className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-500">
+          <p className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-700">
             Method
           </p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl">

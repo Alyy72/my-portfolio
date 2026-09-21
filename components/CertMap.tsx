@@ -4,7 +4,7 @@ export function CertMap() {
   return (
     <section id="credentials" className="relative px-4 py-20 sm:px-6">
       <div className="mx-auto max-w-6xl">
-        <p className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-500">
+        <p className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-700">
           Credentials
         </p>
         <h2 className="mt-3 text-3xl font-semibold tracking-tight text-neutral-900">
@@ -18,7 +18,7 @@ export function CertMap() {
         <div className="mt-8 overflow-x-auto">
           <table className="w-full min-w-[40rem] text-left text-sm">
             <thead>
-              <tr className="border-b border-black/10 text-xs uppercase tracking-wider text-muted">
+              <tr className="border-b border-black/10 text-xs uppercase tracking-wider text-neutral-700">
                 <th className="py-3 pr-4">Credential</th>
                 <th className="py-3 pr-4">Year</th>
                 <th className="py-3 pr-4">Capability</th>

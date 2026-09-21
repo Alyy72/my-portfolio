@@ -51,7 +51,7 @@ export function About() {
       <div className="relative mx-auto max-w-6xl">
         <div>
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-500">
+            <p className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-700">
               About Me
             </p>
             <h2 className="mt-3 text-4xl font-semibold tracking-tight text-neutral-900 sm:text-5xl">

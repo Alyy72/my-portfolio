@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/site-data";
 export default function ProjectIndexPage() {
   return (
     <main id="main" className="mx-auto max-w-5xl px-4 py-20 sm:px-6">
-      <p className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-500">
+      <p className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-700">
         Case studies
       </p>
       <h1 className="mt-3 text-4xl font-semibold tracking-tight text-neutral-900">
