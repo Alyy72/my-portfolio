@@ -6,16 +6,18 @@ import { siteConfig } from "@/lib/site-data";
 
 export function Hook() {
   return (
-    <section className="relative overflow-hidden border-y border-white/10 px-4 py-16 sm:px-6 sm:py-20">
+    <section
+      id="hook"
+      className="relative overflow-hidden border-y border-black/10 px-4 py-16 sm:px-6 sm:py-20"
+    >
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-40" />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-600/25 blur-[100px]" />
 
       <div className="relative mx-auto max-w-4xl text-center">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-mono text-xs uppercase tracking-[0.28em] text-purple-300"
+          className="font-mono text-xs uppercase tracking-[0.28em] text-neutral-500"
         >
           {siteConfig.hook.eyebrow}
         </motion.p>
@@ -25,7 +27,7 @@ export function Hook() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.08 }}
-          className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-5xl sm:leading-[1.1]"
+          className="mt-4 text-3xl font-semibold tracking-tight text-neutral-900 sm:text-5xl sm:leading-[1.1]"
         >
           {siteConfig.hook.line}
         </motion.h2>
@@ -49,14 +51,14 @@ export function Hook() {
         >
           <a
             href="#portfolio"
-            className="inline-flex h-11 items-center gap-2 rounded-full bg-purple-500 px-5 text-sm font-semibold text-white transition hover:bg-purple-400"
+            className="inline-flex h-11 items-center gap-2 rounded-full bg-neutral-900 px-5 text-sm font-semibold text-white transition hover:bg-neutral-700"
           >
             See the proof
             <ArrowRight className="size-4" />
           </a>
           <a
             href="#contact"
-            className="inline-flex h-11 items-center rounded-full border border-white/10 bg-white/5 px-5 text-sm font-medium text-white transition hover:border-purple-400/50 hover:text-purple-200"
+            className="inline-flex h-11 items-center rounded-full border border-black/10 bg-black/[0.03] px-5 text-sm font-medium text-neutral-900 transition hover:border-black/15 hover:text-neutral-600"
           >
             Contact Me
           </a>

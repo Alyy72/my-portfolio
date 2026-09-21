@@ -45,50 +45,45 @@ export const socialLinks = [
     id: "linkedin",
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/arafat-sulaiman-60066636a",
-    color:
-      "text-blue-400 hover:border-blue-500/50 hover:bg-blue-500/10 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)]",
+    color: "text-blue-600 hover:border-blue-600/40 hover:bg-blue-600/10",
   },
   {
     id: "github",
     label: "GitHub",
     href: "https://github.com/Alyy72",
-    color:
-      "text-slate-200 hover:border-white/30 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(255,255,255,0.12)]",
+    color: "text-neutral-800 hover:border-black/30 hover:bg-black/[0.06]",
   },
   {
     id: "whatsapp",
     label: "WhatsApp",
     href: "https://wa.me/971529033466",
     color:
-      "text-emerald-400 hover:border-emerald-500/50 hover:bg-emerald-500/10 hover:shadow-[0_0_20px_rgba(16,185,129,0.25)]",
+      "text-emerald-600 hover:border-emerald-600/40 hover:bg-emerald-600/10",
   },
   {
     id: "credly",
     label: "Credly",
     href: "https://www.credly.com/users/arafat-sulaiman-m",
-    color:
-      "text-amber-400 hover:border-amber-500/50 hover:bg-amber-500/10 hover:shadow-[0_0_20px_rgba(245,158,11,0.25)]",
+    color: "text-amber-600 hover:border-amber-600/40 hover:bg-amber-600/10",
   },
   {
     id: "instagram",
     label: "Instagram",
     href: "https://www.instagram.com/alyy.77?igsh=MXRtaTZrZzEyM2ducQ==",
-    color:
-      "text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 hover:shadow-[0_0_20px_rgba(236,72,153,0.25)]",
+    color: "text-pink-600 hover:border-pink-600/40 hover:bg-pink-600/10",
   },
   {
     id: "email",
     label: "Email",
     href: "mailto:arafatalyy.it@gmail.com",
-    color:
-      "text-purple-400 hover:border-purple-500/50 hover:bg-purple-500/10 hover:shadow-[0_0_20px_rgba(168,85,247,0.25)]",
+    color: "text-neutral-700 hover:border-black/30 hover:bg-black/[0.06]",
   },
 ] as const;
 
 export const navLinks = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
+  { href: "#experience", label: "Work" },
   { href: "#capabilities", label: "Capabilities" },
   { href: "#portfolio", label: "Portfolio" },
   { href: "#contact", label: "Contact" },
@@ -182,25 +177,40 @@ export const capabilities = [
   },
 ] as const;
 
-export const experience = [
+export const engineeringWork = [
   {
-    id: "tia-daamc",
-    title: "TIA Tier 1 IT Support Intern",
-    company: "DAAMC",
-    duration: "6 Months",
+    id: "zaha",
+    title: "ZAHA — Cycling Telemetry & Navigation System",
+    tag: "Hardware & Software Architecture",
     highlights: [
-      "Provided Tier 1 technical support, hardware/software troubleshooting, and network access management across the organization.",
-      "Resolved end-user tickets efficiently, maintaining high satisfaction and minimal system downtime.",
+      "Engineered a hardware-integrated cycling ecosystem featuring heads-up navigation and real-time sensor data parsing.",
+      "Architected the software environment and established BLE GATT specifications for seamless microcontroller communication.",
     ],
   },
   {
-    id: "mantra-helpdesk",
-    title: "Customer Service / Help Desk Specialist",
-    company: "Mantra",
-    duration: "20 Months",
+    id: "himba-coffee",
+    title: "HIMBA Coffee — Interactive E-Commerce Platform",
+    tag: "Full-Stack Web Development",
     highlights: [
-      "Delivered high-quality front-line support and customer service, diagnosing user issues and escalating complex technical tickets.",
-      "Streamlined help desk operations and communication workflows to ensure rapid response times.",
+      "Developed a dynamic web catalog and interactive storefront using Next.js.",
+      "Built a custom product configurator allowing users to manipulate real-time color customizations for travel tumblers.",
+    ],
+  },
+  {
+    id: "ikram-haute-joaillerie",
+    title: "IKRAM Haute Joaillerie — Digital Showcase",
+    tag: "Performance & Edge Deployment",
+    highlights: [
+      "Engineered a high-performance digital showcase prioritizing fast load times and clean UI architecture.",
+      "Configured application files and managed edge deployments utilizing Cloudflare Pages for global scalability.",
+    ],
+  },
+  {
+    id: "notension",
+    title: "NOTENSION — E-Commerce Web Portal",
+    tag: "Systems & UI Design",
+    highlights: [
+      "Formulated the application architecture and engineered an interactive web storefront optimized for apparel retail.",
     ],
   },
 ] as const;

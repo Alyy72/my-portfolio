@@ -29,10 +29,10 @@ export function Capabilities() {
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-30" />
       <div className="relative mx-auto max-w-6xl">
         <Reveal>
-          <p className="font-mono text-xs uppercase tracking-[0.22em] text-purple-300">
+          <p className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-500">
             Capabilities
           </p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl">
             What I build — live visual previews.
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
@@ -47,7 +47,7 @@ export function Capabilities() {
 
             return (
               <Reveal key={cap.id} delay={index * 0.06}>
-                <article className="group glass overflow-hidden rounded-[1.75rem] transition duration-300 hover:border-purple-400/50 hover:shadow-[0_0_40px_-12px_rgba(168,85,247,0.45)]">
+                <article className="group glass overflow-hidden rounded-[1.75rem] transition duration-300 hover:border-black/20 hover:shadow-[0_8px_30px_rgba(17,17,17,0.08)]">
                   <div className="overflow-hidden p-4 pb-0">
                     <div className="origin-center transition-transform duration-300 group-hover:scale-105">
                       <Mockup />
@@ -56,8 +56,8 @@ export function Capabilities() {
 
                   <div className="space-y-4 p-5 sm:p-6">
                     <div className="flex items-start gap-2">
-                      <Layers className="mt-1 size-4 shrink-0 text-purple-300" />
-                      <h3 className="text-xl font-semibold tracking-tight text-white">
+                      <Layers className="mt-1 size-4 shrink-0 text-neutral-500" />
+                      <h3 className="text-xl font-semibold tracking-tight text-neutral-900">
                         {cap.title}
                       </h3>
                     </div>
@@ -68,7 +68,7 @@ export function Capabilities() {
                       {cap.stack.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-zinc-300 transition group-hover:border-purple-400/30"
+                          className="rounded-full border border-black/10 bg-black/[0.03] px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-neutral-700 transition group-hover:border-black/20"
                         >
                           {tag}
                         </span>
@@ -77,7 +77,7 @@ export function Capabilities() {
                     <button
                       type="button"
                       onClick={() => setActive(cap)}
-                      className="inline-flex h-10 items-center rounded-full border border-purple-500/40 bg-purple-500/10 px-4 text-sm font-medium text-purple-200 transition hover:bg-purple-500/20"
+                      className="inline-flex h-10 items-center rounded-full border border-black/15 bg-black/[0.04] px-4 text-sm font-medium text-neutral-700 transition hover:bg-black/[0.08]"
                     >
                       View Live Preview / Architecture
                     </button>
@@ -105,19 +105,19 @@ export function Capabilities() {
               onClick={(e) => e.stopPropagation()}
               className="glass max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-[1.75rem]"
             >
-              <div className="flex items-start justify-between gap-3 border-b border-white/10 p-5">
+              <div className="flex items-start justify-between gap-3 border-b border-black/10 p-5">
                 <div>
-                  <p className="font-mono text-xs text-purple-300">
+                  <p className="font-mono text-xs text-neutral-500">
                     Architecture Preview
                   </p>
-                  <h3 className="mt-1 text-2xl font-semibold text-white">
+                  <h3 className="mt-1 text-2xl font-semibold text-neutral-900">
                     {active.title}
                   </h3>
                 </div>
                 <button
                   type="button"
                   onClick={() => setActive(null)}
-                  className="rounded-full border border-white/10 p-2 text-muted hover:text-white"
+                  className="rounded-full border border-black/10 p-2 text-muted hover:text-neutral-900"
                   aria-label="Close"
                 >
                   <X className="size-4" />
@@ -134,16 +134,16 @@ export function Capabilities() {
                   {active.description}
                 </p>
 
-                <h4 className="mt-6 font-mono text-xs uppercase tracking-[0.18em] text-purple-300">
+                <h4 className="mt-6 font-mono text-xs uppercase tracking-[0.18em] text-neutral-500">
                   Feature breakdown
                 </h4>
                 <ul className="mt-3 space-y-2">
                   {active.features.map((feature) => (
                     <li
                       key={feature}
-                      className="flex gap-2 text-sm text-zinc-300"
+                      className="flex gap-2 text-sm text-neutral-700"
                     >
-                      <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-purple-400" />
+                      <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-neutral-900" />
                       {feature}
                     </li>
                   ))}
@@ -153,7 +153,7 @@ export function Capabilities() {
                   {active.stack.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-white/10 px-2.5 py-1 text-[11px] text-gray-300"
+                      className="rounded-full border border-black/10 px-2.5 py-1 text-[11px] text-neutral-600"
                     >
                       {tag}
                     </span>

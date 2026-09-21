@@ -6,37 +6,35 @@ import { Capabilities } from "@/components/Capabilities";
 import { Contact } from "@/components/Contact";
 import { Experience } from "@/components/Experience";
 import { Footer } from "@/components/SiteFooter";
-import { Hero } from "@/components/HeroSection";
 import { Hook } from "@/components/Hook";
-import { Navbar } from "@/components/Navbar";
+import { BigHero } from "@/components/BigHero";
+import { FloatingNav } from "@/components/FloatingNav";
+import { LiveBuildIntro } from "@/components/LiveBuildIntro";
 import { Portfolio } from "@/components/Portfolio";
-import { Splash } from "@/components/Splash";
 import { WelcomeToast } from "@/components/WelcomeToast";
 
 export function HomePage() {
   const [ready, setReady] = useState(false);
-  const onSplashDone = useCallback(() => setReady(true), []);
+  const [introOpen, setIntroOpen] = useState(true);
+  const onIntroDone = useCallback(() => {
+    setReady(true);
+    setIntroOpen(false);
+  }, []);
 
   return (
     <>
-      <Splash onDone={onSplashDone} />
-      <div
-        className={`transition-opacity duration-500 ${
-          ready ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        <Navbar />
-        <main className="flex-1">
-          <Hero />
-          <Hook />
-          <About />
-          <Experience />
-          <Capabilities />
-          <Portfolio />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
+      <FloatingNav />
+      <main className="flex-1">
+        {introOpen ? <LiveBuildIntro onDone={onIntroDone} /> : null}
+        <BigHero ready={ready} />
+        <Hook />
+        <About />
+        <Experience />
+        <Capabilities />
+        <Portfolio />
+        <Contact />
+      </main>
+      <Footer />
       {ready ? <WelcomeToast /> : null}
     </>
   );

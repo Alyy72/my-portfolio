@@ -34,13 +34,13 @@ export function WelcomeToast() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -20, scale: 0.95 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="fixed top-6 left-1/2 z-[90] flex -translate-x-1/2 items-center gap-3 rounded-2xl border border-purple-500/30 bg-[#0d0d12]/90 px-5 py-3 text-sm text-gray-200 shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-xl"
+          className="fixed top-6 left-1/2 z-[90] flex -translate-x-1/2 items-center gap-3 rounded-2xl border border-black/15 bg-[#f0efed]/90 px-5 py-3 text-sm text-neutral-700 shadow-[0_8px_30px_rgba(17,17,17,0.08)] backdrop-blur-xl"
           role="status"
           aria-live="polite"
         >
-          <Sparkles className="size-4 shrink-0 text-amber-400" />
+          <Sparkles className="size-4 shrink-0 text-amber-600" />
           <span>
-            <span className="font-bold tracking-wide text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.6)]">
+            <span className="font-bold tracking-wide text-red-600">
               AlyyConnect
             </span>{" "}
             wishes a blessed day for you! ✨
@@ -48,7 +48,7 @@ export function WelcomeToast() {
           <button
             type="button"
             onClick={() => setIsVisible(false)}
-            className="ml-2 rounded-lg p-1 text-gray-400 transition-colors hover:bg-white/10 hover:text-white"
+            className="ml-2 rounded-lg p-1 text-neutral-600 transition-colors hover:bg-black/[0.06] hover:text-neutral-900"
             aria-label="Close message"
           >
             <X className="size-4" />

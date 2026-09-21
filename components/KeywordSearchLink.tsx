@@ -33,13 +33,13 @@ export function KeywordSearchLink({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "group/keyword inline-flex items-center gap-1.5 cursor-pointer transition-all hover:text-purple-400 hover:underline decoration-purple-500/50 decoration-2 underline-offset-4",
+        "group/keyword inline-flex items-center gap-1.5 cursor-pointer transition-all hover:text-neutral-900 hover:underline decoration-neutral-900/40 decoration-2 underline-offset-4",
         className,
       )}
       title={`Search Google for ${name} ${role} ${location}`}
     >
       <span>{children ?? role}</span>
-      <FaSearch className="size-3 opacity-0 transition-all group-hover/keyword:opacity-100 group-hover/keyword:drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
+      <FaSearch className="size-3 opacity-0 transition-all group-hover/keyword:opacity-100" />
     </a>
   );
 }

@@ -95,10 +95,10 @@ export function Contact() {
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-30" />
       <div className="relative mx-auto max-w-6xl">
         <Reveal>
-          <p className="font-mono text-xs uppercase tracking-[0.22em] text-purple-300">
+          <p className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-500">
             Contact
           </p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl">
             Let&apos;s build something.
           </h2>
         </Reveal>
@@ -109,7 +109,7 @@ export function Contact() {
               onSubmit={onContactSubmit}
               className="glass space-y-4 rounded-3xl p-6"
             >
-              <h3 className="text-lg font-semibold text-white">Hubungi Saya</h3>
+              <h3 className="text-lg font-semibold text-neutral-900">Hubungi Saya</h3>
               <p className="text-sm text-muted">
                 Send a message — opens your email client to reach me at{" "}
                 {siteConfig.email}.
@@ -120,7 +120,7 @@ export function Contact() {
                   name="name"
                   required
                   placeholder="Your name"
-                  className="border-white/10 bg-black/30"
+                  className="border-black/10 bg-white/60"
                 />
               </label>
               <label className="block space-y-2 text-sm">
@@ -130,7 +130,7 @@ export function Contact() {
                   type="email"
                   required
                   placeholder="you@domain.com"
-                  className="border-white/10 bg-black/30"
+                  className="border-black/10 bg-white/60"
                 />
               </label>
               <label className="block space-y-2 text-sm">
@@ -139,12 +139,12 @@ export function Contact() {
                   name="message"
                   required
                   placeholder="Tell me about your project…"
-                  className="border-white/10 bg-black/30"
+                  className="border-black/10 bg-white/60"
                 />
               </label>
               <Button
                 type="submit"
-                className="h-11 rounded-full bg-purple-500 px-5 text-white hover:bg-purple-400"
+                className="h-11 rounded-full bg-neutral-900 px-5 text-white hover:bg-neutral-700"
               >
                 Send Message
                 <Send className="size-3.5" />
@@ -154,23 +154,23 @@ export function Contact() {
 
           <Reveal delay={0.08}>
             <div className="glass space-y-4 rounded-3xl p-6">
-              <h3 className="text-lg font-semibold text-white">
+              <h3 className="text-lg font-semibold text-neutral-900">
                 Comments / Guestbook
               </h3>
               <form onSubmit={onGuestbookSubmit} className="space-y-3">
                 <Input
                   name="guestName"
                   placeholder="Name (optional)"
-                  className="border-white/10 bg-black/30"
+                  className="border-black/10 bg-white/60"
                 />
                 <Textarea
                   name="guestMessage"
                   placeholder="Leave a thought…"
                   required
-                  className="min-h-[90px] border-white/10 bg-black/30"
+                  className="min-h-[90px] border-black/10 bg-white/60"
                 />
                 <div className="flex flex-wrap items-center gap-3">
-                  <label className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/10 px-3 py-2 text-xs text-muted hover:text-white">
+                  <label className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-black/10 px-3 py-2 text-xs text-muted hover:text-neutral-900">
                     <ImagePlus className="size-3.5" />
                     Optional image
                     <input
@@ -182,7 +182,7 @@ export function Contact() {
                   </label>
                   <Button
                     type="submit"
-                    className="h-10 rounded-full bg-white/10 px-4 text-white hover:bg-white/15"
+                    className="h-10 rounded-full bg-black/[0.06] px-4 text-neutral-900 hover:bg-black/[0.1]"
                   >
                     Post Comment
                   </Button>
@@ -206,10 +206,10 @@ export function Contact() {
                   entries.map((entry) => (
                     <article
                       key={entry.id}
-                      className="rounded-2xl border border-white/10 bg-black/25 p-3"
+                      className="rounded-2xl border border-black/10 bg-white/60 p-3"
                     >
                       <div className="flex items-start justify-between gap-2">
-                        <p className="text-sm font-medium text-white">
+                        <p className="text-sm font-medium text-neutral-900">
                           {entry.name}
                         </p>
                         <p className="font-mono text-[10px] text-muted">

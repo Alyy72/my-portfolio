@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { navLinks, siteConfig } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
@@ -50,7 +50,10 @@ export function Navbar() {
         <a
           href="#home"
           onClick={() => setOpen(false)}
-          className="font-mono text-sm font-semibold text-white"
+          className={cn(
+            "font-mono text-sm font-semibold transition-colors",
+            scrolled || open ? "text-neutral-900" : "text-[#F0EDE4]",
+          )}
         >
           {siteConfig.brand}
         </a>
@@ -62,9 +65,13 @@ export function Navbar() {
               href={link.href}
               className={cn(
                 "rounded-full px-3 py-1.5 text-sm transition-colors",
-                active === link.href
-                  ? "bg-accent-soft text-accent"
-                  : "text-muted hover:text-white",
+                scrolled || open
+                  ? active === link.href
+                    ? "bg-accent-soft text-accent"
+                    : "text-muted hover:text-neutral-900"
+                  : active === link.href
+                    ? "bg-[#F0EDE4]/12 text-[#F0EDE4]"
+                    : "text-[#F0EDE4]/65 hover:text-[#F0EDE4]",
               )}
             >
               {link.label}
@@ -73,13 +80,30 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <span className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-emerald-300 sm:inline-flex">
-            <span className="size-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
-            AVAILABLE FOR WORK
-          </span>
+          {scrolled || open ? (
+            <span className="hidden items-center gap-2 rounded-full border border-black/10 bg-black/[0.03] px-3 py-1.5 text-xs font-medium text-emerald-600 sm:inline-flex">
+              <span className="size-1.5 rounded-full bg-emerald-500" />
+              AVAILABLE FOR WORK
+            </span>
+          ) : (
+            <a
+              href={siteConfig.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group hidden items-center gap-1 border-b border-[#F0EDE4]/40 pb-0.5 text-[13px] text-[#F0EDE4] transition-colors hover:border-[#F0EDE4] sm:inline-flex"
+            >
+              Book A Call
+              <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </a>
+          )}
           <button
             type="button"
-            className="inline-flex size-9 items-center justify-center rounded-full border border-white/10 bg-[#0a0a0f]/80 text-white md:hidden"
+            className={cn(
+              "inline-flex size-9 items-center justify-center rounded-full border transition-colors md:hidden",
+              scrolled || open
+                ? "border-black/10 bg-[#f0efed]/80 text-neutral-900"
+                : "border-[#F0EDE4]/25 bg-[#004741]/40 text-[#F0EDE4]",
+            )}
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
@@ -94,11 +118,11 @@ export function Navbar() {
           <button
             type="button"
             aria-label="Close menu overlay"
-            className="absolute inset-0 bg-[#0a0a0f]/80 backdrop-blur-md"
+            className="absolute inset-0 bg-[#f0efed]/80 backdrop-blur-md"
             onClick={() => setOpen(false)}
           />
 
-          <div className="absolute inset-x-3 top-[4.5rem] z-[66] overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0f]/95 p-4 shadow-[0_20px_60px_rgba(0,0,0,0.65)] backdrop-blur-xl">
+          <div className="absolute inset-x-3 top-[4.5rem] z-[66] overflow-hidden rounded-2xl border border-black/10 bg-[#f0efed]/95 p-4 shadow-[0_8px_30px_rgba(17,17,17,0.08)] backdrop-blur-xl">
             <nav className="flex flex-col gap-1">
               {navLinks.map((link) => (
                 <a
@@ -106,8 +130,8 @@ export function Navbar() {
                   href={link.href}
                   onClick={() => setOpen(false)}
                   className={cn(
-                    "rounded-xl px-4 py-3 text-lg font-semibold text-white transition-colors hover:bg-white/5 hover:text-purple-400",
-                    active === link.href && "bg-purple-500/15 text-purple-300",
+                    "rounded-xl px-4 py-3 text-lg font-semibold text-neutral-900 transition-colors hover:bg-black/[0.03] hover:text-neutral-900",
+                    active === link.href && "bg-black/[0.04] text-neutral-900",
                   )}
                 >
                   {link.label}

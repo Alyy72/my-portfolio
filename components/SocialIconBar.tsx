@@ -52,7 +52,7 @@ export function QuickLinks({
               rel={isExternal ? "noopener noreferrer" : undefined}
               aria-label={link.label}
               className={cn(
-                "inline-flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/5 text-sm font-medium shadow-md backdrop-blur-md transition-all duration-300",
+                "inline-flex items-center gap-2.5 rounded-xl border border-black/10 bg-black/[0.03] text-sm font-medium shadow-md backdrop-blur-md transition-all duration-300",
                 iconOnly ? "size-10 justify-center" : "px-4 py-2.5",
                 link.color,
               )}
