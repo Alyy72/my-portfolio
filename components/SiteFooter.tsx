@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
-import { siteConfig } from "@/lib/site-data";
+import { pageLinks, siteConfig } from "@/lib/site-data";
+import { CtaRow } from "@/components/CtaRow";
 
 type Panel = "privacy" | "cookies" | null;
 
@@ -12,16 +13,17 @@ const panelCopy = {
     title: "Privacy Policy",
     body: [
       "This site does not run ads, trackers, or third-party analytics, and it does not sell or share any data.",
-      "The contact form does not transmit anything on its own — submitting it simply opens your own email client with the message pre-filled, so you stay in control of what is sent.",
+      "The contact form posts name, email, and message to a Cloudflare Worker. If Resend is configured, that message is emailed to me. If it is not, your mail client opens instead.",
+      "Turnstile may run when a site key is present. Cloudflare sees the challenge token, not your message body beyond the Worker request.",
       `For anything else, reach me directly at ${siteConfig.email}.`,
     ],
   },
   cookies: {
     title: "Cookie Preferences",
     body: [
-      "This site sets no advertising or tracking cookies, so there is nothing to opt out of.",
-      "It uses a small amount of browser storage to remember that you have already seen the welcome message this session.",
-      "Clearing this site's data in your browser settings removes both immediately.",
+      "No advertising or analytics cookies are set. There is nothing to opt into or out of until a measurement ID exists.",
+      "Cloudflare may set a Turnstile cookie when the contact form widget is shown.",
+      "Clearing this site's data in your browser removes any local storage immediately.",
     ],
   },
 } as const;
@@ -31,61 +33,45 @@ export function Footer() {
   const open = panel ? panelCopy[panel] : null;
 
   const linkClass =
-    "text-xs text-neutral-500 transition-colors hover:text-neutral-900 hover:underline";
+    "text-xs text-neutral-500 transition-colors hover:text-neutral-900 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004741]";
 
   return (
     <footer className="w-full border-t border-black/10 bg-[#f0efed] px-6 py-10 pb-28 text-sm text-neutral-600">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-3 text-center">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-4 text-center">
         <p className="text-neutral-600">
           © 2026 Arafat Sulaiman. All rights reserved.
         </p>
-
+        <CtaRow home={false} className="justify-center" />
         <p className="flex items-center gap-1.5 font-medium text-neutral-600">
           <span>Created by</span>
-          <a
-            href="#home"
-            className="font-bold tracking-wide text-red-600 transition-all hover:text-red-700 hover:underline"
-          >
-            AlyyConnect
-          </a>
-        </p>
-
-        <p className="pt-1 text-xs font-medium tracking-wide text-neutral-600 sm:text-sm">
-          Worldwide (Based in Dubai, UAE)
-        </p>
-
-        <nav className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 border-t border-black/10 pt-5">
-          <a
-            href={`mailto:${siteConfig.email}?subject=${encodeURIComponent(
-              "Report Profile",
-            )}`}
-            className={linkClass}
-          >
-            Report Profile
-          </a>
-          <button
-            type="button"
-            onClick={() => setPanel("privacy")}
-            className={linkClass}
-          >
-            Privacy Policy
-          </button>
-          <a href="#about" className={linkClass}>
-            About This Profile
-          </a>
           <a
             href={siteConfig.socials.github}
             target="_blank"
             rel="noopener noreferrer"
-            className={linkClass}
+            className="font-bold tracking-wide text-[#004741] underline-offset-2 hover:underline"
           >
-            More from Alyy Connect
+            AlyyConnect
           </a>
-          <button
-            type="button"
-            onClick={() => setPanel("cookies")}
-            className={linkClass}
-          >
+        </p>
+        <p className="text-xs font-medium tracking-wide text-neutral-600 sm:text-sm">
+          Worldwide (Based in Dubai, UAE)
+        </p>
+        <nav className="mt-2 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 border-t border-black/10 pt-5">
+          {pageLinks.map((link) => (
+            <a key={link.href} href={link.href} className={linkClass}>
+              {link.label}
+            </a>
+          ))}
+          <a href={siteConfig.socials.linkedin} className={linkClass} target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+          <a href={siteConfig.socials.github} className={linkClass} target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+          <button type="button" onClick={() => setPanel("privacy")} className={linkClass}>
+            Privacy Policy
+          </button>
+          <button type="button" onClick={() => setPanel("cookies")} className={linkClass}>
             Cookie Preferences
           </button>
         </nav>
@@ -106,9 +92,12 @@ export function Footer() {
               exit={{ opacity: 0, scale: 0.96, y: 8 }}
               onClick={(e) => e.stopPropagation()}
               className="glass max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-3xl p-6 text-left"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="footer-panel-title"
             >
               <div className="flex items-start justify-between gap-3">
-                <h3 className="text-xl font-semibold tracking-tight text-neutral-900">
+                <h3 id="footer-panel-title" className="text-xl font-semibold tracking-tight text-neutral-900">
                   {open.title}
                 </h3>
                 <button
@@ -120,18 +109,13 @@ export function Footer() {
                   <X className="size-4" />
                 </button>
               </div>
-
               <div className="mt-4 space-y-3">
                 {open.body.map((paragraph) => (
-                  <p
-                    key={paragraph}
-                    className="text-sm leading-relaxed text-neutral-600"
-                  >
+                  <p key={paragraph} className="text-sm leading-relaxed text-neutral-600">
                     {paragraph}
                   </p>
                 ))}
               </div>
-
               <button
                 type="button"
                 onClick={() => setPanel(null)}

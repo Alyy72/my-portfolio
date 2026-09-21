@@ -51,9 +51,6 @@ const floatingDesignIcons = [
 
 export function Portfolio() {
   const [tab, setTab] = useState<Tab>("projects");
-  const [activeProject, setActiveProject] = useState<
-    (typeof projects)[number] | null
-  >(null);
   const [activeCert, setActiveCert] = useState<
     (typeof certificates)[number] | null
   >(null);
@@ -109,15 +106,18 @@ export function Portfolio() {
                 className="grid gap-4 sm:grid-cols-2"
               >
                 {projects.map((project) => (
-                  <button
+                  <article
                     key={project.id}
-                    type="button"
-                    onClick={() => setActiveProject(project)}
                     className="glass group rounded-3xl p-5 text-left transition hover:border-black/20 hover:bg-white/90"
                   >
                     <p className="font-mono text-xs text-neutral-500">Project</p>
                     <h3 className="mt-2 text-xl font-semibold text-neutral-900">
-                      {project.title}
+                      <a
+                        href={`/projects/${project.id}`}
+                        className="focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004741]"
+                      >
+                        {project.title}
+                      </a>
                     </h3>
                     <p className="mt-2 line-clamp-2 text-sm text-muted">
                       {project.description}
@@ -132,19 +132,28 @@ export function Portfolio() {
                         </span>
                       ))}
                     </div>
-                    {project.liveUrl ? (
+                    <div className="mt-4 flex flex-wrap gap-3">
                       <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-neutral-700 hover:text-neutral-900"
+                        href={`/projects/${project.id}`}
+                        className="text-sm font-medium text-neutral-900 underline-offset-2 hover:underline"
                       >
-                        Live Demo
-                        <ExternalLink className="size-3.5" />
+                        Case study
                       </a>
-                    ) : null}
-                  </button>
+                      {project.liveUrl ? (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-700 hover:text-neutral-900"
+                        >
+                          Live Demo
+                          <ExternalLink className="size-3.5" />
+                        </a>
+                      ) : (
+                        <span className="text-sm text-muted">Walkthrough available</span>
+                      )}
+                    </div>
+                  </article>
                 ))}
               </motion.div>
             ) : null}
@@ -249,93 +258,6 @@ export function Portfolio() {
           </AnimatePresence>
         </div>
       </div>
-
-      {/* Project modal */}
-      <AnimatePresence>
-        {activeProject ? (
-          <motion.div
-            className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setActiveProject(null)}
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96, y: 12 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: 8 }}
-              onClick={(e) => e.stopPropagation()}
-              className="glass max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-3xl p-6"
-            >
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p className="font-mono text-xs text-neutral-500">Project</p>
-                  <h3 className="mt-1 text-2xl font-semibold text-neutral-900">
-                    {activeProject.title}
-                  </h3>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setActiveProject(null)}
-                  className="rounded-full border border-black/10 p-2 text-muted hover:text-neutral-900"
-                  aria-label="Close"
-                >
-                  <X className="size-4" />
-                </button>
-              </div>
-              <p className="mt-3 text-sm leading-relaxed text-muted">
-                {activeProject.description}
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {activeProject.stack.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-black/10 px-2.5 py-1 text-[11px] text-neutral-600"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <ul className="mt-5 space-y-2">
-                {activeProject.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="flex gap-2 text-sm text-muted"
-                  >
-                    <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-neutral-900" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-6 flex flex-wrap gap-3">
-                {activeProject.liveUrl ? (
-                  <a
-                    href={activeProject.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex h-10 items-center gap-2 rounded-full bg-neutral-900 px-4 text-sm font-semibold text-white"
-                  >
-                    Live Demo
-                    <ExternalLink className="size-3.5" />
-                  </a>
-                ) : (
-                  <span className="inline-flex h-10 items-center rounded-full border border-black/10 px-4 text-sm text-muted">
-                    Private / In Progress
-                  </span>
-                )}
-                <a
-                  href={activeProject.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-10 items-center rounded-full border border-black/10 px-4 text-sm text-neutral-900"
-                >
-                  GitHub
-                </a>
-              </div>
-            </motion.div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
 
       {/* Certificate modal */}
       <AnimatePresence>

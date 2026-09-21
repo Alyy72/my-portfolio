@@ -1,22 +1,23 @@
 # Decisions
 
-Owner approved the audit plan on 21 Sep 2026 by requesting implementation. Unanswered questions use the recommended defaults below.
+Owner approved the audit plan on 21 Sep 2026 by requesting implementation, then asked for remaining phases (P2–P7) in one pass. The spec file only contains Phases 1–5; P6/P7 do not exist there. This pass implements Phases 2–5.
 
-## Defaults applied (Phase 1)
+## Defaults applied
 
-- Primary title: Full-Stack Developer (P1-02)
-- Audience: employers first, clients welcome; professional hire-me tone
-- Positioning: developer-focused in hero/about; existing Cisco/CompTIA files stay in the credentials tab
-- Remove defensive/degree copy (P1-01)
-- No invented metrics; capability numbers labeled Sample data (P1-04)
-- Counters derived from listed items: 5 projects, 4 certificate PDFs, 4 live demos (P1-05)
-- Canonical still `siteConfig.siteUrl` (P3-01 deferred). `arafat.dev` is not claimed in this phase
-- No analytics, booking tool, or Claude assistant in this phase
-- Visual identity kept (Cyprus / Sand)
-- Bilingual mode later (P5-06)
-- This session: Phase 1 only, branch `phase-1-credibility`
-- Live-build intro kept for now (not a P1 task); recommended to move or drop in Phase 3
+- Canonical URL is the live Worker: `https://arafat-dev.alyyconnect.workers.dev` (P3-01). `arafat.dev` is not claimed.
+- No invented metrics, testimonials, or credentials.
+- **P2-05:** Testimonials omitted until attributed quotes exist.
+- **P2-06:** Only certificates with PDFs/Credly on this repo. Spec A+/ITIL/Google IT Support not added.
+- **P4-03:** Booking is WhatsApp 20-minute intro, not Cal.com.
+- **P4-04:** Dated filename added; CV body not regenerated (no PDF editor in this pass).
+- **P4-05:** No GA4 measurement ID — no analytics events.
+- **P5-05:** No fabricated videos; galleries and live demos only.
+- **P5-06:** Arabic is a short RTL landing page, not a full translation of every case study.
+- Worker `/api/*` with optional env: `TURNSTILE_SECRET`, `RESEND_API_KEY`, `CONTACT_TO`, `ANTHROPIC_API_KEY`. STATUS KV is not bound until an ID is created.
+- Visual identity stays Cyprus `#004741` / Sand `#F0EDE4`.
+- Live-build intro removed from LCP path; available at `/lab`.
+- Spec has no Phase 6 or 7.
 
 ## Owner overrides
 
-None yet.
+- Implement remaining phases now (not one phase then stop).

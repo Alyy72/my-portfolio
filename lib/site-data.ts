@@ -1,3 +1,5 @@
+import { SITE_URL } from "./case-studies";
+
 export const siteConfig = {
   name: "Arafat Sulaiman",
   brand: "arafat.dev",
@@ -6,9 +8,9 @@ export const siteConfig = {
   email: "arafatalyy.it@gmail.com",
   whatsapp: "https://wa.me/971529033466",
   whatsappDisplay: "+971529033466",
-  resumeUrl: "/resume.pdf",
-  profileImage: "/images/profile.jpg",
-  siteUrl: "https://arafat.dev",
+  resumeUrl: "/Arafat-Sulaiman-CV-2026-09.pdf",
+  profileImage: "/images/profile.webp",
+  siteUrl: SITE_URL,
   socials: {
     linkedin: "https://www.linkedin.com/in/arafat-sulaiman-60066636a",
     github: "https://github.com/Alyy72",
@@ -30,9 +32,9 @@ export const siteConfig = {
     sub: "Storefronts, payment flows and operations tools, live in Dubai and shipped on Cloudflare.",
   },
   summary:
-    "I build responsive web apps, clean codebases, and elegant digital experiences — from e-commerce storefronts to internal business systems.",
+    "I build web apps, storefronts, and internal business systems — Next.js, React, and Cloudflare.",
   about:
-    "I'm a Full-Stack Developer based in Dubai, UAE. I design and ship web applications, e-commerce platforms, and internal business tools with a focus on performance, clarity, and production-ready delivery.",
+    "I'm a Full-Stack Developer based in Dubai, UAE. I design and ship web applications, e-commerce platforms, and internal business tools with a focus on performance, clarity, and reliable delivery.",
 };
 
 export const socialLinks = [
@@ -84,6 +86,13 @@ export const navLinks = [
   { href: "#contact", label: "Contact" },
 ] as const;
 
+export const pageLinks = [
+  { href: "/projects", label: "Case studies" },
+  { href: "/writing", label: "Writing" },
+  { href: "/lab", label: "Lab" },
+  { href: "/ar", label: "العربية" },
+] as const;
+
 export const capabilities = [
   {
     id: "ai-apis",
@@ -111,20 +120,17 @@ export const capabilities = [
     id: "google-cloud",
     title: "Google Pages, SEO & Cloud Infrastructure",
     description:
-      "Building search-optimized web applications with structured JSON-LD schemas, Google Analytics 4 integration, and instant Cloudflare Pages edge deployments.",
+      "Search-oriented sites with JSON-LD, Open Graph, and Cloudflare Pages deploys. This portfolio does not fire GA4 until an ID is configured.",
     stack: [
       "Cloudflare Pages",
-      "GA4 Analytics",
       "SEO / JSON-LD",
-      "Google APIs",
       "Open Graph",
     ],
     features: [
-      "JSON-LD + Open Graph structured data for SERP richness",
-      "GA4 event and traffic instrumentation",
+      "JSON-LD + Open Graph structured data",
       "Cloudflare Pages CI/CD edge deploy pipelines",
       "Search-indexed page architecture",
-      "Google Workspace / API automation hooks",
+      "Optional GA4 only when a measurement ID exists",
     ],
     mockup: "seo" as const,
   },
@@ -141,11 +147,11 @@ export const capabilities = [
       "UI/UX",
     ],
     features: [
-      "Animated KPI rings and metric tiles",
-      "Interactive bar/line chart surfaces",
+      "KPI rings and metric tiles (sample data in mockups)",
+      "Bar/line chart surfaces",
       "Presentation control bars for live decks",
       "Motion-driven storytelling interfaces",
-      "Executive-ready glassmorphic layouts",
+      "Light glass panels on Sand (#F0EDE4)",
     ],
     mockup: "dashboard" as const,
   },
@@ -175,37 +181,41 @@ export const capabilities = [
 export const engineeringWork = [
   {
     id: "zaha",
+    slug: "zaha",
     title: "ZAHA — Cycling Telemetry & Navigation System",
     tag: "Hardware & Software Architecture",
     highlights: [
-      "Engineered a hardware-integrated cycling ecosystem featuring heads-up navigation and real-time sensor data parsing.",
-      "Architected the software environment and established BLE GATT specifications for seamless microcontroller communication.",
+      "Heads-up navigation and real-time sensor parsing on a cycling head unit.",
+      "BLE GATT service/characteristic spec for microcontroller communication.",
     ],
   },
   {
     id: "himba-coffee",
+    slug: "himba-coffee",
     title: "HIMBA Coffee — Interactive E-Commerce Platform",
     tag: "Full-Stack Web Development",
     highlights: [
-      "Developed a dynamic web catalog and interactive storefront using Next.js.",
-      "Built a custom product configurator allowing users to manipulate real-time color customizations for travel tumblers.",
+      "Next.js catalog and storefront for travel tumblers and coffee.",
+      "Client-side color configurator that updates tumbler colorways live.",
     ],
   },
   {
     id: "ikram-haute-joaillerie",
+    slug: "ikram-collection",
     title: "IKRAM Haute Joaillerie — Digital Showcase",
     tag: "Performance & Edge Deployment",
     highlights: [
-      "Engineered a high-performance digital showcase prioritizing fast load times and clean UI architecture.",
-      "Configured application files and managed edge deployments utilizing Cloudflare Pages for global scalability.",
+      "Built a bilingual jewelry storefront (React + Tailwind) at ikramcollection.com.",
+      "Deployed on Cloudflare Pages; measured TTFB 0.58 s on 21 Sep 2026.",
     ],
   },
   {
     id: "notension",
+    slug: null,
     title: "NOTENSION — E-Commerce Web Portal",
     tag: "Systems & UI Design",
     highlights: [
-      "Formulated the application architecture and engineered an interactive web storefront optimized for apparel retail.",
+      "Apparel storefront architecture and interactive product UI. No public demo on this site.",
     ],
   },
 ] as const;
@@ -215,7 +225,7 @@ export const projects = [
     id: "golden-vanilla-web",
     title: "Golden Vanilla Website",
     description:
-      "High-conversion marketing site for Golden Vanilla with payments, SEO, and AI-assisted content.",
+      "Marketing site for Golden Vanilla with WhatsApp leads, Ziina payment links, and JSON-LD.",
     liveUrl: "https://goldenvanilla-ae.com/",
     githubUrl: "https://github.com/Alyy72",
     stack: [
@@ -269,7 +279,7 @@ export const projects = [
     id: "ikram-collection",
     title: "IKram Collection",
     description:
-      "Gallery-grade bilingual storefront for luxury jewelry and beauty products.",
+      "Bilingual jewelry and beauty storefront with gallery product layouts.",
     liveUrl: "https://www.ikramcollection.com",
     githubUrl: "https://github.com/Alyy72",
     stack: ["React", "Tailwind CSS", "Cursor AI"],
@@ -291,7 +301,7 @@ export const projects = [
       "Deployed on Cloudflare Workers via AlyyConnect",
       "Cafe-focused digital presence and menu presentation",
       "Fast edge delivery for mobile visitors",
-      "Production-ready live demo",
+      "Live demo on Cloudflare Workers",
     ],
   },
 ] as const;

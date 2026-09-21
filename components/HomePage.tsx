@@ -1,41 +1,37 @@
 "use client";
 
-import { useCallback, useState } from "react";
 import { About } from "@/components/About";
+import { AskAssistant } from "@/components/AskAssistant";
 import { Capabilities } from "@/components/Capabilities";
+import { CertMap } from "@/components/CertMap";
 import { Contact } from "@/components/Contact";
 import { Experience } from "@/components/Experience";
 import { Footer } from "@/components/SiteFooter";
 import { Hook } from "@/components/Hook";
 import { BigHero } from "@/components/BigHero";
 import { FloatingNav } from "@/components/FloatingNav";
-import { LiveBuildIntro } from "@/components/LiveBuildIntro";
+import { HowIWork } from "@/components/HowIWork";
 import { Portfolio } from "@/components/Portfolio";
-import { WelcomeToast } from "@/components/WelcomeToast";
+import { StatusBoard } from "@/components/StatusBoard";
 
 export function HomePage() {
-  const [ready, setReady] = useState(false);
-  const [introOpen, setIntroOpen] = useState(true);
-  const onIntroDone = useCallback(() => {
-    setReady(true);
-    setIntroOpen(false);
-  }, []);
-
   return (
     <>
       <FloatingNav />
-      <main className="flex-1">
-        {introOpen ? <LiveBuildIntro onDone={onIntroDone} /> : null}
-        <BigHero ready={ready} />
+      <main id="main" className="flex-1">
+        <BigHero />
         <Hook />
         <About />
+        <HowIWork />
         <Experience />
         <Capabilities />
         <Portfolio />
+        <CertMap />
+        <StatusBoard />
         <Contact />
       </main>
       <Footer />
-      {ready ? <WelcomeToast /> : null}
+      <AskAssistant />
     </>
   );
 }

@@ -1,13 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Link from "next/link";
+import { motion, useReducedMotion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
 import { engineeringWork } from "@/lib/site-data";
 
 export function Experience() {
+  const reduced = useReducedMotion();
   return (
     <section id="experience" className="relative px-4 py-20 sm:px-6 sm:py-28">
-      <div id="projects" className="pointer-events-none absolute top-0" />
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-30" />
       <div className="relative mx-auto max-w-6xl">
         <Reveal>
@@ -18,8 +19,7 @@ export function Experience() {
             Selected Engineering Work
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#004741]/70 sm:text-base">
-            Products and architectures I&apos;ve designed, built, and shipped
-            for production environments.
+            Products and architectures I have designed, built, and shipped.
           </p>
         </Reveal>
 
@@ -27,10 +27,10 @@ export function Experience() {
           {engineeringWork.map((work, index) => (
             <motion.article
               key={work.id}
-              initial={{ opacity: 0, y: 24 }}
+              initial={reduced ? false : { opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.45, delay: index * 0.08 }}
+              transition={{ duration: reduced ? 0 : 0.45, delay: reduced ? 0 : index * 0.08 }}
               className="rounded-3xl border border-[#004741]/20 bg-[#F0EDE4] p-5 text-left sm:p-6"
             >
               <span className="inline-flex items-center rounded-full border border-[#004741]/20 bg-[#004741]/[0.06] px-3 py-1 font-mono text-[11px] font-medium tracking-wide text-[#004741]">
@@ -52,6 +52,18 @@ export function Experience() {
                   ))}
                 </ul>
               </div>
+              {work.slug ? (
+                <Link
+                  href={`/projects/${work.slug}`}
+                  className="mt-4 inline-flex text-sm font-medium text-[#004741] underline-offset-2 hover:underline"
+                >
+                  Case study
+                </Link>
+              ) : (
+                <p className="mt-4 text-sm text-[#004741]/60">
+                  No public demo on this site.
+                </p>
+              )}
             </motion.article>
           ))}
         </div>

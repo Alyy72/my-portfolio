@@ -50,17 +50,23 @@ export function Hook() {
           className="mt-8 flex flex-wrap items-center justify-center gap-3"
         >
           <a
-            href="#portfolio"
+            href="#contact"
             className="inline-flex h-11 items-center gap-2 rounded-full bg-neutral-900 px-5 text-sm font-semibold text-white transition hover:bg-neutral-700"
           >
-            See the proof
+            Start a project
             <ArrowRight className="size-4" />
           </a>
           <a
-            href="#contact"
+            href="#portfolio"
             className="inline-flex h-11 items-center rounded-full border border-black/10 bg-black/[0.03] px-5 text-sm font-medium text-neutral-900 transition hover:border-black/15 hover:text-neutral-600"
           >
-            Contact Me
+            See the work
+          </a>
+          <a
+            href={siteConfig.resumeUrl}
+            className="inline-flex h-11 items-center rounded-full border border-black/10 px-5 text-sm font-medium text-neutral-900"
+          >
+            Download CV
           </a>
         </motion.div>
       </div>

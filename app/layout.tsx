@@ -1,17 +1,21 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import { siteConfig } from "@/lib/site-data";
+import { caseStudies } from "@/lib/case-studies";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const keywords = [
@@ -42,8 +46,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: siteConfig.profileImage,
-        width: 796,
-        height: 894,
+        width: 800,
+        height: 900,
         alt: "Arafat Sulaiman — Full-Stack Developer",
       },
     ],
@@ -56,43 +60,60 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: siteConfig.siteUrl,
+    languages: {
+      en: siteConfig.siteUrl,
+      ar: `${siteConfig.siteUrl}/ar`,
+    },
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Arafat Sulaiman",
-  url: siteConfig.siteUrl,
-  image: `${siteConfig.siteUrl}${siteConfig.profileImage}`,
-  jobTitle: "Full-Stack Developer",
-  worksFor: {
-    "@type": "Organization",
-    name: "AlyyConnect",
-  },
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Dubai",
-    addressCountry: "AE",
-  },
-  email: siteConfig.email,
-  sameAs: [
-    siteConfig.socials.linkedin,
-    siteConfig.socials.github,
-    siteConfig.socials.credly,
-    siteConfig.socials.instagram,
-  ],
-  knowsAbout: [
-    "Next.js",
-    "React",
-    "Cloudflare",
-    "AI APIs",
-    "E-Commerce",
-    "Business Management Systems",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${siteConfig.siteUrl}#person`,
+      name: "Arafat Sulaiman",
+      url: siteConfig.siteUrl,
+      image: `${siteConfig.siteUrl}${siteConfig.profileImage}`,
+      jobTitle: "Full-Stack Developer",
+      worksFor: { "@type": "Organization", name: "AlyyConnect" },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Dubai",
+        addressCountry: "AE",
+      },
+      email: siteConfig.email,
+      sameAs: [
+        siteConfig.socials.linkedin,
+        siteConfig.socials.github,
+        siteConfig.socials.credly,
+        siteConfig.socials.instagram,
+      ],
+      knowsAbout: ["Next.js", "React", "Cloudflare", "E-Commerce"],
+    },
+    {
+      "@type": "WebSite",
+      name: "Arafat Sulaiman",
+      url: siteConfig.siteUrl,
+      inLanguage: ["en", "ar"],
+      publisher: { "@id": `${siteConfig.siteUrl}#person` },
+    },
+    ...caseStudies.map((study) => ({
+      "@type": "CreativeWork",
+      name: study.title,
+      description: study.summary,
+      url: `${siteConfig.siteUrl}/projects/${study.slug}`,
+      creator: { "@id": `${siteConfig.siteUrl}#person` },
+    })),
   ],
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   return (
     <html
       lang="en"
@@ -105,6 +126,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body className="flex min-h-full flex-col bg-background text-foreground font-sans">
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { siteConfig } from "@/lib/site-data";
 
 const lines = [
   {
@@ -42,22 +43,15 @@ const line = {
 
 export function BigHero({ ready = true }: { ready?: boolean }) {
   const sectionRef = useRef<HTMLElement>(null);
-  const photoRef = useRef<HTMLImageElement>(null);
+  const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
 
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
-  const backgroundScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
-  const typeY = useTransform(scrollYProgress, [0, 1], ["0%", "-22%"]);
-
-  useEffect(() => {
-    const img = photoRef.current;
-    if (!img || !ready) return;
-    if (img.complete && img.naturalWidth > 0) return;
-    img.src = `/images/portrait-cutout.png?hero=${Date.now()}`;
-  }, [ready]);
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", reduced ? "0%" : "18%"]);
+  const backgroundScale = useTransform(scrollYProgress, [0, 1], [1, reduced ? 1 : 1.08]);
+  const typeY = useTransform(scrollYProgress, [0, 1], ["0%", reduced ? "0%" : "-22%"]);
 
   return (
     <section
@@ -70,9 +64,11 @@ export function BigHero({ ready = true }: { ready?: boolean }) {
         className="pointer-events-none absolute inset-0 z-0 will-change-transform"
       >
         <img
-          ref={photoRef}
-          src="/images/portrait-cutout.png?hero=1"
-          alt="Arafat Sulaiman"
+          src="/images/portrait-cutout.webp"
+          alt="Arafat Sulaiman, Full-Stack Developer based in Dubai"
+          width={1600}
+          height={1800}
+          decoding="async"
           className="absolute inset-0 z-0 h-full w-full object-cover"
         />
       </motion.div>
@@ -84,13 +80,13 @@ export function BigHero({ ready = true }: { ready?: boolean }) {
         className="relative z-10 mx-auto flex w-full max-w-[96vw] flex-col items-center px-4 text-center will-change-transform sm:px-6"
       >
         <motion.h1
-          variants={container}
-          initial="hidden"
+          variants={reduced ? undefined : container}
+          initial={reduced ? false : "hidden"}
           animate={ready ? "show" : "hidden"}
         >
           {lines.map((item) => (
             <span key={item.id} className="block overflow-hidden">
-              <motion.span variants={line} className={item.className}>
+              <motion.span variants={reduced ? undefined : line} className={item.className}>
                 {item.text}
               </motion.span>
             </span>
@@ -98,22 +94,28 @@ export function BigHero({ ready = true }: { ready?: boolean }) {
         </motion.h1>
 
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={reduced ? false : { opacity: 0, y: 16 }}
           animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-          transition={{ delay: 0.55, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ delay: reduced ? 0 : 0.55, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           className="mt-10 flex flex-wrap items-center justify-center gap-3"
         >
           <a
-            href="#projects"
-            className="inline-flex items-center rounded-full bg-[#F0EDE4] px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#004741] transition-transform hover:scale-[1.03]"
+            href="#contact"
+            className="inline-flex items-center rounded-full bg-[#F0EDE4] px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#004741] transition-transform hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F0EDE4]"
           >
-            Selected Engineering Work
+            Start a project
           </a>
           <a
-            href="#contact"
-            className="inline-flex items-center rounded-full border border-[#F0EDE4]/70 px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#F0EDE4] transition-transform hover:scale-[1.03]"
+            href="#portfolio"
+            className="inline-flex items-center rounded-full border border-[#F0EDE4]/70 px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#F0EDE4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F0EDE4]"
           >
-            Contact
+            See the work
+          </a>
+          <a
+            href={siteConfig.resumeUrl}
+            className="inline-flex items-center rounded-full border border-[#F0EDE4]/40 px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#F0EDE4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F0EDE4]"
+          >
+            Download CV
           </a>
         </motion.div>
       </motion.div>
