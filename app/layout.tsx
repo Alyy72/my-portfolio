@@ -16,30 +16,25 @@ const geistMono = Geist_Mono({
 
 const keywords = [
   "Arafat Sulaiman",
-  "Arafat Sulaiman Developer",
-  "System Developer Dubai",
-  "Full Stack Developer Dubai",
+  "Full-Stack Developer Dubai",
   "Next.js Developer UAE",
   "AlyyConnect",
-  "E-Commerce Developer Dubai",
-  "Golden Vanilla System",
-  "AI API Developer Dubai",
-  "Web Engineer Dubai",
-  "Full-Stack Developer Dubai",
+  "Cloudflare",
+  "E-commerce",
 ];
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
-  title: "Arafat Sulaiman | Full-Stack & System Developer (Dubai, UAE)",
+  title: "Arafat Sulaiman | Full-Stack Developer (Dubai, UAE)",
   description:
-    "Arafat Sulaiman is a Full-Stack Web Developer and System Developer based in Dubai, UAE. Specializing in Next.js, Cloudflare, AI APIs, E-Commerce, and custom business management systems.",
+    "Arafat Sulaiman is a Full-Stack Developer based in Dubai, UAE. I build production web systems — storefronts, payment flows, and operations tools — on Next.js and Cloudflare.",
   keywords,
   authors: [{ name: "Arafat Sulaiman" }],
   creator: "AlyyConnect",
   openGraph: {
-    title: "Arafat Sulaiman | Full-Stack & System Developer",
+    title: "Arafat Sulaiman | Full-Stack Developer",
     description:
-      "Custom web applications, AI tools, and high-performance e-commerce platforms.",
+      "Production web systems for real businesses — storefronts, payment flows, and operations tools, shipped on Cloudflare.",
     url: siteConfig.siteUrl,
     siteName: "Arafat Sulaiman Portfolio",
     locale: "en_US",
@@ -49,15 +44,15 @@ export const metadata: Metadata = {
         url: siteConfig.profileImage,
         width: 796,
         height: 894,
-        alt: "Arafat Sulaiman — Full-Stack & System Developer",
+        alt: "Arafat Sulaiman — Full-Stack Developer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arafat Sulaiman | Full-Stack & System Developer",
+    title: "Arafat Sulaiman | Full-Stack Developer",
     description:
-      "Custom web applications, AI tools, and high-performance e-commerce platforms.",
+      "Production web systems for real businesses — storefronts, payment flows, and operations tools, shipped on Cloudflare.",
   },
   alternates: {
     canonical: siteConfig.siteUrl,
@@ -70,12 +65,7 @@ const jsonLd = {
   name: "Arafat Sulaiman",
   url: siteConfig.siteUrl,
   image: `${siteConfig.siteUrl}${siteConfig.profileImage}`,
-  jobTitle: [
-    "Full-Stack Developer",
-    "System Developer",
-    "Web Engineer",
-    "E-Commerce Specialist",
-  ],
+  jobTitle: "Full-Stack Developer",
   worksFor: {
     "@type": "Organization",
     name: "AlyyConnect",

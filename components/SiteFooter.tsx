@@ -13,7 +13,6 @@ const panelCopy = {
     body: [
       "This site does not run ads, trackers, or third-party analytics, and it does not sell or share any data.",
       "The contact form does not transmit anything on its own — submitting it simply opens your own email client with the message pre-filled, so you stay in control of what is sent.",
-      "Guestbook entries you post are stored only in your own browser's local storage on this device. They are not uploaded to a server and nobody else can see them.",
       `For anything else, reach me directly at ${siteConfig.email}.`,
     ],
   },
@@ -21,7 +20,7 @@ const panelCopy = {
     title: "Cookie Preferences",
     body: [
       "This site sets no advertising or tracking cookies, so there is nothing to opt out of.",
-      "It uses a small amount of browser storage for two things: remembering that you have already seen the welcome message this session, and keeping any guestbook comment you write on this device.",
+      "It uses a small amount of browser storage to remember that you have already seen the welcome message this session.",
       "Clearing this site's data in your browser settings removes both immediately.",
     ],
   },

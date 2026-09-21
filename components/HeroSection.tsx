@@ -69,7 +69,7 @@ export function Hero() {
             transition={{ delay: 0.18 }}
             className="flex flex-wrap gap-2"
           >
-            {siteConfig.seoRoles.map((role) => (
+            {siteConfig.skillTags.map((role) => (
               <KeywordSearchLink
                 key={role}
                 role={role}

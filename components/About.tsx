@@ -3,17 +3,19 @@
 import { useEffect, useRef, useState } from "react";
 import { Download, FolderKanban } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
-import { KeywordSearchLink } from "@/components/KeywordSearchLink";
 import { siteConfig, stats } from "@/lib/site-data";
 
 function AnimatedCounter({ value }: { value: number }) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(value);
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -55,35 +57,23 @@ export function About() {
             <h2 className="mt-3 text-4xl font-semibold tracking-tight text-neutral-900 sm:text-5xl">
               {siteConfig.name}
             </h2>
+            <p className="mt-2 text-sm font-medium uppercase tracking-[0.18em] text-neutral-600">
+              {siteConfig.title}
+            </p>
             <div className="mt-3 flex flex-wrap gap-2">
-              {siteConfig.seoRoles.map((role) => (
-                <KeywordSearchLink
-                  key={role}
-                  role={role}
+              {siteConfig.skillTags.map((tag) => (
+                <span
+                  key={tag}
                   className="rounded-full border border-black/15 bg-black/[0.04] px-3 py-1.5 text-sm font-medium text-neutral-900"
-                />
+                >
+                  {tag}
+                </span>
               ))}
             </div>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-              I&apos;m a{" "}
-              <KeywordSearchLink
-                role="Full-Stack Developer"
-                className="font-medium text-neutral-900"
-              />{" "}
-              and{" "}
-              <KeywordSearchLink
-                role="System Developer"
-                className="font-medium text-neutral-900"
-              />{" "}
-              based in Dubai, UAE. I design and ship web applications,{" "}
-              <KeywordSearchLink
-                role="E-Commerce Specialist"
-                className="font-medium text-neutral-900"
-              >
-                e-commerce platforms
-              </KeywordSearchLink>
-              , and internal business tools with a focus on performance,
-              clarity, and production-ready delivery.
+              I&apos;m a {siteConfig.title} based in Dubai, UAE. I design and
+              ship web applications, e-commerce platforms, and internal business
+              tools with a focus on performance, clarity, and reliable delivery.
             </p>
           </Reveal>
 

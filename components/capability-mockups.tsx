@@ -2,9 +2,18 @@
 
 import { motion } from "framer-motion";
 
+function SampleDataBadge() {
+  return (
+    <span className="absolute right-2 top-2 z-10 rounded-full border border-black/15 bg-white/95 px-2 py-0.5 text-[8px] font-semibold uppercase tracking-wider text-neutral-600">
+      Sample data
+    </span>
+  );
+}
+
 export function AiApiMockup() {
   return (
     <div className="relative h-44 overflow-hidden rounded-2xl border border-black/10 bg-white p-3 font-mono text-[10px] leading-relaxed sm:h-48 sm:text-[11px]">
+      <SampleDataBadge />
       <div className="mb-2 flex items-center justify-between">
         <div className="flex gap-1.5">
           <span className="size-2 rounded-full bg-red-400" />
@@ -57,7 +66,8 @@ export function SeoCloudMockup() {
   const bars = [40, 65, 48, 80, 55, 92, 70];
 
   return (
-    <div className="grid h-44 grid-cols-2 gap-2 overflow-hidden rounded-2xl border border-black/10 bg-white p-2 sm:h-48">
+    <div className="relative grid h-44 grid-cols-2 gap-2 overflow-hidden rounded-2xl border border-black/10 bg-white p-2 sm:h-48">
+      <SampleDataBadge />
       <div className="rounded-xl border border-black/10 bg-black/[0.02] p-2.5 text-left">
         <div className="mb-2 flex items-center gap-1.5">
           <span className="size-3 rounded-full bg-blue-500" />
@@ -105,6 +115,7 @@ export function DashboardMockup() {
 
   return (
     <div className="relative h-44 overflow-hidden rounded-2xl border border-black/10 bg-white p-3 sm:h-48">
+      <SampleDataBadge />
       <div className="mb-2 flex items-center justify-between">
         <span className="text-[9px] text-muted">Deck · Executive View</span>
         <div className="flex gap-1">
@@ -191,7 +202,8 @@ export function DashboardMockup() {
 
 export function CommerceMockup() {
   return (
-    <div className="grid h-44 grid-cols-2 gap-2 overflow-hidden rounded-2xl border border-black/10 bg-white p-2 sm:h-48">
+    <div className="relative grid h-44 grid-cols-2 gap-2 overflow-hidden rounded-2xl border border-black/10 bg-white p-2 sm:h-48">
+      <SampleDataBadge />
       <div className="rounded-xl border border-black/10 bg-black/[0.02] p-2">
         <div className="mb-1.5 flex items-center gap-1 border-b border-black/10 pb-1">
           <span className="size-1.5 rounded-full bg-red-400" />

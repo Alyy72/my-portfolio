@@ -18,7 +18,7 @@ const lines = [
   },
   {
     id: "role",
-    text: "SYSTEMS ENGINEER",
+    text: "FULL-STACK DEVELOPER",
     className:
       "mt-5 block text-[clamp(0.72rem,2.1vw,1.05rem)] font-medium uppercase tracking-[0.42em] text-[#F0EDE4]/80 sm:mt-7",
   },

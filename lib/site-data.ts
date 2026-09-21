@@ -17,22 +17,17 @@ export const siteConfig = {
     instagram: "https://www.instagram.com/alyy.77?igsh=MXRtaTZrZzEyM2ducQ==",
   },
   rotatingRoles: [
-    "Full-Stack Developer",
-    "System Developer",
-    "Web Engineer",
-    "E-Commerce Specialist",
+    "TypeScript",
+    "Next.js",
+    "Cloudflare",
+    "React.js",
   ],
-  seoRoles: [
-    "Full-Stack Developer",
-    "System Developer",
-    "Web Engineer",
-    "E-Commerce Specialist",
-  ],
+  skillTags: ["TypeScript", "React.js", "Next.js", "Cloudflare"],
   techBadges: ["TypeScript", "React.js", "Next.js", "Tailwind CSS"],
   hook: {
-    eyebrow: "Stop scrolling.",
-    line: "I didn't wait for a degree to ship real products.",
-    sub: "While others were still drafting portfolios, I was deploying live storefronts, ops systems, and payment flows for real businesses — from Dubai to the field.",
+    eyebrow: "Dubai · Cloudflare",
+    line: "I build production web systems for real businesses.",
+    sub: "Storefronts, payment flows and operations tools, live in Dubai and shipped on Cloudflare.",
   },
   summary:
     "I build responsive web apps, clean codebases, and elegant digital experiences — from e-commerce storefronts to internal business systems.",
@@ -215,12 +210,6 @@ export const engineeringWork = [
   },
 ] as const;
 
-export const stats = [
-  { label: "Total Projects", value: 5 },
-  { label: "Certificates", value: 5 },
-  { label: "Completed Works", value: 4 },
-] as const;
-
 export const projects = [
   {
     id: "golden-vanilla-web",
@@ -342,6 +331,18 @@ export const certificates = [
     issuer: "All verified badges",
     href: "https://www.credly.com/users/arafat-sulaiman-m",
     pdf: null,
+  },
+] as const;
+
+export const stats = [
+  { label: "Total Projects", value: projects.length },
+  {
+    label: "Certificates",
+    value: certificates.filter((item) => item.pdf).length,
+  },
+  {
+    label: "Live demos",
+    value: projects.filter((item) => item.liveUrl).length,
   },
 ] as const;
 
