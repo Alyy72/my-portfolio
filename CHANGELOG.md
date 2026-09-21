@@ -1,5 +1,12 @@
 # Changelog
 
+## Barista projects (22 Sep 2026)
+
+- **P2-01:** Case studies for Barista Seed To Cup (`/projects/barista-seed-to-cup`) and Slick Barista (`/projects/slick-barista`). Added to `projects[]` (counters now 7 / 6 live demos), sitemap, JSON-LD, knowledge file, `/ar`, and the status board.
+- Live TTFB measured 22 Sep 2026: Seed To Cup 0.35 s; Slick Barista 0.07 s. Problem, role, screenshots, and testimonials left as `TODO(owner)` and are not rendered.
+- Client names, personal handles, and phone numbers are not shown; live Worker URLs only.
+- Client-site issues reported in the PR (not fixed here): Seed To Cup `og:image` → localhost; privacy footer → my-portfolio.alyyconnect.workers.dev; Slick Barista `og:url` → slickbarista.com; empty masterclass state.
+
 ## Phase 2 — Proof and case studies
 
 - **P2-01:** Case-study pages at `/projects/<slug>` for Golden Vanilla (site + system), HIMBA, IKRAM, Mihbash, and ZAHA.

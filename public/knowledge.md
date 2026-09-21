@@ -20,6 +20,8 @@ If asked how to get in touch, say: use the Start a project form or the WhatsApp 
 - IKRAM Collection — https://www.ikramcollection.com/ — bilingual storefront.
 - Mihbash Cafe — https://mihbash-cafe.alyyconnect.workers.dev/ — Workers site.
 - ZAHA — cycling telemetry, BLE GATT. No public demo.
+- Barista Seed To Cup — https://baristaseed2cup.alyyconnect.workers.dev/ — link-in-bio specialty-coffee portfolio on Next.js and Workers.
+- Slick Barista — https://slick-barista.alyyconnect.workers.dev/ — booking-focused personal brand site on Next.js and Workers.
 
 ## Credentials on this site
 

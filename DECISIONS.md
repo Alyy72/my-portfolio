@@ -21,3 +21,4 @@ Owner approved the audit plan on 21 Sep 2026 by requesting implementation, then 
 ## Owner overrides
 
 - Implement remaining phases now (not one phase then stop).
+- 22 Sep 2026: add Barista Seed To Cup and Slick Barista using stated defaults — titles without `@` handles; no client names/phones on this site; TTFB only as a result; skip engineeringWork and the cert map; do not copy podium or client credential names; `TODO(owner)` for problem, role, screenshots, testimonials; branch `add-barista-projects`; no production deploy.

@@ -70,7 +70,7 @@ export function AskAssistant() {
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               maxLength={ASK_MAX_CHARS}
-              placeholder="HIMBA, ZAHA, booking…"
+              placeholder="HIMBA, Seed To Cup, Slick…"
               className="h-10 w-full rounded-full border border-black/10 px-3 text-sm"
             />
             <button

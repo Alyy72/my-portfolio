@@ -314,6 +314,40 @@ export const projects = [
       "Live demo on Cloudflare Workers",
     ],
   },
+  {
+    id: "barista-seed-to-cup",
+    title: "Barista Seed To Cup",
+    description:
+      "Link-in-bio digital portfolio for a Dubai specialty-coffee professional, on Next.js and Cloudflare Workers.",
+    liveUrl: "https://baristaseed2cup.alyyconnect.workers.dev/",
+    githubUrl: null,
+    stack: ["Next.js", "Tailwind CSS", "Cloudflare Workers", "mobile-first"],
+    features: [
+      "Video background and profile hero",
+      "Core-portfolio and contact links",
+      "Certification cards and press section",
+    ],
+  },
+  {
+    id: "slick-barista",
+    title: "Slick Barista",
+    description:
+      "Booking-focused personal brand site for a UAE barista finalist, on Next.js and Cloudflare Workers.",
+    liveUrl: "https://slick-barista.alyyconnect.workers.dev/",
+    githubUrl: null,
+    stack: [
+      "Next.js",
+      "Tailwind CSS",
+      "Cloudflare Workers",
+      "WhatsApp booking",
+      "QR sharing",
+    ],
+    features: [
+      "About, certifications, masterclasses, and competitions sections",
+      "Gallery, journal, and Share/QR",
+      "Reservation and consulting enquiry paths",
+    ],
+  },
 ] as const;
 
 // TODO(owner): credential verification links — unique Credly/issuer badge

@@ -22,12 +22,14 @@ type Env = {
 };
 
 const MEASURED = {
-  date: "2026-09-21",
+  date: "2026-09-22",
   sites: [
     { name: "Golden Vanilla", url: "https://goldenvanilla-ae.com/", ttfbMs: 557 },
     { name: "HIMBA Coffee", url: "https://himba-coffee-live.pages.dev/", ttfbMs: 604 },
     { name: "IKRAM Collection", url: "https://www.ikramcollection.com/", ttfbMs: 581 },
     { name: "Mihbash Cafe", url: "https://mihbash-cafe.alyyconnect.workers.dev/", ttfbMs: 1219 },
+    { name: "Barista Seed To Cup", url: "https://baristaseed2cup.alyyconnect.workers.dev/", ttfbMs: 350 },
+    { name: "Slick Barista", url: "https://slick-barista.alyyconnect.workers.dev/", ttfbMs: 74 },
   ],
 };
 
@@ -266,7 +268,7 @@ async function readStatus(env: Env) {
   if (cached) return JSON.parse(cached);
   return {
     checkedAt: MEASURED.date,
-    note: "Spot-check TTFB from 21 Sep 2026 until the scheduled Worker persists live checks.",
+    note: "Spot-check TTFB: existing live sites 21 Sep 2026; Seed To Cup and Slick Barista 22 Sep 2026.",
     rows: MEASURED.sites.map((site) => ({
       name: site.name,
       url: site.url,
