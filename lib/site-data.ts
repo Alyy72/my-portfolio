@@ -10,10 +10,6 @@ export const siteConfig = {
   email: "arafatalyy.it@gmail.com",
   whatsapp: "https://wa.me/971529033466",
   whatsappDisplay: "+971529033466",
-  // TODO(owner): CV rewrite decision — dated PDF is IT Support / L1 Helpdesk
-  // and does not match this site's title, projects, or credentials. Replace
-  // the file or remove the download until it does. Do not invent a CV.
-  resumeUrl: "/Arafat-Sulaiman-CV-2026-09.pdf",
   profileImage: "/images/profile.webp",
   siteUrl: SITE_URL,
   socials: {
@@ -312,6 +308,40 @@ export const projects = [
       "Cafe-focused digital presence and menu presentation",
       "Fast edge delivery for mobile visitors",
       "Live demo on Cloudflare Workers",
+    ],
+  },
+  {
+    id: "barista-seed-to-cup",
+    title: "Barista Seed To Cup",
+    description:
+      "Link-in-bio digital portfolio for a Dubai specialty-coffee professional, on Next.js and Cloudflare Workers.",
+    liveUrl: "https://baristaseed2cup.alyyconnect.workers.dev/",
+    githubUrl: null,
+    stack: ["Next.js", "Tailwind CSS", "Cloudflare Workers", "mobile-first"],
+    features: [
+      "Video background and profile hero",
+      "Core-portfolio and contact links",
+      "Certification cards and press section",
+    ],
+  },
+  {
+    id: "slick-barista",
+    title: "Slick Barista",
+    description:
+      "Booking-focused personal brand site for a UAE barista finalist, on Next.js and Cloudflare Workers.",
+    liveUrl: "https://slick-barista.alyyconnect.workers.dev/",
+    githubUrl: null,
+    stack: [
+      "Next.js",
+      "Tailwind CSS",
+      "Cloudflare Workers",
+      "WhatsApp booking",
+      "QR sharing",
+    ],
+    features: [
+      "About, certifications, masterclasses, and competitions sections",
+      "Gallery, journal, and Share/QR",
+      "Reservation and consulting enquiry paths",
     ],
   },
 ] as const;

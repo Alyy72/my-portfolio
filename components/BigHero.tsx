@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { siteConfig } from "@/lib/site-data";
 
 const lines = [
   {
@@ -57,7 +56,7 @@ export function BigHero({ ready = true }: { ready?: boolean }) {
     <section
       ref={sectionRef}
       id="home"
-      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#004741]"
+      className="relative z-20 flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#004741]"
     >
       <motion.div
         style={{ y: backgroundY, scale: backgroundScale }}
@@ -110,12 +109,6 @@ export function BigHero({ ready = true }: { ready?: boolean }) {
             className="inline-flex items-center rounded-full border border-[#F0EDE4]/70 px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#F0EDE4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F0EDE4]"
           >
             See the work
-          </a>
-          <a
-            href={siteConfig.resumeUrl}
-            className="inline-flex items-center rounded-full border border-[#F0EDE4]/40 px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#F0EDE4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F0EDE4]"
-          >
-            Download CV
           </a>
         </motion.div>
       </motion.div>

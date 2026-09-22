@@ -39,18 +39,22 @@ export default async function CaseStudyPage({ params }: Props) {
           <h2 className="text-base font-semibold text-neutral-900">Client / context</h2>
           <p className="mt-1">{study.client}</p>
         </div>
-        <div>
-          <h2 className="text-base font-semibold text-neutral-900">Problem</h2>
-          <p className="mt-1">{study.problem}</p>
-        </div>
+        {study.problem ? (
+          <div>
+            <h2 className="text-base font-semibold text-neutral-900">Problem</h2>
+            <p className="mt-1">{study.problem}</p>
+          </div>
+        ) : null}
         <div>
           <h2 className="text-base font-semibold text-neutral-900">Solution</h2>
           <p className="mt-1">{study.solution}</p>
         </div>
-        <div>
-          <h2 className="text-base font-semibold text-neutral-900">My role</h2>
-          <p className="mt-1">{study.role}</p>
-        </div>
+        {study.role ? (
+          <div>
+            <h2 className="text-base font-semibold text-neutral-900">My role</h2>
+            <p className="mt-1">{study.role}</p>
+          </div>
+        ) : null}
       </section>
 
       <section className="mt-10">

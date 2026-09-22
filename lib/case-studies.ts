@@ -261,6 +261,78 @@ export const caseStudies: CaseStudy[] = [
       { id: "mcu", label: "Microcontroller", detail: "Sensor sampling and notifications." },
     ],
   },
+  {
+    slug: "barista-seed-to-cup",
+    title: "Barista Seed To Cup",
+    summary:
+      "Link-in-bio style digital portfolio for a Dubai-based specialty coffee professional.",
+    client: "Dubai specialty-coffee professional — link-in-bio portfolio.",
+    // TODO(owner): problem — what was missing before this site. Do not invent.
+    problem: "",
+    solution:
+      "A mobile-first Next.js site on Cloudflare Workers. The live page has a video background, a profile hero, social and contact links, core-portfolio links, certification cards, and a press and features section.",
+    // TODO(owner): my role — exactly what Arafat built vs existing brand assets. Do not invent.
+    role: "",
+    results: [
+      {
+        label: "Live TTFB",
+        value: "0.35 s",
+        date: "22 Sep 2026",
+        source:
+          "curl -w time_starttransfer against https://baristaseed2cup.alyyconnect.workers.dev/",
+      },
+    ],
+    // TODO(owner): screenshots — desktop + mobile of the live UI, no client
+    // phone numbers, personal handles, or full names in the frame.
+    screenshots: [],
+    liveUrl: "https://baristaseed2cup.alyyconnect.workers.dev/",
+    repoUrl: null,
+    repoNote: "Private repository — walkthrough available.",
+    stack: ["Next.js", "Tailwind CSS", "Cloudflare Workers", "mobile-first"],
+    architecture: [
+      { id: "client", label: "Browser", detail: "Mobile-first Next.js UI." },
+      { id: "edge", label: "Cloudflare Workers", detail: "Static assets at the edge." },
+    ],
+  },
+  {
+    slug: "slick-barista",
+    title: "Slick Barista",
+    summary:
+      "Personal brand site for a UAE barista finalist and latte art specialist, with a booking-focused layout.",
+    client: "UAE barista-finalist personal brand — booking-focused site.",
+    // TODO(owner): problem — what was missing before this site. Do not invent.
+    problem: "",
+    solution:
+      "A Next.js site on Cloudflare Workers. The live page includes About, Certifications, Masterclasses, Origins & Travels, Competitions, Gallery, Journal, a Share/QR feature, a featured masterclass with a reservation path, and a consulting enquiry path.",
+    // TODO(owner): my role — exactly what Arafat built vs existing brand assets. Do not invent.
+    role: "",
+    results: [
+      {
+        label: "Live TTFB",
+        value: "0.07 s",
+        date: "22 Sep 2026",
+        source:
+          "curl -w time_starttransfer against https://slick-barista.alyyconnect.workers.dev/",
+      },
+    ],
+    // TODO(owner): screenshots — desktop + mobile of the live UI, no client
+    // phone numbers, personal handles, or full names in the frame.
+    screenshots: [],
+    liveUrl: "https://slick-barista.alyyconnect.workers.dev/",
+    repoUrl: null,
+    repoNote: "Private repository — walkthrough available.",
+    stack: [
+      "Next.js",
+      "Tailwind CSS",
+      "Cloudflare Workers",
+      "WhatsApp booking",
+      "QR sharing",
+    ],
+    architecture: [
+      { id: "client", label: "Browser", detail: "Booking-focused Next.js UI." },
+      { id: "edge", label: "Cloudflare Workers", detail: "Static assets at the edge." },
+    ],
+  },
 ];
 
 export function getCaseStudy(slug: string) {

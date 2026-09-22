@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Download, FolderKanban } from "lucide-react";
+import { FolderKanban } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { siteConfig, stats } from "@/lib/site-data";
 
@@ -79,15 +79,6 @@ export function About() {
 
           <Reveal delay={0.08}>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href={siteConfig.resumeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-11 items-center gap-2 rounded-full bg-neutral-900 px-5 text-sm font-semibold text-white transition hover:bg-neutral-700"
-              >
-                <Download className="size-4" />
-                Download CV
-              </a>
               <a
                 href="#portfolio"
                 className="inline-flex h-11 items-center gap-2 rounded-full border border-black/10 bg-black/[0.03] px-5 text-sm font-medium text-neutral-900 transition hover:border-black/15 hover:text-neutral-600"

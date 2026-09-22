@@ -30,6 +30,8 @@ export default function ArabicPage() {
         <li>HIMBA Coffee — مكوّن ألوان مباشر</li>
         <li>IKRAM Collection — واجهة ثنائية اللغة</li>
         <li>Mihbash Cafe — على Cloudflare Workers</li>
+        <li>Barista Seed To Cup — ملف رقمي على Cloudflare Workers</li>
+        <li>Slick Barista — موقع شخصي وحجز</li>
       </ul>
       <div className="mt-8 flex flex-wrap gap-3">
         <Link

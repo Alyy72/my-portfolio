@@ -13,24 +13,30 @@ import { FloatingNav } from "@/components/FloatingNav";
 import { HowIWork } from "@/components/HowIWork";
 import { Portfolio } from "@/components/Portfolio";
 import { StatusBoard } from "@/components/StatusBoard";
+import { StickmanBackdrop } from "@/components/StickmanBackdrop";
 
 export function HomePage() {
   return (
     <>
+      <StickmanBackdrop />
       <FloatingNav />
-      <main id="main" className="flex-1">
+      <main id="main" className="relative z-10 flex-1">
         <BigHero />
-        <Hook />
-        <About />
-        <HowIWork />
-        <Experience />
-        <Capabilities />
-        <Portfolio />
-        <CertMap />
-        <StatusBoard />
-        <Contact />
+        <div className="relative bg-[#f0efed]/72">
+          <Hook />
+          <About />
+          <HowIWork />
+          <Experience />
+          <Capabilities />
+          <Portfolio />
+          <CertMap />
+          <StatusBoard />
+          <Contact />
+        </div>
       </main>
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
       <AskAssistant />
     </>
   );

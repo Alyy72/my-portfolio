@@ -10,13 +10,15 @@ type StatusPayload = {
 };
 
 const fallback: StatusPayload = {
-  checkedAt: "2026-09-21",
-  note: "Spot-check TTFB from 21 Sep 2026. Live Worker checks appear here after deploy.",
+  checkedAt: "2026-09-22",
+  note: "Spot-check TTFB: Golden Vanilla, HIMBA, IKRAM, Mihbash on 21 Sep 2026; Seed To Cup and Slick Barista on 22 Sep 2026.",
   rows: [
     { name: "Golden Vanilla", url: "https://goldenvanilla-ae.com/", ok: true, status: 200, ms: 557 },
     { name: "HIMBA Coffee", url: "https://himba-coffee-live.pages.dev/", ok: true, status: 200, ms: 604 },
     { name: "IKRAM Collection", url: "https://www.ikramcollection.com/", ok: true, status: 200, ms: 581 },
     { name: "Mihbash Cafe", url: "https://mihbash-cafe.alyyconnect.workers.dev/", ok: true, status: 200, ms: 1219 },
+    { name: "Barista Seed To Cup", url: "https://baristaseed2cup.alyyconnect.workers.dev/", ok: true, status: 200, ms: 350 },
+    { name: "Slick Barista", url: "https://slick-barista.alyyconnect.workers.dev/", ok: true, status: 200, ms: 74 },
   ],
 };
 

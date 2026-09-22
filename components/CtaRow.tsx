@@ -18,12 +18,6 @@ export function CtaRow({
         Start a project
       </a>
       <a
-        href={siteConfig.resumeUrl}
-        className="inline-flex h-11 items-center rounded-full border border-black/10 bg-black/[0.03] px-5 text-sm font-medium text-neutral-900 transition hover:border-black/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004741]"
-      >
-        Download CV
-      </a>
-      <a
         href={siteConfig.whatsapp}
         target="_blank"
         rel="noopener noreferrer"

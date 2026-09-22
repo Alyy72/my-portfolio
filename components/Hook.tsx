@@ -62,12 +62,6 @@ export function Hook() {
           >
             See the work
           </a>
-          <a
-            href={siteConfig.resumeUrl}
-            className="inline-flex h-11 items-center rounded-full border border-black/10 px-5 text-sm font-medium text-neutral-900"
-          >
-            Download CV
-          </a>
         </motion.div>
       </div>
     </section>
