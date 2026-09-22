@@ -1,0 +1,20 @@
+{
+  "name": "my-portfolio",
+  "install": "if [ -f package-lock.json ]; then npm ci; else npm install; fi",
+  "terminals": [
+    {
+      "name": "next-dev",
+      "command": "npm run dev",
+      "description": "Next.js dev server with HMR on http://localhost:3000. Best for iterating on UI/pages; the /api/* Worker routes are not served here (use the wrangler terminal for those)."
+    },
+    {
+      "name": "wrangler",
+      "command": "npm run preview:cf",
+      "description": "Full-stack preview on http://localhost:8787: runs `next build` (static export to ./out) then serves it with the Cloudflare Worker (worker/index.ts), so the /api/status, /api/ask, and /api/contact routes work locally."
+    }
+  ],
+  "ports": [
+    { "name": "next-dev", "port": 3000 },
+    { "name": "wrangler", "port": 8787 }
+  ]
+}
