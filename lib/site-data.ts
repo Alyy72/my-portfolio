@@ -10,10 +10,6 @@ export const siteConfig = {
   email: "arafatalyy.it@gmail.com",
   whatsapp: "https://wa.me/971529033466",
   whatsappDisplay: "+971529033466",
-  // TODO(owner): CV rewrite decision — dated PDF is IT Support / L1 Helpdesk
-  // and does not match this site's title, projects, or credentials. Replace
-  // the file or remove the download until it does. Do not invent a CV.
-  resumeUrl: "/Arafat-Sulaiman-CV-2026-09.pdf",
   profileImage: "/images/profile.webp",
   siteUrl: SITE_URL,
   socials: {
