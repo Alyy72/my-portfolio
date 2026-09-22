@@ -57,7 +57,7 @@ export function BigHero({ ready = true }: { ready?: boolean }) {
     <section
       ref={sectionRef}
       id="home"
-      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#004741]"
+      className="relative z-20 flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#004741]"
     >
       <motion.div
         style={{ y: backgroundY, scale: backgroundScale }}
