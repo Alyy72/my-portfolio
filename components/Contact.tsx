@@ -18,6 +18,7 @@ export function Contact() {
     "idle",
   );
   const [error, setError] = useState("");
+  const [emailDraft, setEmailDraft] = useState(`mailto:${siteConfig.email}`);
   const widgetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -40,6 +41,8 @@ export function Contact() {
     const message = String(data.get("message") || "").trim();
     const token = String(data.get("cf-turnstile-response") || "");
 
+    if (status === "sending") return;
+    setEmailDraft(`mailto:${siteConfig.email}?subject=${encodeURIComponent(`Portfolio message from ${name}`)}&body=${encodeURIComponent(`${message}\n\n— ${name}\n${email}`)}`);
     setStatus("sending");
     setError("");
 
@@ -48,6 +51,7 @@ export function Contact() {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ name, email, message, token }),
+        signal: AbortSignal.timeout(15000),
       });
       const payload = (await res.json()) as {
         ok?: boolean;
@@ -60,24 +64,14 @@ export function Contact() {
         toast.success("Message sent.");
         return;
       }
-      if (payload.fallback) {
-        openMailto(name, email, message);
-        setStatus("idle");
-        return;
-      }
       setStatus("error");
-      setError(payload.error || "Could not send. Try email or WhatsApp.");
+      setError(payload.fallback
+        ? "The form is unavailable right now. Your message has not been sent. You can open an email draft below."
+        : "Your message could not be sent. Please try again or use email or WhatsApp below.");
     } catch {
-      openMailto(name, email, message);
-      setStatus("idle");
+      setStatus("error");
+      setError("Delivery could not be confirmed. Your text is still here. You can try again or open an email draft below.");
     }
-  }
-
-  function openMailto(name: string, email: string, message: string) {
-    const subject = encodeURIComponent(`Portfolio message from ${name}`);
-    const body = encodeURIComponent(`${message}\n\n— ${name}\n${email}`);
-    window.location.href = `mailto:${siteConfig.email}?subject=${subject}&body=${body}`;
-    toast.success("Opening your email client…");
   }
 
   return (
@@ -89,7 +83,7 @@ export function Contact() {
             Contact
           </p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl">
-            Start a project.
+            Let’s build something useful.
           </h2>
         </Reveal>
 
@@ -103,8 +97,8 @@ export function Contact() {
                 Contact Me
               </h3>
               <p className="text-sm text-muted">
-                The form posts to a Cloudflare Worker. If email sending is not
-                configured, it opens your mail client to {siteConfig.email}.
+                Tell me about your project or an opportunity to work together.
+                You can also email me directly below.
               </p>
               <label className="block space-y-2 text-sm">
                 <span className="text-muted">Name</span>
@@ -145,11 +139,7 @@ export function Contact() {
                   className="cf-turnstile"
                   data-sitekey={turnstileSiteKey}
                 />
-              ) : (
-                <p className="text-xs text-muted">
-                  Turnstile is ready on the Worker once a site key is set.
-                </p>
-              )}
+              ) : null}
               {error ? (
                 <p className="text-sm text-red-700" role="alert">
                   {error}
@@ -168,6 +158,9 @@ export function Contact() {
                 {status === "sending" ? "Sending…" : "Send Message"}
                 <Send className="size-3.5" />
               </Button>
+              <a href={emailDraft} className="block text-sm font-medium text-[#004741] underline underline-offset-4">
+                {status === "error" ? "Open email draft (not sent yet)" : `Email ${siteConfig.email}`}
+              </a>
             </form>
           </Reveal>
 
@@ -177,7 +170,8 @@ export function Contact() {
                 Book a 20-minute intro
               </h3>
               <p className="text-sm text-muted">
-                WhatsApp is the booking path. No Cal.com account is connected.
+                Message me on WhatsApp to arrange a 20-minute conversation
+                about your project, goals, or team.
               </p>
               <a
                 href={siteConfig.whatsapp}

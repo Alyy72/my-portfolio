@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { Modal } from "@/components/Modal";
 import { X } from "lucide-react";
 import { pageLinks, siteConfig } from "@/lib/site-data";
 import { CtaRow } from "@/components/CtaRow";
@@ -13,7 +13,7 @@ const panelCopy = {
     title: "Privacy Policy",
     body: [
       "This site does not run ads, trackers, or third-party analytics, and it does not sell or share any data.",
-      "The contact form posts name, email, and message to a Cloudflare Worker. If Resend is configured, that message is emailed to me. If it is not, your mail client opens instead.",
+      "The contact form posts name, email, and message to a Cloudflare Worker. If Resend is configured, that message is emailed to me. If delivery fails, you can choose to open an email draft instead.",
       "Turnstile may run when a site key is present. Cloudflare sees the challenge token, not your message body beyond the Worker request.",
       `For anything else, reach me directly at ${siteConfig.email}.`,
     ],
@@ -77,25 +77,9 @@ export function Footer() {
         </nav>
       </div>
 
-      <AnimatePresence>
-        {open ? (
-          <motion.div
-            className="fixed inset-0 z-[90] flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setPanel(null)}
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96, y: 12 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: 8 }}
-              onClick={(e) => e.stopPropagation()}
-              className="glass max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-3xl p-6 text-left"
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="footer-panel-title"
-            >
+      {open ? (
+        <Modal labelledBy="footer-panel-title" onClose={() => setPanel(null)}>
+          <div className="p-6 text-left">
               <div className="flex items-start justify-between gap-3">
                 <h3 id="footer-panel-title" className="text-xl font-semibold tracking-tight text-neutral-900">
                   {open.title}
@@ -123,10 +107,9 @@ export function Footer() {
               >
                 Got it
               </button>
-            </motion.div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+          </div>
+        </Modal>
+      ) : null}
     </footer>
   );
 }

@@ -1,3 +1,7 @@
+import { pageMetadata } from "@/lib/page-metadata";
+
+export const metadata = pageMetadata("/projects", "Selected work", "Websites, storefronts, and business tools built by Arafat Sulaiman.");
+
 import Link from "next/link";
 import { caseStudies } from "@/lib/case-studies";
 import { siteConfig } from "@/lib/site-data";
@@ -12,7 +16,7 @@ export default function ProjectIndexPage() {
         Selected work
       </h1>
       <p className="mt-3 max-w-2xl text-muted">
-        Each page is a full case study. Metrics are measured, not invented.
+        Explore the problem, approach, and available evidence behind each project.
       </p>
       <ul className="mt-10 grid gap-4 sm:grid-cols-2">
         {caseStudies.map((study) => (

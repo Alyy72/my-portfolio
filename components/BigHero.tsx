@@ -8,13 +8,13 @@ const lines = [
     id: "arafat",
     text: "ARAFAT",
     className:
-      "block text-[clamp(2.75rem,12vw,13.5rem)] font-semibold leading-none tracking-tighter text-[#F0EDE4]",
+      "block text-[clamp(2.75rem,10vw,9rem)] font-semibold leading-none tracking-tighter text-[#F0EDE4]",
   },
   {
     id: "sulaiman",
     text: "SULAIMAN",
     className:
-      "block text-[clamp(2.75rem,12vw,13.5rem)] font-semibold leading-none tracking-tighter text-[#F0EDE4]",
+      "block text-[clamp(2.75rem,10vw,9rem)] font-semibold leading-none tracking-tighter text-[#F0EDE4]",
   },
   {
     id: "role",
@@ -56,7 +56,7 @@ export function BigHero({ ready = true }: { ready?: boolean }) {
     <section
       ref={sectionRef}
       id="home"
-      className="relative z-20 flex min-h-[100svh] items-center justify-center overflow-hidden bg-[#004741]"
+      className="relative z-20 flex min-h-[90svh] py-24 items-center justify-center overflow-hidden bg-[#004741]"
     >
       <motion.div
         style={{ y: backgroundY, scale: backgroundScale }}
@@ -68,6 +68,7 @@ export function BigHero({ ready = true }: { ready?: boolean }) {
           width={1600}
           height={1800}
           decoding="async"
+          fetchPriority="high"
           className="absolute inset-0 z-0 h-full w-full object-cover"
         />
       </motion.div>
@@ -80,7 +81,7 @@ export function BigHero({ ready = true }: { ready?: boolean }) {
       >
         <motion.h1
           variants={reduced ? undefined : container}
-          initial={reduced ? false : "hidden"}
+          initial={false}
           animate={ready ? "show" : "hidden"}
         >
           {lines.map((item) => (
@@ -92,17 +93,22 @@ export function BigHero({ ready = true }: { ready?: boolean }) {
           ))}
         </motion.h1>
 
+        <p className="mt-6 max-w-xl text-base leading-relaxed text-[#F0EDE4] sm:text-lg">
+          Dubai-based. I build storefronts, business tools, and AI integrations
+          with React, Next.js, and Cloudflare.
+        </p>
+
         <motion.div
-          initial={reduced ? false : { opacity: 0, y: 16 }}
+          initial={false}
           animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           transition={{ delay: reduced ? 0 : 0.55, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-3"
+          className="mt-7 flex flex-wrap items-center justify-center gap-3"
         >
           <a
             href="#contact"
             className="inline-flex items-center rounded-full bg-[#F0EDE4] px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#004741] transition-transform hover:scale-[1.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F0EDE4]"
           >
-            Start a project
+            Let’s talk
           </a>
           <a
             href="#portfolio"

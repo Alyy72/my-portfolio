@@ -1,6 +1,6 @@
 // TODO(owner): canonical domain decision — keep workers.dev, or connect a
 // custom domain and 301 the Worker URL. Do not invent a live hostname.
-export const SITE_URL = "https://arafat-dev.alyyconnect.workers.dev";
+export const SITE_URL = "https://my-portfolio.alyyconnect.workers.dev";
 
 // TODO(owner): real metrics per project, with dates, beyond this TTFB spot-check.
 // Do not invent orders, conversion, hours saved, or Lighthouse scores.

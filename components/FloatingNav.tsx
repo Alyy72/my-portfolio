@@ -63,7 +63,7 @@ export function FloatingNav({ home = true }: { home?: boolean }) {
               key={link.href}
               href={`${prefix}${link.href}`}
               aria-label={link.label}
-              aria-current={isActive ? "page" : undefined}
+              aria-current={isActive ? "location" : undefined}
               className={cn(
                 "flex min-w-10 flex-col items-center justify-center rounded-full px-2.5 py-2 text-[#F0EDE4] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F0EDE4] sm:min-w-14 sm:px-3",
                 isActive
@@ -72,7 +72,7 @@ export function FloatingNav({ home = true }: { home?: boolean }) {
               )}
             >
               <Icon className="size-4" strokeWidth={isActive ? 2.25 : 1.75} />
-              <span className="mt-0.5 hidden text-[9px] font-medium tracking-wide sm:block">
+              <span className="mt-0.5 text-[10px] font-medium tracking-wide">
                 {link.label}
               </span>
             </a>

@@ -7,10 +7,10 @@ export function Providers({ children }: { children: React.ReactNode }) {
     <>
       {children}
       <Toaster
-        position="bottom-center"
+        position="top-center"
         toastOptions={{
           style: {
-            background: "var(--card-solid)",
+            background: "#F0EDE4",
             color: "var(--foreground)",
             border: "1px solid var(--border)",
           },

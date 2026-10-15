@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { caseStudies, getCaseStudy } from "@/lib/case-studies";
@@ -13,10 +14,7 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const study = getCaseStudy(slug);
   if (!study) return {};
-  return {
-    title: `${study.title} | Arafat Sulaiman`,
-    description: study.summary,
-  };
+  return pageMetadata(`/projects/${study.slug}`, study.title, study.summary);
 }
 
 export default async function CaseStudyPage({ params }: Props) {
@@ -63,7 +61,7 @@ export default async function CaseStudyPage({ params }: Props) {
       </section>
 
       <section className="mt-10">
-        <h2 className="text-base font-semibold text-neutral-900">Results</h2>
+        <h2 className="text-base font-semibold text-neutral-900">Project evidence</h2>
         <ul className="mt-3 space-y-3">
           {study.results.map((result) => (
             <li
@@ -85,7 +83,7 @@ export default async function CaseStudyPage({ params }: Props) {
       {study.screenshots.length > 0 ? (
         <section className="mt-10">
           <h2 className="text-base font-semibold text-neutral-900">
-            Screenshots
+            Project imagery
           </h2>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             {study.screenshots.map((shot) => (
@@ -93,6 +91,8 @@ export default async function CaseStudyPage({ params }: Props) {
                 <img
                   src={shot.src}
                   alt={shot.alt}
+                  loading="lazy"
+                  decoding="async"
                   className="h-48 w-full object-cover"
                 />
                 <figcaption className="p-3 text-xs text-muted">
@@ -121,9 +121,9 @@ export default async function CaseStudyPage({ params }: Props) {
               Live demo
             </a>
           ) : (
-            <span className="rounded-full border border-black/15 px-4 py-2 text-sm">
-              No public demo — walkthrough available
-            </span>
+            <Link href="/#contact" className="rounded-full border border-black/15 px-4 py-2 text-sm underline">
+              Request a walkthrough
+            </Link>
           )}
           <span className="rounded-full border border-black/15 px-4 py-2 text-sm text-muted">
             {study.repoNote}
