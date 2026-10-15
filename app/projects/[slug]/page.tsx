@@ -55,6 +55,21 @@ export default async function CaseStudyPage({ params }: Props) {
         ) : null}
       </section>
 
+      {study.walkthrough ? (
+        <section className="mt-10" aria-labelledby="walkthrough-title">
+          <h2 id="walkthrough-title" className="text-xl font-semibold text-neutral-900">Inside the project</h2>
+          <ol className="mt-4 space-y-3">
+            {study.walkthrough.map((step, index) => (
+              <li key={step.title} className="rounded-2xl border border-black/10 bg-white/70 p-5">
+                <p className="font-mono text-xs text-[#004741]">0{index + 1}</p>
+                <h3 className="mt-2 font-semibold">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{step.detail}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ) : null}
+
       <section className="mt-10">
         <h2 className="text-base font-semibold text-neutral-900">Architecture</h2>
         <ArchitectureExplorer nodes={study.architecture} />
@@ -62,6 +77,7 @@ export default async function CaseStudyPage({ params }: Props) {
 
       <section className="mt-10">
         <h2 className="text-base font-semibold text-neutral-900">Project evidence</h2>
+        {study.evidenceNote ? <p className="mt-3 text-sm leading-relaxed text-muted">{study.evidenceNote}</p> : null}
         <ul className="mt-3 space-y-3">
           {study.results.map((result) => (
             <li
@@ -104,7 +120,7 @@ export default async function CaseStudyPage({ params }: Props) {
         </section>
       ) : (
         <p className="mt-10 text-sm text-muted">
-          Product screenshots are not published here. Use the live demo.
+          {study.liveUrl ? "Product screenshots are not published here. Explore the live demo." : "This private application is available to discuss through a walkthrough. Customer screens are not published here."}
         </p>
       )}
 

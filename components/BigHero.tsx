@@ -94,8 +94,8 @@ export function BigHero({ ready = true }: { ready?: boolean }) {
         </motion.h1>
 
         <p className="mt-6 max-w-xl text-base leading-relaxed text-[#F0EDE4] sm:text-lg">
-          Dubai-based. I build storefronts, business tools, and AI integrations
-          with React, Next.js, and Cloudflare.
+          I build storefronts and business tools for small businesses.
+          Based in Dubai, working with React, Next.js, and Cloudflare.
         </p>
 
         <motion.div

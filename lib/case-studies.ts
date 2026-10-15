@@ -11,6 +11,8 @@ export type CaseStudy = {
   title: string;
   summary: string;
   client: string;
+  walkthrough?: { title: string; detail: string }[];
+  evidenceNote?: string;
   problem: string;
   solution: string;
   role: string;
@@ -30,6 +32,12 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "Marketing site for a Dubai vanilla brand with WhatsApp lead capture, Ziina payment links, and structured SEO.",
     client: "Golden Vanilla (Dubai storefront).",
+    walkthrough: [
+      { title: "Understand the product", detail: "The homepage introduces the vanilla, its origin, and its intended use in home and professional kitchens." },
+      { title: "Choose a buying path", detail: "Shop and pricing links serve retail visitors, while a separate sample-request section addresses chefs and venue managers." },
+      { title: "Start an enquiry", detail: "Visitors can use the sample form or follow the WhatsApp link. Form delivery and payment completion are not independently verified in this review." },
+    ],
+    evidenceNote: "Public homepage reviewed on 16 October 2026. The visible shopping links and sample-request interface demonstrate the customer journey; they do not establish sales or conversion results. Earlier timing checks below are historical snapshots, not a current performance guarantee.",
     problem:
       "The brand needed a public site that could take enquiries and payments without a heavy commerce stack.",
     solution:
@@ -80,6 +88,12 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "Internal operations app for CRM, invoicing, inventory, and an embedded Claude assistant.",
     client: "Golden Vanilla operations (internal, not public).",
+    walkthrough: [
+      { title: "Bring operations together", detail: "The documented scope groups lead records, invoicing, and stock management in one interface." },
+      { title: "Support daily work", detail: "An embedded Claude assistant provides an additional interface for operations questions. Its presence does not establish answer accuracy or autonomous decision-making." },
+      { title: "Review privately", detail: "Request a walkthrough using sample records to discuss the application without publishing customer information." },
+    ],
+    evidenceNote: "This is a private project. Public screenshots, independently verified usage figures, and measured time savings are not available here. Access controls and production security require their own review.",
     problem:
       "Leads, invoices, and stock lived in disconnected tools, so day-to-day ops needed a single PIN-gated surface.",
     solution:
@@ -93,13 +107,7 @@ export const caseStudies: CaseStudy[] = [
         source: "No public hostname; demo is screenshot/walkthrough only",
       },
     ],
-    screenshots: [
-      {
-        src: "/photos/code-editor.webp",
-        alt: "Editor view representing the ops application build",
-        caption: "Build environment for the internal ops app. Live customer screens are not published.",
-      },
-    ],
+    screenshots: [],
     liveUrl: null,
     repoUrl: null,
     repoNote: "Private repository — walkthrough available.",
@@ -116,6 +124,12 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "Next.js storefront with a real-time color configurator for travel tumblers and specialty coffee.",
     client: "HIMBA Coffee brand (public Pages demo).",
+    walkthrough: [
+      { title: "Explore the storefront", detail: "The project combines specialty coffee branding with a customizable travel-tumbler experience." },
+      { title: "Preview a colorway", detail: "Choose a design category and tumbler variant, then enter an optional engraving. The live configurator exposes the selected variant and a 16-character engraving limit." },
+      { title: "Discuss the implementation", detail: "The WhatsApp order link includes the chosen variant, engraving, and displayed price. On 16 October 2026, selecting Ocean Blue Leopard and entering Demo correctly updated the draft. No order was sent." },
+    ],
+    evidenceNote: "Live configurator reviewed on 16 October 2026: variant selection and engraving propagated to the WhatsApp draft. Payment, fulfilment, sales, and conversion results were not tested. The timing check below is historical.",
     problem:
       "The product is customizable; a static catalog could not show colorways live.",
     solution:
