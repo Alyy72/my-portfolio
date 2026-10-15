@@ -42,7 +42,7 @@ export const caseStudies: CaseStudy[] = [
       "The brand needed a public site that could take enquiries and payments without a heavy commerce stack.",
     solution:
       "A static HTML site on Cloudflare Pages with GitHub CI/CD, JSON-LD, Open Graph, WhatsApp redirection, and Ziina payment links. Blog copy is assisted by Opinly AI.",
-    role: "Built, structured, and deployed the site, including SEO markup and payment/lead integrations.",
+    role: "Built end to end using AI-assisted development, including the storefront, site structure, and deployment.",
     results: [
       {
         label: "Live TTFB",
@@ -98,7 +98,7 @@ export const caseStudies: CaseStudy[] = [
       "Leads, invoices, and stock lived in disconnected tools, so day-to-day ops needed a single PIN-gated surface.",
     solution:
       "A React + Tailwind app with PIN login, CRM records, invoicing, inventory, and a floating Claude assistant for ops questions. No public URL — customer data stays off the open web.",
-    role: "Designed the ops architecture and built the UI, CRM/invoice/inventory flows, and assistant integration.",
+    role: "Built end to end using AI-assisted development, including the operations interface, CRM, invoicing, inventory flows, and assistant integration.",
     results: [
       {
         label: "Public exposure",
@@ -134,7 +134,7 @@ export const caseStudies: CaseStudy[] = [
       "The product is customizable; a static catalog could not show colorways live.",
     solution:
       "Next.js + Tailwind on Cloudflare, with a client-side configurator that updates tumbler colors in real time.",
-    role: "Built the storefront, configurator interaction, and Cloudflare deploy.",
+    role: "Built end to end using AI-assisted development, including the storefront, tumbler configurator, and Cloudflare deployment.",
     results: [
       {
         label: "Live TTFB",
