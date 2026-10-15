@@ -8,6 +8,9 @@ If asked how to get in touch, say: use the Start a project form or the WhatsApp 
 - Name: Arafat Sulaiman
 - Title: Full-Stack Developer
 - Location: Dubai, UAE
+- Focus: Storefronts and business tools for small businesses.
+- Development approach: Arafat built the Golden Vanilla website, Golden Vanilla System, and HIMBA Coffee end to end using AI-assisted development.
+- No published client testimonials or verified sales results are available.
 - GitHub: https://github.com/Alyy72
 - LinkedIn: https://www.linkedin.com/in/arafat-sulaiman-60066636a
 - Credly: https://www.credly.com/users/arafat-sulaiman-m
