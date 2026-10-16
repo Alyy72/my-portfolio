@@ -13,6 +13,7 @@ export type CaseStudy = {
   client: string;
   walkthrough?: { title: string; detail: string }[];
   evidenceNote?: string;
+  story?: { title: string; challenge: string; decisions: { title: string; detail: string }[]; outcome: string };
   problem: string;
   solution: string;
   role: string;
@@ -119,6 +120,29 @@ export const caseStudies: CaseStudy[] = [
     title: "HIMBA Coffee",
     summary:
       "Next.js storefront with a real-time color configurator for travel tumblers and specialty coffee.",
+    story: {
+      "title": "Four finishes, one consistent shop",
+      "challenge": "The gallery and catalog used different names for the same finishes. Repeated product descriptions made the range harder to distinguish, while small product images and misplaced hotspots weakened the gallery. The translucent navigation also lost contrast on the light store page.",
+      "decisions": [
+            {
+                  "title": "Use one name per finish",
+                  "detail": "I standardized Snow White, Matte Black, Lavender Botanical, and Himalayan Pink across the catalog, gallery, and story. Consistent naming helps visitors recognize the same product as they move through the shop."
+            },
+            {
+                  "title": "Make the product easier to inspect",
+                  "detail": "I enlarged the product presentation, placed hotspots on the relevant parts, and gave each finish its own copy. A light stage keeps the Matte Black tumbler visible."
+            },
+            {
+                  "title": "Give the store a clear browsing sequence",
+                  "detail": "I organized the store around a hero, promotions, product tabs, and a bundle section. The countdown initializes after mounting to avoid a mismatch between the static page and the browser."
+            },
+            {
+                  "title": "Keep navigation readable across pages",
+                  "detail": "I used a solid black navigation bar with light links, a contrasting active state, and a visible focus ring. I also aligned the tab icon with the mountain branding."
+            }
+      ],
+      "outcome": "The completed pass brought Story, Gallery, Store, and Customize into a consistent visual system. Product names carry across the browsing journey, and the configurator prepares a WhatsApp order with the selected variant. On mobile, the product appears before the configuration options. These are implementation outcomes described in my project notes, not measured sales or conversion gains."
+},
     client: "HIMBA Coffee brand (public Pages demo).",
     walkthrough: [
       { title: "Explore the storefront", detail: "The project combines specialty coffee branding with a customizable travel-tumbler experience." },

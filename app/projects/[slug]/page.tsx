@@ -55,6 +55,26 @@ export default async function CaseStudyPage({ params }: Props) {
         ) : null}
       </section>
 
+      {study.story ? (
+        <section className="mt-10" aria-labelledby="project-story-title">
+          <h2 id="project-story-title" className="text-2xl font-semibold text-neutral-900">{study.story.title}</h2>
+          <h3 className="mt-6 text-lg font-semibold">The challenge</h3>
+          <p className="mt-2 text-sm leading-relaxed text-muted">{study.story.challenge}</p>
+          <h3 className="mt-6 text-lg font-semibold">My decisions</h3>
+          <ol className="mt-4 grid gap-4 sm:grid-cols-2">
+            {study.story.decisions.map((decision, index) => (
+              <li key={decision.title} className="rounded-2xl border border-black/10 bg-white/70 p-5">
+                <span className="font-mono text-xs text-[#004741]">0{index + 1}</span>
+                <h4 className="mt-2 font-semibold">{decision.title}</h4>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{decision.detail}</p>
+              </li>
+            ))}
+          </ol>
+          <h3 className="mt-6 text-lg font-semibold">What shipped</h3>
+          <p className="mt-2 text-sm leading-relaxed text-muted">{study.story.outcome}</p>
+        </section>
+      ) : null}
+
       {study.walkthrough ? (
         <section className="mt-10" aria-labelledby="walkthrough-title">
           <h2 id="walkthrough-title" className="text-xl font-semibold text-neutral-900">Inside the project</h2>
