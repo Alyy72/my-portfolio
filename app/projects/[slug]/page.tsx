@@ -123,7 +123,7 @@ export default async function CaseStudyPage({ params }: Props) {
           </h2>
           <div className={study.galleryKind === "interface" ? "mt-4 grid gap-6" : "mt-4 grid gap-4 sm:grid-cols-2"}>
             {study.screenshots.map((shot) => (
-              <figure key={shot.src} className="overflow-hidden rounded-2xl border border-black/10">
+              <figure key={shot.src} className={`overflow-hidden rounded-2xl border border-black/10 ${shot.width && shot.height && shot.height > shot.width * 1.6 ? "mx-auto w-full max-w-sm" : ""}`}>
                 <img
                   src={shot.src}
                   alt={shot.alt}

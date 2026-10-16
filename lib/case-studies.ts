@@ -163,18 +163,37 @@ export const caseStudies: CaseStudy[] = [
         source: "curl -w time_starttransfer against https://himba-coffee-live.pages.dev/",
       },
     ],
+    galleryKind: "interface",
     screenshots: [
       {
-        src: "/photos/coffee-sapling.webp",
-        alt: "Coffee plant imagery for HIMBA",
-        caption: "Brand photography used on the coffee storefront.",
+            "src": "/project-previews/himba-story-desktop.webp",
+            "alt": "HIMBA story desktop website screenshot",
+            "caption": "Desktop story — brand introduction and navigation.",
+            "width": 1440,
+            "height": 900
       },
       {
-        src: "/photos/v60-pour.webp",
-        alt: "Pour-over coffee, HIMBA product context",
-        caption: "Product-in-use imagery for the catalog.",
+            "src": "/project-previews/himba-store-desktop.webp",
+            "alt": "HIMBA store desktop website screenshot",
+            "caption": "Desktop store — product categories and catalog.",
+            "width": 1440,
+            "height": 1400
       },
-    ],
+      {
+            "src": "/project-previews/himba-story-mobile.webp",
+            "alt": "HIMBA story mobile website screenshot",
+            "caption": "Mobile story — stacked introduction and calls to action.",
+            "width": 780,
+            "height": 1688
+      },
+      {
+            "src": "/project-previews/himba-store-mobile.webp",
+            "alt": "HIMBA store mobile website screenshot",
+            "caption": "Mobile store — stacked product sections. The supplied capture clips the navigation at the right edge; this needs a layout review.",
+            "width": 780,
+            "height": 2400
+      }
+],
     liveUrl: "https://himba-coffee-live.pages.dev",
     repoUrl: null,
     repoNote: "Private repository — walkthrough available.",
