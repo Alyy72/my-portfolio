@@ -40,10 +40,10 @@ export function StatusBoard() {
             Status
           </p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-neutral-900">
-            Live sites
+            Dated performance checks
           </h2>
           <p className="mt-3 max-w-2xl text-sm text-muted">
-            {data.note || `Last check ${data.checkedAt}.`} Times are TTFB in milliseconds.
+            {data.note || `Last check ${data.checkedAt}.`} Times are TTFB in milliseconds, not full page load times or current uptime.
           </p>
         </Reveal>
         <ul className="mt-8 grid gap-3 sm:grid-cols-2">

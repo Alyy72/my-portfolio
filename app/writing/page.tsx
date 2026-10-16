@@ -1,3 +1,7 @@
+import { pageMetadata } from "@/lib/page-metadata";
+
+export const metadata = pageMetadata("/writing", "Notes", "Notes on web development, integrations, and Cloudflare.");
+
 import Link from "next/link";
 import { posts } from "@/lib/case-studies";
 

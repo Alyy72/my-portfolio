@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { posts } from "@/lib/case-studies";
@@ -12,7 +13,7 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const post = posts.find((item) => item.slug === slug);
   if (!post) return {};
-  return { title: `${post.title} | Arafat Sulaiman`, description: post.excerpt };
+  return pageMetadata(`/writing/${post.slug}`, post.title, post.excerpt);
 }
 
 export default async function WritingPost({ params }: Props) {

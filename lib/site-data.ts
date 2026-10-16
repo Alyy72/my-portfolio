@@ -4,7 +4,7 @@ export const siteConfig = {
   // TODO(owner): legal / public name — site uses Arafat Sulaiman; CV and one
   // certificate PDF use Arafat Sulaiman Nawanda; Credly is arafat-sulaiman-m.
   name: "Arafat Sulaiman",
-  brand: "arafat.dev",
+  brand: "AlyyConnect",
   title: "Full-Stack Developer",
   location: "Dubai, UAE",
   email: "arafatalyy.it@gmail.com",
@@ -80,10 +80,9 @@ export const socialLinks = [
 
 export const navLinks = [
   { href: "#home", label: "Home" },
+  { href: "#portfolio", label: "Work" },
   { href: "#about", label: "About" },
-  { href: "#experience", label: "Work" },
-  { href: "#capabilities", label: "Capabilities" },
-  { href: "#portfolio", label: "Portfolio" },
+  { href: "#capabilities", label: "Skills" },
   { href: "#contact", label: "Contact" },
 ] as const;
 
@@ -119,12 +118,12 @@ export const capabilities = [
   },
   {
     id: "google-cloud",
-    title: "Google Pages, SEO & Cloud Infrastructure",
+    title: "Search Visibility & Cloud Infrastructure",
     description:
       // TODO(owner): analytics decision — supply a GA4 measurement ID, or
       // confirm analytics stays off. Do not add a fake ID. Cookie copy already
       // says nothing fires until an ID exists.
-      "Search-oriented sites with JSON-LD, Open Graph, and Cloudflare Pages deploys. This portfolio does not fire GA4 until an ID is configured.",
+      "Search-ready websites with structured data, social sharing previews, and reliable Cloudflare hosting.",
     stack: [
       "Cloudflare Pages",
       "SEO / JSON-LD",
@@ -134,7 +133,7 @@ export const capabilities = [
       "JSON-LD + Open Graph structured data",
       "Cloudflare Pages CI/CD edge deploy pipelines",
       "Search-indexed page architecture",
-      "Optional GA4 only when a measurement ID exists",
+      "Optional analytics integration",
     ],
     mockup: "seo" as const,
   },
@@ -283,7 +282,7 @@ export const projects = [
   },
   {
     id: "ikram-collection",
-    title: "IKram Collection",
+    title: "IKRAM Collection",
     description:
       "Bilingual jewelry and beauty storefront with gallery product layouts.",
     liveUrl: "https://www.ikramcollection.com",

@@ -9,24 +9,22 @@ import {
   Cloud,
   Code2,
   ExternalLink,
-  Frame,
   FileCode2,
   GitBranch,
   Layers,
-  Paintbrush,
   Palette,
-  PenTool,
   Server,
   Sparkles,
   Wind,
   X,
   type LucideIcon,
 } from "lucide-react";
+import { Modal } from "@/components/Modal";
 import { Reveal } from "@/components/Reveal";
 import { certificates, projects, techStack } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
-type Tab = "projects" | "certificates" | "stack" | "graphics";
+type Tab = "projects" | "certificates" | "stack";
 
 const iconMap: Record<string, LucideIcon> = {
   FileCode2,
@@ -42,13 +40,6 @@ const iconMap: Record<string, LucideIcon> = {
   Sparkles,
 };
 
-const floatingDesignIcons = [
-  { Icon: PenTool, className: "left-[12%] top-[18%]", delay: 0 },
-  { Icon: Palette, className: "right-[14%] top-[22%]", delay: 0.4 },
-  { Icon: Paintbrush, className: "left-[18%] bottom-[20%]", delay: 0.8 },
-  { Icon: Frame, className: "right-[16%] bottom-[18%]", delay: 1.2 },
-] as const;
-
 export function Portfolio() {
   const [tab, setTab] = useState<Tab>("projects");
   const [activeCert, setActiveCert] = useState<
@@ -57,6 +48,7 @@ export function Portfolio() {
 
   return (
     <section id="portfolio" className="relative px-4 py-20 sm:px-6 sm:py-28">
+      <span id="experience" className="sr-only">Selected work</span>
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-35" />
       <div className="relative mx-auto max-w-6xl">
         <Reveal>
@@ -64,7 +56,7 @@ export function Portfolio() {
             Portfolio
           </p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl">
-            Selected work & credentials.
+            Real projects. Practical solutions.
           </h2>
         </Reveal>
 
@@ -75,13 +67,13 @@ export function Portfolio() {
                 ["projects", "Projects"],
                 ["certificates", "Certificates"],
                 ["stack", "Tech Stack"],
-                ["graphics", "Graphics Design"],
               ] as const
             ).map(([key, label]) => (
               <button
                 key={key}
                 type="button"
                 onClick={() => setTab(key)}
+                aria-pressed={tab === key}
                 className={cn(
                   "rounded-full px-4 py-2 text-sm font-medium transition",
                   tab === key
@@ -100,17 +92,21 @@ export function Portfolio() {
             {tab === "projects" ? (
               <motion.div
                 key="projects"
-                initial={{ opacity: 0, y: 12 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 className="grid gap-4 sm:grid-cols-2"
               >
-                {projects.map((project) => (
+                {[...projects].sort((a, b) => {
+                  const featured = ["golden-vanilla-web", "himba-coffee", "golden-vanilla-system"];
+                  const rank = (id: string) => featured.includes(id) ? featured.indexOf(id) : featured.length;
+                  return rank(a.id) - rank(b.id);
+                }).map((project, index) => (
                   <article
                     key={project.id}
                     className="glass group rounded-3xl p-5 text-left transition hover:border-black/20 hover:bg-white/90"
                   >
-                    <p className="font-mono text-xs text-neutral-500">Project</p>
+                    <p className="font-mono text-xs text-neutral-500">{index < 3 ? "Featured project" : "Project"}</p>
                     <h3 className="mt-2 text-xl font-semibold text-neutral-900">
                       <a
                         href={`/projects/${project.id}`}
@@ -119,7 +115,7 @@ export function Portfolio() {
                         {project.title}
                       </a>
                     </h3>
-                    <p className="mt-2 line-clamp-2 text-sm text-muted">
+                    <p className="mt-2 text-sm leading-relaxed text-muted">
                       {project.description}
                     </p>
                     <div className="mt-4 flex flex-wrap gap-2">
@@ -150,7 +146,7 @@ export function Portfolio() {
                           <ExternalLink className="size-3.5" />
                         </a>
                       ) : (
-                        <span className="text-sm text-muted">Walkthrough available</span>
+                        <a href="#contact" className="text-sm text-[#004741] underline">Request a walkthrough</a>
                       )}
                     </div>
                   </article>
@@ -161,7 +157,7 @@ export function Portfolio() {
             {tab === "certificates" ? (
               <motion.div
                 key="certificates"
-                initial={{ opacity: 0, y: 12 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
@@ -191,7 +187,7 @@ export function Portfolio() {
             {tab === "stack" ? (
               <motion.div
                 key="stack"
-                initial={{ opacity: 0, y: 12 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4"
@@ -211,75 +207,16 @@ export function Portfolio() {
               </motion.div>
             ) : null}
 
-            {tab === "graphics" ? (
-              <motion.div
-                key="graphics"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                className="relative"
-              >
-                <div className="glass relative overflow-hidden rounded-[2rem] px-6 py-16 text-center sm:px-10 sm:py-20">
-                  <div className="pointer-events-none absolute inset-0 aura-purple opacity-80" />
-                  <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-40" />
-
-                  {floatingDesignIcons.map(({ Icon, className, delay }) => (
-                    <motion.div
-                      key={className}
-                      className={`pointer-events-none absolute ${className} flex size-12 items-center justify-center rounded-2xl border border-black/10 bg-black/[0.03] text-neutral-700`}
-                      animate={{ y: [0, -12, 0] }}
-                      transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay,
-                      }}
-                    >
-                      <Icon className="size-5" />
-                    </motion.div>
-                  ))}
-
-                  <div className="relative z-10 mx-auto max-w-xl">
-                    <span className="inline-flex items-center rounded-full border border-black/15 bg-black/[0.04] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-700">
-                      Coming Soon
-                    </span>
-                    <h3 className="mt-5 text-2xl font-semibold tracking-tight text-neutral-900 sm:text-3xl">
-                      Graphics Design
-                    </h3>
-                    <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
-                      A curated gallery of visual design work, brand identity
-                      assets, and graphics projects is currently being prepared.
-                      Check back soon!
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ) : null}
           </AnimatePresence>
         </div>
       </div>
 
-      {/* Certificate modal */}
-      <AnimatePresence>
-        {activeCert ? (
-          <motion.div
-            className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setActiveCert(null)}
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.96 }}
-              onClick={(e) => e.stopPropagation()}
-              className="glass flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-3xl"
-            >
+      {activeCert ? (
+        <Modal labelledBy="certificate-title" onClose={() => setActiveCert(null)}>
               <div className="flex items-start justify-between gap-3 border-b border-black/10 p-5">
                 <div>
                   <p className="font-mono text-xs text-neutral-500">Certificate</p>
-                  <h3 className="mt-1 text-xl font-semibold text-neutral-900">
+                  <h3 id="certificate-title" className="mt-1 text-xl font-semibold text-neutral-900">
                     {activeCert.title}
                   </h3>
                   <p className="mt-1 text-sm text-muted">{activeCert.issuer}</p>
@@ -327,14 +264,12 @@ export function Portfolio() {
                   rel="noopener noreferrer"
                   className="inline-flex h-10 items-center gap-2 rounded-full border border-black/10 px-4 text-sm text-neutral-900"
                 >
-                  View on Credly
+                  View Credly profile
                   <ExternalLink className="size-3.5" />
                 </a>
               </div>
-            </motion.div>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+        </Modal>
+      ) : null}
     </section>
   );
 }

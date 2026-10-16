@@ -1,3 +1,7 @@
+import { pageMetadata } from "@/lib/page-metadata";
+
+export const metadata = pageMetadata("/lab", "Interactive lab", "An interactive look at the web development process.");
+
 export default function LabPage() {
   return (
     <main id="main" className="min-h-[70svh] bg-[#004741]">
