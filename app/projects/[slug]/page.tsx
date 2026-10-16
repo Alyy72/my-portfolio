@@ -99,9 +99,9 @@ export default async function CaseStudyPage({ params }: Props) {
       {study.screenshots.length > 0 ? (
         <section className="mt-10">
           <h2 className="text-base font-semibold text-neutral-900">
-            Project imagery
+            {study.galleryKind === "interface" ? "Website screenshots" : "Project imagery"}
           </h2>
-          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          <div className={study.galleryKind === "interface" ? "mt-4 grid gap-6" : "mt-4 grid gap-4 sm:grid-cols-2"}>
             {study.screenshots.map((shot) => (
               <figure key={shot.src} className="overflow-hidden rounded-2xl border border-black/10">
                 <img
@@ -109,10 +109,15 @@ export default async function CaseStudyPage({ params }: Props) {
                   alt={shot.alt}
                   loading="lazy"
                   decoding="async"
-                  className="h-48 w-full object-cover"
+                  width={shot.width}
+                  height={shot.height}
+                  className={study.galleryKind === "interface" ? "h-auto w-full" : "h-48 w-full object-cover"}
                 />
                 <figcaption className="p-3 text-xs text-muted">
                   {shot.caption}
+                  {study.galleryKind === "interface" ? (
+                    <a href={shot.src} target="_blank" rel="noopener noreferrer" className="mt-2 block underline underline-offset-4" aria-label={`View full-size image: ${shot.alt} (opens in a new tab)`}>View full-size screenshot ↗</a>
+                  ) : null}
                 </figcaption>
               </figure>
             ))}

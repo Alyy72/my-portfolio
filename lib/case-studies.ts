@@ -17,7 +17,8 @@ export type CaseStudy = {
   solution: string;
   role: string;
   results: { label: string; value: string; date: string; source: string }[];
-  screenshots: { src: string; alt: string; caption: string }[];
+  galleryKind?: "interface";
+  screenshots: { src: string; alt: string; caption: string; width?: number; height?: number }[];
   liveUrl: string | null;
   repoUrl: string | null;
   repoNote: string;
@@ -57,17 +58,12 @@ export const caseStudies: CaseStudy[] = [
         source: "curl size_download of the document",
       },
     ],
+    galleryKind: "interface",
     screenshots: [
-      {
-        src: "/photos/vanilla-pods.webp",
-        alt: "Vanilla pods used in Golden Vanilla branding",
-        caption: "Brand photography used across the storefront.",
-      },
-      {
-        src: "/photos/vanilla-farm.webp",
-        alt: "Vanilla farm context for Golden Vanilla",
-        caption: "Origin story imagery on the marketing site.",
-      },
+      {"src": "/project-previews/golden-vanilla-home.webp", "alt": "Golden Vanilla homepage with product introduction and shopping links", "caption": "Homepage — product positioning, origin, and clear shopping and sample-request links.", "width": 1800, "height": 1014},
+      {"src": "/project-previews/golden-vanilla-shop.webp", "alt": "Golden Vanilla shop page introducing the 50 gram vanilla pouch", "caption": "Shop — product details and a direct route to pricing.", "width": 1800, "height": 1040},
+      {"src": "/project-previews/golden-vanilla-pricing.webp", "alt": "Golden Vanilla pricing cards for Starter, Baker’s Pair, and Kitchen Stock", "caption": "Pricing — three purchase options with quantities, prices, and delivery information.", "width": 1800, "height": 1028},
+      {"src": "/project-previews/golden-vanilla-guide.webp", "alt": "Golden Vanilla guide article explaining vanilla bean prices in Dubai", "caption": "Guide — educational content supporting product discovery.", "width": 1800, "height": 1086},
     ],
     liveUrl: "https://goldenvanilla-ae.com/",
     // TODO(owner): repository link or approved walkthrough recording — do not
