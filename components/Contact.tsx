@@ -12,9 +12,10 @@ import { CONTACT_LIMITS } from "@/lib/knowledge";
 import { siteConfig } from "@/lib/site-data";
 
 const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
+const contactFormEnabled = process.env.NEXT_PUBLIC_CONTACT_FORM_ENABLED === "true";
 
 export function Contact() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+  const [status, setStatus] = useState<"idle" | "draft" | "sending" | "sent" | "error">(
     "idle",
   );
   const [error, setError] = useState("");
@@ -22,7 +23,7 @@ export function Contact() {
   const widgetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!turnstileSiteKey) return;
+    if (!contactFormEnabled || !turnstileSiteKey) return;
     const script = document.createElement("script");
     script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
     script.async = true;
@@ -43,6 +44,11 @@ export function Contact() {
 
     if (status === "sending") return;
     setEmailDraft(`mailto:${siteConfig.email}?subject=${encodeURIComponent(`Portfolio message from ${name}`)}&body=${encodeURIComponent(`${message}\n\n— ${name}\n${email}`)}`);
+    if (!contactFormEnabled) {
+      setStatus("draft");
+      setError("");
+      return;
+    }
     setStatus("sending");
     setError("");
 
@@ -97,8 +103,9 @@ export function Contact() {
                 Contact Me
               </h3>
               <p className="text-sm text-muted">
-                Tell me about your project or an opportunity to work together.
-                You can also email me directly below.
+                {contactFormEnabled
+                  ? "Tell me about your project or an opportunity to work together. You can also email me directly below."
+                  : "Write your message here, then open the prepared email draft to send it from your own mail app."}
               </p>
               <label className="block space-y-2 text-sm">
                 <span className="text-muted">Name</span>
@@ -133,7 +140,7 @@ export function Contact() {
                   className="border-black/10 bg-white/60"
                 />
               </label>
-              {turnstileSiteKey ? (
+              {contactFormEnabled && turnstileSiteKey ? (
                 <div
                   ref={widgetRef}
                   className="cf-turnstile"
@@ -150,16 +157,21 @@ export function Contact() {
                   Thanks — I’ll reply from {siteConfig.email}.
                 </p>
               ) : null}
+              {status === "draft" ? (
+                <p className="text-sm text-[#004741]" role="status">
+                  Your draft is ready. Open it below and send it from your mail app.
+                </p>
+              ) : null}
               <Button
                 type="submit"
                 disabled={status === "sending"}
                 className="h-11 rounded-full bg-neutral-900 px-5 text-white hover:bg-neutral-700"
               >
-                {status === "sending" ? "Sending…" : "Send Message"}
+                {status === "sending" ? "Sending…" : contactFormEnabled ? "Send Message" : "Prepare email draft"}
                 <Send className="size-3.5" />
               </Button>
               <a href={emailDraft} className="block text-sm font-medium text-[#004741] underline underline-offset-4">
-                {status === "error" ? "Open email draft (not sent yet)" : `Email ${siteConfig.email}`}
+                {status === "error" || status === "draft" ? "Open email draft (not sent yet)" : `Email ${siteConfig.email}`}
               </a>
             </form>
           </Reveal>

@@ -44,6 +44,7 @@ Contact failures retain the message and offer an explicit email draft. Opening a
 Local Worker secrets belong in `.dev.vars`, which is ignored by Git. Never commit real credentials.
 
 - `RESEND_API_KEY`: enables contact delivery.
+- `NEXT_PUBLIC_CONTACT_FORM_ENABLED=true`: enable direct form submission at build time only after delivery has been configured and verified. By default, the form prepares a manual email draft.
 - `CONTACT_TO`: destination inbox; defaults to the portfolio owner address in the Worker.
 - `TURNSTILE_SECRET`: enables server-side bot verification. Pair with `NEXT_PUBLIC_TURNSTILE_SITE_KEY` at frontend build time.
 - `ANTHROPIC_API_KEY`: optional assistant provider; without it, published local answers are used.
