@@ -29,7 +29,6 @@ const MEASURED = {
     { name: "IKRAM Collection", url: "https://www.ikramcollection.com/", ttfbMs: 581 },
     { name: "Mihbash Cafe", url: "https://mihbash-cafe.alyyconnect.workers.dev/", ttfbMs: 1219 },
     { name: "Barista Seed To Cup", url: "https://baristaseed2cup.alyyconnect.workers.dev/", ttfbMs: 350 },
-    { name: "Slick Barista", url: "https://slick-barista.alyyconnect.workers.dev/", ttfbMs: 74 },
   ],
 };
 
@@ -265,10 +264,16 @@ async function refreshStatus(env: Env) {
 
 async function readStatus(env: Env) {
   const cached = await env.STATUS?.get("live");
-  if (cached) return JSON.parse(cached);
+  if (cached) {
+    const payload = JSON.parse(cached) as Awaited<ReturnType<typeof refreshStatus>>;
+    return {
+      ...payload,
+      rows: payload.rows.filter((row) => MEASURED.sites.some((site) => site.url === row.url)),
+    };
+  }
   return {
     checkedAt: MEASURED.date,
-    note: "Spot-check TTFB: existing live sites 21 Sep 2026; Seed To Cup and Slick Barista 22 Sep 2026.",
+    note: "Spot-check TTFB: existing live sites 21 Sep 2026; Seed To Cup 22 Sep 2026.",
     rows: MEASURED.sites.map((site) => ({
       name: site.name,
       url: site.url,

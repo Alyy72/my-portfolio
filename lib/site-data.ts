@@ -323,26 +323,6 @@ export const projects = [
       "Certification cards and press section",
     ],
   },
-  {
-    id: "slick-barista",
-    title: "Slick Barista",
-    description:
-      "Booking-focused personal brand site for a UAE barista finalist, on Next.js and Cloudflare Workers.",
-    liveUrl: "https://slick-barista.alyyconnect.workers.dev/",
-    githubUrl: null,
-    stack: [
-      "Next.js",
-      "Tailwind CSS",
-      "Cloudflare Workers",
-      "WhatsApp booking",
-      "QR sharing",
-    ],
-    features: [
-      "About, certifications, masterclasses, and competitions sections",
-      "Gallery, journal, and Share/QR",
-      "Reservation and consulting enquiry paths",
-    ],
-  },
 ] as const;
 
 // TODO(owner): credential verification links — unique Credly/issuer badge

@@ -25,7 +25,6 @@ If asked how to get in touch, say: use the Start a project form or the WhatsApp 
 - Mihbash Cafe — https://mihbash-cafe.alyyconnect.workers.dev/ — Workers site.
 - ZAHA — cycling telemetry, BLE GATT. No public demo.
 - Barista Seed To Cup — https://baristaseed2cup.alyyconnect.workers.dev/ — link-in-bio specialty-coffee portfolio on Next.js and Workers.
-- Slick Barista — https://slick-barista.alyyconnect.workers.dev/ — booking-focused personal brand site on Next.js and Workers.
 
 ## Credentials on this site
 
@@ -67,13 +66,10 @@ export function localAnswer(question: string): string {
   if (q.includes("seed") || q.includes("seed to cup") || q.includes("seed2cup")) {
     return "Barista Seed To Cup is a link-in-bio specialty-coffee portfolio at https://baristaseed2cup.alyyconnect.workers.dev/";
   }
-  if (q.includes("slick")) {
-    return "Slick Barista is a booking-focused personal brand site at https://slick-barista.alyyconnect.workers.dev/";
-  }
   if (q.includes("cert") || q.includes("security")) {
     return "On-site credentials: CompTIA Security+, Cisco Cyber Threat Management, Introduction to Cybersecurity, and Networking Basics. Verify on Credly.";
   }
-  return "I do not know that from the published knowledge file. Try asking about HIMBA, Golden Vanilla, IKRAM, Mihbash, ZAHA, Seed To Cup, or Slick Barista.";
+  return "I do not know that from the published knowledge file. Try asking about HIMBA, Golden Vanilla, IKRAM, Mihbash, ZAHA, or Seed To Cup.";
 }
 
 export function redactSecrets(text: string): string {

@@ -14,9 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...caseStudies.map((study) => ({
       url: `${SITE_URL}/projects/${study.slug}`,
       lastModified:
-        study.slug === "barista-seed-to-cup" || study.slug === "slick-barista"
-          ? new Date("2026-09-22")
-          : now,
+        study.slug === "barista-seed-to-cup" ? new Date("2026-09-22") : now,
     })),
     ...posts.map((post) => ({
       url: `${SITE_URL}/writing/${post.slug}`,
