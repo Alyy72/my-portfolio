@@ -225,7 +225,23 @@ export const engineeringWork = [
   },
 ] as const;
 
+export const zahaRideReplayUrl = "/projects/zaha#ride-replay";
+
 export const projects = [
+  {
+    id: "zaha",
+    title: "ZAHA — Cycling Telemetry",
+    description:
+      "Cycling head-unit prototype with BLE sensor telemetry and an interactive replay of a simulated ride.",
+    liveUrl: zahaRideReplayUrl,
+    demoLabel: "Try Ride Replay",
+    githubUrl: null,
+    stack: ["BLE GATT", "Embedded software", "React"],
+    features: [
+      "Heads-up navigation and cycling telemetry",
+      "Simulated route playback with synchronized speed and cadence",
+    ],
+  },
   {
     id: "chef-louis-kitchen-dxb",
     title: "Chef Louis Kitchen DXB — Digital Menu",

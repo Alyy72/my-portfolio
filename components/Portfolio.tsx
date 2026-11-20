@@ -135,7 +135,14 @@ export function Portfolio() {
                       >
                         Case study
                       </a>
-                      {project.liveUrl ? (
+                      {"demoLabel" in project ? (
+                        <a
+                          href={project.liveUrl}
+                          className="text-sm font-medium text-[#004741] underline-offset-2 hover:underline"
+                        >
+                          {project.demoLabel}
+                        </a>
+                      ) : project.liveUrl ? (
                         <a
                           href={project.liveUrl}
                           target="_blank"
