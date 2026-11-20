@@ -47,7 +47,7 @@ export function Portfolio() {
   >(null);
 
   return (
-    <section id="portfolio" className="relative px-4 py-20 sm:px-6 sm:py-28">
+    <section id="portfolio" className="relative px-4 pb-20 pt-8 sm:px-6 sm:pb-28 sm:pt-12">
       <span id="experience" className="sr-only">Selected work</span>
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-35" />
       <div className="relative mx-auto max-w-6xl">
@@ -55,13 +55,13 @@ export function Portfolio() {
           <p className="font-mono text-xs uppercase tracking-[0.22em] text-neutral-700">
             Portfolio
           </p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl">
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl">
             Real projects. Practical solutions.
           </h2>
         </Reveal>
 
         <Reveal delay={0.08}>
-          <div className="mt-8 inline-flex max-w-full flex-wrap rounded-full border border-black/10 bg-black/[0.03] p-1">
+          <div className="mt-5 inline-flex max-w-full flex-wrap rounded-full border border-black/10 bg-black/[0.03] p-1 sm:mt-6">
             {(
               [
                 ["projects", "Projects"],
@@ -87,7 +87,7 @@ export function Portfolio() {
           </div>
         </Reveal>
 
-        <div className="mt-10">
+        <div className="mt-5 sm:mt-6">
           <AnimatePresence mode="wait">
             {tab === "projects" ? (
               <motion.div
