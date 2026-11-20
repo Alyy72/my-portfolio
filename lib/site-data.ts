@@ -4,7 +4,7 @@ export const siteConfig = {
   // TODO(owner): legal / public name — site uses Arafat Sulaiman; CV and one
   // certificate PDF use Arafat Sulaiman Nawanda; Credly is arafat-sulaiman-m.
   name: "Arafat Sulaiman",
-  brand: "arafat.dev",
+  brand: "AlyyConnect",
   title: "Full-Stack Developer",
   location: "Dubai, UAE",
   email: "arafatalyy.it@gmail.com",
@@ -80,10 +80,9 @@ export const socialLinks = [
 
 export const navLinks = [
   { href: "#home", label: "Home" },
+  { href: "#portfolio", label: "Work" },
   { href: "#about", label: "About" },
-  { href: "#experience", label: "Work" },
-  { href: "#capabilities", label: "Capabilities" },
-  { href: "#portfolio", label: "Portfolio" },
+  { href: "#capabilities", label: "Skills" },
   { href: "#contact", label: "Contact" },
 ] as const;
 
@@ -119,12 +118,12 @@ export const capabilities = [
   },
   {
     id: "google-cloud",
-    title: "Google Pages, SEO & Cloud Infrastructure",
+    title: "Search Visibility & Cloud Infrastructure",
     description:
       // TODO(owner): analytics decision — supply a GA4 measurement ID, or
       // confirm analytics stays off. Do not add a fake ID. Cookie copy already
       // says nothing fires until an ID exists.
-      "Search-oriented sites with JSON-LD, Open Graph, and Cloudflare Pages deploys. This portfolio does not fire GA4 until an ID is configured.",
+      "Search-ready websites with structured data, social sharing previews, and reliable Cloudflare hosting.",
     stack: [
       "Cloudflare Pages",
       "SEO / JSON-LD",
@@ -134,7 +133,7 @@ export const capabilities = [
       "JSON-LD + Open Graph structured data",
       "Cloudflare Pages CI/CD edge deploy pipelines",
       "Search-indexed page architecture",
-      "Optional GA4 only when a measurement ID exists",
+      "Optional analytics integration",
     ],
     mockup: "seo" as const,
   },
@@ -226,7 +225,37 @@ export const engineeringWork = [
   },
 ] as const;
 
+export const zahaRideReplayUrl = "/projects/zaha#ride-replay";
+
 export const projects = [
+  {
+    id: "zaha",
+    title: "ZAHA — Cycling Telemetry",
+    description:
+      "Cycling head-unit prototype with BLE sensor telemetry and an interactive replay of a simulated ride.",
+    liveUrl: zahaRideReplayUrl,
+    demoLabel: "Try Ride Replay",
+    githubUrl: null,
+    stack: ["BLE GATT", "Embedded software", "React"],
+    features: [
+      "Heads-up navigation and cycling telemetry",
+      "Simulated route playback with synchronized speed and cadence",
+    ],
+  },
+  {
+    id: "chef-louis-kitchen-dxb",
+    title: "Chef Louis Kitchen DXB — Digital Menu",
+    description:
+      "A mobile-friendly African food menu with dish search, category filters, portion prices in AED, and WhatsApp enquiries.",
+    liveUrl: "https://chef-louis-kitchen-dxb.alyyconnect.workers.dev/#menu",
+    githubUrl: null,
+    stack: ["JavaScript", "Cloudflare Workers", "HTML & CSS"],
+    features: [
+      "70 dishes across 9 categories",
+      "Search and portion pricing",
+      "Downloadable PDF menu and WhatsApp enquiries",
+    ],
+  },
   {
     id: "golden-vanilla-web",
     title: "Golden Vanilla Website",
@@ -283,7 +312,7 @@ export const projects = [
   },
   {
     id: "ikram-collection",
-    title: "IKram Collection",
+    title: "IKRAM Collection",
     description:
       "Bilingual jewelry and beauty storefront with gallery product layouts.",
     liveUrl: "https://www.ikramcollection.com",
@@ -322,26 +351,6 @@ export const projects = [
       "Video background and profile hero",
       "Core-portfolio and contact links",
       "Certification cards and press section",
-    ],
-  },
-  {
-    id: "slick-barista",
-    title: "Slick Barista",
-    description:
-      "Booking-focused personal brand site for a UAE barista finalist, on Next.js and Cloudflare Workers.",
-    liveUrl: "https://slick-barista.alyyconnect.workers.dev/",
-    githubUrl: null,
-    stack: [
-      "Next.js",
-      "Tailwind CSS",
-      "Cloudflare Workers",
-      "WhatsApp booking",
-      "QR sharing",
-    ],
-    features: [
-      "About, certifications, masterclasses, and competitions sections",
-      "Gallery, journal, and Share/QR",
-      "Reservation and consulting enquiry paths",
     ],
   },
 ] as const;

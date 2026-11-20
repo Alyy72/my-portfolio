@@ -75,6 +75,11 @@ export function About() {
               ship web applications, e-commerce platforms, and internal business
               tools with a focus on performance, clarity, and reliable delivery.
             </p>
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-muted">
+              I use AI-assisted development to turn ideas into working products,
+              with a focus on useful interfaces and practical business workflows.
+              Explore the case studies to see the scope and tools behind each build.
+            </p>
           </Reveal>
 
           <Reveal delay={0.08}>

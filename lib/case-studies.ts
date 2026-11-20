@@ -1,6 +1,6 @@
 // TODO(owner): canonical domain decision — keep workers.dev, or connect a
 // custom domain and 301 the Worker URL. Do not invent a live hostname.
-export const SITE_URL = "https://arafat-dev.alyyconnect.workers.dev";
+export const SITE_URL = "https://my-portfolio.alyyconnect.workers.dev";
 
 // TODO(owner): real metrics per project, with dates, beyond this TTFB spot-check.
 // Do not invent orders, conversion, hours saved, or Lighthouse scores.
@@ -11,30 +11,101 @@ export type CaseStudy = {
   title: string;
   summary: string;
   client: string;
+  lastModified?: string;
+  walkthrough?: { title: string; detail: string }[];
+  evidenceNote?: string;
+  story?: { title: string; challenge: string; decisions: { title: string; detail: string }[]; outcome: string };
   problem: string;
   solution: string;
   role: string;
   results: { label: string; value: string; date: string; source: string }[];
-  screenshots: { src: string; alt: string; caption: string }[];
+  galleryKind?: "interface";
+  screenshots: { src: string; alt: string; caption: string; width?: number; height?: number }[];
   liveUrl: string | null;
   repoUrl: string | null;
-  repoNote: string;
+  repoNote?: string;
   stack: string[];
   architecture: { id: string; label: string; detail: string }[];
 };
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "chef-louis-kitchen-dxb",
+    title: "Chef Louis Kitchen DXB — Digital Menu",
+    summary:
+      "Searchable digital menu for a Dubai kitchen serving African dishes and offering private chef and catering services.",
+    client: "Chef Louis Kitchen DXB.",
+    lastModified: "2026-11-20",
+    problem:
+      "Give guests a quick way to find dishes and check portion prices before enquiring.",
+    solution:
+      "A mobile-friendly menu with dish search, category filters, food photography, and portion prices in AED. Visitors can download the full menu or enquire on WhatsApp.",
+    role: "Alyy Connect designed and built the site.",
+    walkthrough: [
+      {
+        title: "Find a dish",
+        detail: "Browse by category or search by name. Searching for jollof shows matching dishes across the menu.",
+      },
+      {
+        title: "Compare portions",
+        detail: "Open a dish to see its photo and available portion prices.",
+      },
+      {
+        title: "Keep a copy or enquire",
+        detail: "Download the menu as a PDF or use WhatsApp to ask about catering and private dining.",
+      },
+    ],
+    results: [
+      {
+        label: "Live menu catalog",
+        value: "70 dishes across 9 categories",
+        date: "20 Nov 2026",
+        source: "Verified against the public menu catalog.",
+      },
+    ],
+    galleryKind: "interface",
+    screenshots: [
+      {
+        src: "/project-previews/chef-louis-menu.webp",
+        alt: "Chef Louis Kitchen mobile menu with category filters and breakfast prices",
+        caption: "Guests can browse categories and compare small and large portion prices on mobile.",
+        width: 780,
+        height: 1300,
+      },
+      {
+        src: "/project-previews/chef-louis-search.webp",
+        alt: "Chef Louis Kitchen mobile menu showing seven results for jollof",
+        caption: "A search for jollof narrows the menu to seven dishes.",
+        width: 780,
+        height: 1300,
+      },
+    ],
+    liveUrl: "https://chef-louis-kitchen-dxb.alyyconnect.workers.dev/#menu",
+    repoUrl: null,
+    stack: ["HTML", "CSS", "JavaScript", "Cloudflare Workers"],
+    architecture: [
+      { id: "edge", label: "Cloudflare Workers", detail: "Serves the website and menu assets." },
+      { id: "catalog", label: "JSON catalog", detail: "Stores dishes, categories, photos, and prices." },
+      { id: "browser", label: "Browser", detail: "Renders the catalog and handles search, filters, and dish details." },
+    ],
+  },
+  {
     slug: "golden-vanilla-web",
     title: "Golden Vanilla Website",
     summary:
       "Marketing site for a Dubai vanilla brand with WhatsApp lead capture, Ziina payment links, and structured SEO.",
     client: "Golden Vanilla (Dubai storefront).",
+    walkthrough: [
+      { title: "Understand the product", detail: "The homepage introduces the vanilla, its origin, and its intended use in home and professional kitchens." },
+      { title: "Choose a buying path", detail: "Shop and pricing links serve retail visitors, while a separate sample-request section addresses chefs and venue managers." },
+      { title: "Start an enquiry", detail: "Visitors can use the sample form or follow the WhatsApp link. Form delivery and payment completion are not independently verified in this review." },
+    ],
+    evidenceNote: "Public homepage reviewed on 16 October 2026. The visible shopping links and sample-request interface demonstrate the customer journey; they do not establish sales or conversion results. Earlier timing checks below are historical snapshots, not a current performance guarantee.",
     problem:
       "The brand needed a public site that could take enquiries and payments without a heavy commerce stack.",
     solution:
       "A static HTML site on Cloudflare Pages with GitHub CI/CD, JSON-LD, Open Graph, WhatsApp redirection, and Ziina payment links. Blog copy is assisted by Opinly AI.",
-    role: "Built, structured, and deployed the site, including SEO markup and payment/lead integrations.",
+    role: "Built end to end using AI-assisted development, including the storefront, site structure, and deployment.",
     results: [
       {
         label: "Live TTFB",
@@ -49,17 +120,12 @@ export const caseStudies: CaseStudy[] = [
         source: "curl size_download of the document",
       },
     ],
+    galleryKind: "interface",
     screenshots: [
-      {
-        src: "/photos/vanilla-pods.webp",
-        alt: "Vanilla pods used in Golden Vanilla branding",
-        caption: "Brand photography used across the storefront.",
-      },
-      {
-        src: "/photos/vanilla-farm.webp",
-        alt: "Vanilla farm context for Golden Vanilla",
-        caption: "Origin story imagery on the marketing site.",
-      },
+      {"src": "/project-previews/golden-vanilla-home.webp", "alt": "Golden Vanilla homepage with product introduction and shopping links", "caption": "Homepage — product positioning, origin, and clear shopping and sample-request links.", "width": 1800, "height": 1014},
+      {"src": "/project-previews/golden-vanilla-shop.webp", "alt": "Golden Vanilla shop page introducing the 50 gram vanilla pouch", "caption": "Shop — product details and a direct route to pricing.", "width": 1800, "height": 1040},
+      {"src": "/project-previews/golden-vanilla-pricing.webp", "alt": "Golden Vanilla pricing cards for Starter, Baker’s Pair, and Kitchen Stock", "caption": "Pricing — three purchase options with quantities, prices, and delivery information.", "width": 1800, "height": 1028},
+      {"src": "/project-previews/golden-vanilla-guide.webp", "alt": "Golden Vanilla guide article explaining vanilla bean prices in Dubai", "caption": "Guide — educational content supporting product discovery.", "width": 1800, "height": 1086},
     ],
     liveUrl: "https://goldenvanilla-ae.com/",
     // TODO(owner): repository link or approved walkthrough recording — do not
@@ -80,11 +146,17 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "Internal operations app for CRM, invoicing, inventory, and an embedded Claude assistant.",
     client: "Golden Vanilla operations (internal, not public).",
+    walkthrough: [
+      { title: "Bring operations together", detail: "The documented scope groups lead records, invoicing, and stock management in one interface." },
+      { title: "Support daily work", detail: "An embedded Claude assistant provides an additional interface for operations questions. Its presence does not establish answer accuracy or autonomous decision-making." },
+      { title: "Review privately", detail: "Request a walkthrough using sample records to discuss the application without publishing customer information." },
+    ],
+    evidenceNote: "This is a private project. Public screenshots, independently verified usage figures, and measured time savings are not available here. Access controls and production security require their own review.",
     problem:
       "Leads, invoices, and stock lived in disconnected tools, so day-to-day ops needed a single PIN-gated surface.",
     solution:
       "A React + Tailwind app with PIN login, CRM records, invoicing, inventory, and a floating Claude assistant for ops questions. No public URL — customer data stays off the open web.",
-    role: "Designed the ops architecture and built the UI, CRM/invoice/inventory flows, and assistant integration.",
+    role: "Built end to end using AI-assisted development, including the operations interface, CRM, invoicing, inventory flows, and assistant integration.",
     results: [
       {
         label: "Public exposure",
@@ -93,13 +165,7 @@ export const caseStudies: CaseStudy[] = [
         source: "No public hostname; demo is screenshot/walkthrough only",
       },
     ],
-    screenshots: [
-      {
-        src: "/photos/code-editor.webp",
-        alt: "Editor view representing the ops application build",
-        caption: "Build environment for the internal ops app. Live customer screens are not published.",
-      },
-    ],
+    screenshots: [],
     liveUrl: null,
     repoUrl: null,
     repoNote: "Private repository — walkthrough available.",
@@ -115,12 +181,41 @@ export const caseStudies: CaseStudy[] = [
     title: "HIMBA Coffee",
     summary:
       "Next.js storefront with a real-time color configurator for travel tumblers and specialty coffee.",
+    story: {
+      "title": "Four finishes, one consistent shop",
+      "challenge": "The gallery and catalog used different names for the same finishes. Repeated product descriptions made the range harder to distinguish, while small product images and misplaced hotspots weakened the gallery. The translucent navigation also lost contrast on the light store page.",
+      "decisions": [
+            {
+                  "title": "Use one name per finish",
+                  "detail": "I standardized Snow White, Matte Black, Lavender Botanical, and Himalayan Pink across the catalog, gallery, and story. Consistent naming helps visitors recognize the same product as they move through the shop."
+            },
+            {
+                  "title": "Make the product easier to inspect",
+                  "detail": "I enlarged the product presentation, placed hotspots on the relevant parts, and gave each finish its own copy. A light stage keeps the Matte Black tumbler visible."
+            },
+            {
+                  "title": "Give the store a clear browsing sequence",
+                  "detail": "I organized the store around a hero, promotions, product tabs, and a bundle section. The countdown initializes after mounting to avoid a mismatch between the static page and the browser."
+            },
+            {
+                  "title": "Keep navigation readable across pages",
+                  "detail": "I used a solid black navigation bar with light links, a contrasting active state, and a visible focus ring. I also aligned the tab icon with the mountain branding."
+            }
+      ],
+      "outcome": "The completed pass brought Story, Gallery, Store, and Customize into a consistent visual system. Product names carry across the browsing journey, and the configurator prepares a WhatsApp order with the selected variant. On mobile, the product appears before the configuration options. These are implementation outcomes described in my project notes, not measured sales or conversion gains."
+},
     client: "HIMBA Coffee brand (public Pages demo).",
+    walkthrough: [
+      { title: "Explore the storefront", detail: "The project combines specialty coffee branding with a customizable travel-tumbler experience." },
+      { title: "Preview a colorway", detail: "Choose a design category and tumbler variant, then enter an optional engraving. The live configurator exposes the selected variant and a 16-character engraving limit." },
+      { title: "Discuss the implementation", detail: "The WhatsApp order link includes the chosen variant, engraving, and displayed price. On 16 October 2026, selecting Ocean Blue Leopard and entering Demo correctly updated the draft. No order was sent." },
+    ],
+    evidenceNote: "Live configurator reviewed on 16 October 2026: variant selection and engraving propagated to the WhatsApp draft. Payment, fulfilment, sales, and conversion results were not tested. The timing check below is historical.",
     problem:
       "The product is customizable; a static catalog could not show colorways live.",
     solution:
       "Next.js + Tailwind on Cloudflare, with a client-side configurator that updates tumbler colors in real time.",
-    role: "Built the storefront, configurator interaction, and Cloudflare deploy.",
+    role: "Built end to end using AI-assisted development, including the storefront, tumbler configurator, and Cloudflare deployment.",
     results: [
       {
         label: "Live TTFB",
@@ -129,18 +224,37 @@ export const caseStudies: CaseStudy[] = [
         source: "curl -w time_starttransfer against https://himba-coffee-live.pages.dev/",
       },
     ],
+    galleryKind: "interface",
     screenshots: [
       {
-        src: "/photos/coffee-sapling.webp",
-        alt: "Coffee plant imagery for HIMBA",
-        caption: "Brand photography used on the coffee storefront.",
+            "src": "/project-previews/himba-story-desktop.webp",
+            "alt": "HIMBA story desktop website screenshot",
+            "caption": "Desktop story — brand introduction and navigation.",
+            "width": 1440,
+            "height": 900
       },
       {
-        src: "/photos/v60-pour.webp",
-        alt: "Pour-over coffee, HIMBA product context",
-        caption: "Product-in-use imagery for the catalog.",
+            "src": "/project-previews/himba-store-desktop.webp",
+            "alt": "HIMBA store desktop website screenshot",
+            "caption": "Desktop store — product categories and catalog.",
+            "width": 1440,
+            "height": 1400
       },
-    ],
+      {
+            "src": "/project-previews/himba-story-mobile.webp",
+            "alt": "HIMBA story mobile website screenshot",
+            "caption": "Mobile story — stacked introduction and calls to action.",
+            "width": 780,
+            "height": 1688
+      },
+      {
+            "src": "/project-previews/himba-store-mobile.webp",
+            "alt": "HIMBA store mobile website screenshot",
+            "caption": "Mobile store — stacked product sections. The supplied capture clips the navigation at the right edge; this needs a layout review.",
+            "width": 780,
+            "height": 2400
+      }
+],
     liveUrl: "https://himba-coffee-live.pages.dev",
     repoUrl: null,
     repoNote: "Private repository — walkthrough available.",
@@ -218,9 +332,10 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "zaha",
     title: "ZAHA — Cycling Telemetry",
+    lastModified: "2026-11-20",
     summary:
       "Hardware-integrated cycling system: heads-up navigation and BLE GATT specs for microcontroller comms.",
-    client: "ZAHA cycling telemetry (hardware prototype, no public demo).",
+    client: "Cycling head-unit prototype with heads-up navigation and BLE sensor integration.",
     problem:
       "Sensor data and navigation needed a defined BLE contract between head unit and microcontroller.",
     solution:
@@ -228,10 +343,10 @@ export const caseStudies: CaseStudy[] = [
     role: "Architecture and BLE GATT specification; software environment for the head unit.",
     results: [
       {
-        label: "Public demo",
-        value: "None — hardware prototype",
+        label: "Hardware",
+        value: "Head-unit prototype",
         date: measuredOn,
-        source: "No public hostname; annotated gallery only",
+        source: "Head-unit and cycling hardware pictured below.",
       },
     ],
     screenshots: [
@@ -264,6 +379,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "barista-seed-to-cup",
     title: "Barista Seed To Cup",
+    lastModified: "2026-09-22",
     summary:
       "Link-in-bio style digital portfolio for a Dubai-based specialty coffee professional.",
     client: "Dubai specialty-coffee professional — link-in-bio portfolio.",
@@ -291,45 +407,6 @@ export const caseStudies: CaseStudy[] = [
     stack: ["Next.js", "Tailwind CSS", "Cloudflare Workers", "mobile-first"],
     architecture: [
       { id: "client", label: "Browser", detail: "Mobile-first Next.js UI." },
-      { id: "edge", label: "Cloudflare Workers", detail: "Static assets at the edge." },
-    ],
-  },
-  {
-    slug: "slick-barista",
-    title: "Slick Barista",
-    summary:
-      "Personal brand site for a UAE barista finalist and latte art specialist, with a booking-focused layout.",
-    client: "UAE barista-finalist personal brand — booking-focused site.",
-    // TODO(owner): problem — what was missing before this site. Do not invent.
-    problem: "",
-    solution:
-      "A Next.js site on Cloudflare Workers. The live page includes About, Certifications, Masterclasses, Origins & Travels, Competitions, Gallery, Journal, a Share/QR feature, a featured masterclass with a reservation path, and a consulting enquiry path.",
-    // TODO(owner): my role — exactly what Arafat built vs existing brand assets. Do not invent.
-    role: "",
-    results: [
-      {
-        label: "Live TTFB",
-        value: "0.07 s",
-        date: "22 Sep 2026",
-        source:
-          "curl -w time_starttransfer against https://slick-barista.alyyconnect.workers.dev/",
-      },
-    ],
-    // TODO(owner): screenshots — desktop + mobile of the live UI, no client
-    // phone numbers, personal handles, or full names in the frame.
-    screenshots: [],
-    liveUrl: "https://slick-barista.alyyconnect.workers.dev/",
-    repoUrl: null,
-    repoNote: "Private repository — walkthrough available.",
-    stack: [
-      "Next.js",
-      "Tailwind CSS",
-      "Cloudflare Workers",
-      "WhatsApp booking",
-      "QR sharing",
-    ],
-    architecture: [
-      { id: "client", label: "Browser", detail: "Booking-focused Next.js UI." },
       { id: "edge", label: "Cloudflare Workers", detail: "Static assets at the edge." },
     ],
   },

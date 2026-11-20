@@ -11,16 +11,13 @@ export function CertMap() {
           Certification to capability
         </h2>
         <p className="mt-3 max-w-2xl text-sm text-muted">
-          Only certificates with a file or Credly link on this site are listed.
-          Years are taken from the PDF file dates (2025). Issue dates on Credly
-          may differ.
+          Explore the certificates and issuer profile linked below.
         </p>
         <div className="mt-8 overflow-x-auto">
           <table className="w-full min-w-[40rem] text-left text-sm">
             <thead>
               <tr className="border-b border-black/10 text-xs uppercase tracking-wider text-neutral-700">
                 <th className="py-3 pr-4">Credential</th>
-                <th className="py-3 pr-4">Year</th>
                 <th className="py-3 pr-4">Capability</th>
                 <th className="py-3">Verify</th>
               </tr>
@@ -34,11 +31,10 @@ export function CertMap() {
                       {row.issuer}
                     </span>
                   </td>
-                  <td className="py-4 pr-4">{row.year}</td>
                   <td className="py-4 pr-4 text-muted">{row.capability}</td>
                   <td className="py-4">
                     <a className="underline" href={row.href} target="_blank" rel="noopener noreferrer">
-                      Credly
+                      Credly profile
                     </a>
                     {row.pdf ? (
                       <>

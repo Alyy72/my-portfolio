@@ -9,6 +9,9 @@ If asked how to get in touch, say: use the Start a project form or the WhatsApp 
 - Name: Arafat Sulaiman
 - Title: Full-Stack Developer
 - Location: Dubai, UAE
+- Focus: Storefronts and business tools for small businesses.
+- Development approach: Arafat built the Golden Vanilla website, Golden Vanilla System, and HIMBA Coffee end to end using AI-assisted development.
+- No published client testimonials or verified sales results are available.
 - GitHub: https://github.com/Alyy72
 - LinkedIn: https://www.linkedin.com/in/arafat-sulaiman-60066636a
 - Credly: https://www.credly.com/users/arafat-sulaiman-m
@@ -20,9 +23,9 @@ If asked how to get in touch, say: use the Start a project form or the WhatsApp 
 - HIMBA Coffee — https://himba-coffee-live.pages.dev/ — Next.js configurator.
 - IKRAM Collection — https://www.ikramcollection.com/ — bilingual storefront.
 - Mihbash Cafe — https://mihbash-cafe.alyyconnect.workers.dev/ — Workers site.
-- ZAHA — cycling telemetry, BLE GATT. No public demo.
+- ZAHA — cycling telemetry and BLE GATT. The case study includes a Ride Replay prototype with a simulated ride at /projects/zaha#ride-replay.
 - Barista Seed To Cup — https://baristaseed2cup.alyyconnect.workers.dev/ — link-in-bio specialty-coffee portfolio on Next.js and Workers.
-- Slick Barista — https://slick-barista.alyyconnect.workers.dev/ — booking-focused personal brand site on Next.js and Workers.
+- Chef Louis Kitchen DXB — https://chef-louis-kitchen-dxb.alyyconnect.workers.dev/#menu — searchable African food menu with category filters, portion prices in AED, and a downloadable PDF.
 
 ## Credentials on this site
 
@@ -59,18 +62,18 @@ export function localAnswer(question: string): string {
     return "Mihbash Cafe is a menu-first site on Cloudflare Workers: https://mihbash-cafe.alyyconnect.workers.dev/";
   }
   if (q.includes("zaha") || q.includes("ble")) {
-    return "ZAHA is a cycling telemetry project (BLE GATT + HUD). There is no public demo; a case study is at /projects/zaha.";
+    return "ZAHA is a cycling telemetry project with BLE GATT and a heads-up display. Try the simulated Ride Replay at /projects/zaha#ride-replay.";
   }
   if (q.includes("seed") || q.includes("seed to cup") || q.includes("seed2cup")) {
     return "Barista Seed To Cup is a link-in-bio specialty-coffee portfolio at https://baristaseed2cup.alyyconnect.workers.dev/";
   }
-  if (q.includes("slick")) {
-    return "Slick Barista is a booking-focused personal brand site at https://slick-barista.alyyconnect.workers.dev/";
+  if (q.includes("chef louis") || q.includes("digital menu")) {
+    return "Chef Louis Kitchen DXB is a searchable digital menu with category filters and portion prices in AED: https://chef-louis-kitchen-dxb.alyyconnect.workers.dev/#menu";
   }
   if (q.includes("cert") || q.includes("security")) {
     return "On-site credentials: CompTIA Security+, Cisco Cyber Threat Management, Introduction to Cybersecurity, and Networking Basics. Verify on Credly.";
   }
-  return "I do not know that from the published knowledge file. Try asking about HIMBA, Golden Vanilla, IKRAM, Mihbash, ZAHA, Seed To Cup, or Slick Barista.";
+  return "I do not know that from the published knowledge file. Try asking about HIMBA, Golden Vanilla, IKRAM, Mihbash, ZAHA, Seed To Cup, or Chef Louis Kitchen DXB.";
 }
 
 export function redactSecrets(text: string): string {
