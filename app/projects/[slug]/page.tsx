@@ -166,9 +166,11 @@ export default async function CaseStudyPage({ params }: Props) {
               Request a walkthrough
             </Link>
           )}
-          <span className="rounded-full border border-black/15 px-4 py-2 text-sm text-muted">
-            {study.repoNote}
-          </span>
+          {study.repoNote ? (
+            <span className="rounded-full border border-black/15 px-4 py-2 text-sm text-muted">
+              {study.repoNote}
+            </span>
+          ) : null}
         </div>
       </section>
 

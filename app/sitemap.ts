@@ -13,8 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/lab`, lastModified: now },
     ...caseStudies.map((study) => ({
       url: `${SITE_URL}/projects/${study.slug}`,
-      lastModified:
-        study.slug === "barista-seed-to-cup" ? new Date("2026-09-22") : now,
+      lastModified: study.lastModified ? new Date(study.lastModified) : now,
     })),
     ...posts.map((post) => ({
       url: `${SITE_URL}/writing/${post.slug}`,

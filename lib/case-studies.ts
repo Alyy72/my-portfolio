@@ -11,6 +11,7 @@ export type CaseStudy = {
   title: string;
   summary: string;
   client: string;
+  lastModified?: string;
   walkthrough?: { title: string; detail: string }[];
   evidenceNote?: string;
   story?: { title: string; challenge: string; decisions: { title: string; detail: string }[]; outcome: string };
@@ -22,12 +23,72 @@ export type CaseStudy = {
   screenshots: { src: string; alt: string; caption: string; width?: number; height?: number }[];
   liveUrl: string | null;
   repoUrl: string | null;
-  repoNote: string;
+  repoNote?: string;
   stack: string[];
   architecture: { id: string; label: string; detail: string }[];
 };
 
 export const caseStudies: CaseStudy[] = [
+  {
+    slug: "chef-louis-kitchen-dxb",
+    title: "Chef Louis Kitchen DXB — Digital Menu",
+    summary:
+      "Searchable digital menu for a Dubai kitchen serving African dishes and offering private chef and catering services.",
+    client: "Chef Louis Kitchen DXB.",
+    lastModified: "2026-11-20",
+    problem:
+      "Give guests a quick way to find dishes and check portion prices before enquiring.",
+    solution:
+      "A mobile-friendly menu with dish search, category filters, food photography, and portion prices in AED. Visitors can download the full menu or enquire on WhatsApp.",
+    role: "Alyy Connect designed and built the site.",
+    walkthrough: [
+      {
+        title: "Find a dish",
+        detail: "Browse by category or search by name. Searching for jollof shows matching dishes across the menu.",
+      },
+      {
+        title: "Compare portions",
+        detail: "Open a dish to see its photo and available portion prices.",
+      },
+      {
+        title: "Keep a copy or enquire",
+        detail: "Download the menu as a PDF or use WhatsApp to ask about catering and private dining.",
+      },
+    ],
+    results: [
+      {
+        label: "Live menu catalog",
+        value: "70 dishes across 9 categories",
+        date: "20 Nov 2026",
+        source: "Verified against the public menu catalog.",
+      },
+    ],
+    galleryKind: "interface",
+    screenshots: [
+      {
+        src: "/project-previews/chef-louis-menu.webp",
+        alt: "Chef Louis Kitchen mobile menu with category filters and breakfast prices",
+        caption: "Guests can browse categories and compare small and large portion prices on mobile.",
+        width: 780,
+        height: 1300,
+      },
+      {
+        src: "/project-previews/chef-louis-search.webp",
+        alt: "Chef Louis Kitchen mobile menu showing seven results for jollof",
+        caption: "A search for jollof narrows the menu to seven dishes.",
+        width: 780,
+        height: 1300,
+      },
+    ],
+    liveUrl: "https://chef-louis-kitchen-dxb.alyyconnect.workers.dev/#menu",
+    repoUrl: null,
+    stack: ["HTML", "CSS", "JavaScript", "Cloudflare Workers"],
+    architecture: [
+      { id: "edge", label: "Cloudflare Workers", detail: "Serves the website and menu assets." },
+      { id: "catalog", label: "JSON catalog", detail: "Stores dishes, categories, photos, and prices." },
+      { id: "browser", label: "Browser", detail: "Renders the catalog and handles search, filters, and dish details." },
+    ],
+  },
   {
     slug: "golden-vanilla-web",
     title: "Golden Vanilla Website",
@@ -317,6 +378,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "barista-seed-to-cup",
     title: "Barista Seed To Cup",
+    lastModified: "2026-09-22",
     summary:
       "Link-in-bio style digital portfolio for a Dubai-based specialty coffee professional.",
     client: "Dubai specialty-coffee professional — link-in-bio portfolio.",

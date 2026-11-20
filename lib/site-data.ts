@@ -227,6 +227,20 @@ export const engineeringWork = [
 
 export const projects = [
   {
+    id: "chef-louis-kitchen-dxb",
+    title: "Chef Louis Kitchen DXB — Digital Menu",
+    description:
+      "A mobile-friendly African food menu with dish search, category filters, portion prices in AED, and WhatsApp enquiries.",
+    liveUrl: "https://chef-louis-kitchen-dxb.alyyconnect.workers.dev/#menu",
+    githubUrl: null,
+    stack: ["JavaScript", "Cloudflare Workers", "HTML & CSS"],
+    features: [
+      "70 dishes across 9 categories",
+      "Search and portion pricing",
+      "Downloadable PDF menu and WhatsApp enquiries",
+    ],
+  },
+  {
     id: "golden-vanilla-web",
     title: "Golden Vanilla Website",
     description:

@@ -25,6 +25,7 @@ If asked how to get in touch, say: use the Start a project form or the WhatsApp 
 - Mihbash Cafe — https://mihbash-cafe.alyyconnect.workers.dev/ — Workers site.
 - ZAHA — cycling telemetry, BLE GATT. No public demo.
 - Barista Seed To Cup — https://baristaseed2cup.alyyconnect.workers.dev/ — link-in-bio specialty-coffee portfolio on Next.js and Workers.
+- Chef Louis Kitchen DXB — https://chef-louis-kitchen-dxb.alyyconnect.workers.dev/#menu — searchable African food menu with category filters, portion prices in AED, and a downloadable PDF.
 
 ## Credentials on this site
 
@@ -66,10 +67,13 @@ export function localAnswer(question: string): string {
   if (q.includes("seed") || q.includes("seed to cup") || q.includes("seed2cup")) {
     return "Barista Seed To Cup is a link-in-bio specialty-coffee portfolio at https://baristaseed2cup.alyyconnect.workers.dev/";
   }
+  if (q.includes("chef louis") || q.includes("digital menu")) {
+    return "Chef Louis Kitchen DXB is a searchable digital menu with category filters and portion prices in AED: https://chef-louis-kitchen-dxb.alyyconnect.workers.dev/#menu";
+  }
   if (q.includes("cert") || q.includes("security")) {
     return "On-site credentials: CompTIA Security+, Cisco Cyber Threat Management, Introduction to Cybersecurity, and Networking Basics. Verify on Credly.";
   }
-  return "I do not know that from the published knowledge file. Try asking about HIMBA, Golden Vanilla, IKRAM, Mihbash, ZAHA, or Seed To Cup.";
+  return "I do not know that from the published knowledge file. Try asking about HIMBA, Golden Vanilla, IKRAM, Mihbash, ZAHA, Seed To Cup, or Chef Louis Kitchen DXB.";
 }
 
 export function redactSecrets(text: string): string {

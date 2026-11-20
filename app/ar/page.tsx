@@ -31,6 +31,7 @@ export default function ArabicPage() {
         <li>IKRAM Collection — واجهة ثنائية اللغة</li>
         <li>Mihbash Cafe — على Cloudflare Workers</li>
         <li>Barista Seed To Cup — ملف رقمي على Cloudflare Workers</li>
+        <li>Chef Louis Kitchen DXB — قائمة طعام رقمية قابلة للبحث</li>
       </ul>
       <div className="mt-8 flex flex-wrap gap-3">
         <Link

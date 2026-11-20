@@ -24,6 +24,7 @@ If asked how to get in touch, say: use the Start a project form or the WhatsApp 
 - Mihbash Cafe — https://mihbash-cafe.alyyconnect.workers.dev/ — Workers site.
 - ZAHA — cycling telemetry, BLE GATT. No public demo.
 - Barista Seed To Cup — https://baristaseed2cup.alyyconnect.workers.dev/ — link-in-bio specialty-coffee portfolio on Next.js and Workers.
+- Chef Louis Kitchen DXB — https://chef-louis-kitchen-dxb.alyyconnect.workers.dev/#menu — searchable African food menu with category filters, portion prices in AED, and a downloadable PDF.
 
 ## Credentials on this site
 
