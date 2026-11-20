@@ -19,7 +19,7 @@ If asked how to get in touch, say: use the Start a project form or the WhatsApp 
 - HIMBA Coffee — https://himba-coffee-live.pages.dev/ — Next.js configurator.
 - IKRAM Collection — https://www.ikramcollection.com/ — bilingual storefront.
 - Mihbash Cafe — https://mihbash-cafe.alyyconnect.workers.dev/ — Workers site.
-- ZAHA — cycling telemetry, BLE GATT. No public demo.
+- ZAHA — cycling telemetry and BLE GATT. The case study includes a Ride Replay prototype with a simulated ride at /projects/zaha#ride-replay.
 - Barista Seed To Cup — https://baristaseed2cup.alyyconnect.workers.dev/ — link-in-bio specialty-coffee portfolio on Next.js and Workers.
 - Chef Louis Kitchen DXB — https://chef-louis-kitchen-dxb.alyyconnect.workers.dev/#menu — searchable African food menu with category filters, portion prices in AED, and a downloadable PDF.
 

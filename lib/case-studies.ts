@@ -332,9 +332,10 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "zaha",
     title: "ZAHA — Cycling Telemetry",
+    lastModified: "2026-11-20",
     summary:
       "Hardware-integrated cycling system: heads-up navigation and BLE GATT specs for microcontroller comms.",
-    client: "ZAHA cycling telemetry (hardware prototype, no public demo).",
+    client: "Cycling head-unit prototype with heads-up navigation and BLE sensor integration.",
     problem:
       "Sensor data and navigation needed a defined BLE contract between head unit and microcontroller.",
     solution:
@@ -342,10 +343,10 @@ export const caseStudies: CaseStudy[] = [
     role: "Architecture and BLE GATT specification; software environment for the head unit.",
     results: [
       {
-        label: "Public demo",
-        value: "None — hardware prototype",
+        label: "Hardware",
+        value: "Head-unit prototype",
         date: measuredOn,
-        source: "No public hostname; annotated gallery only",
+        source: "Head-unit and cycling hardware pictured below.",
       },
     ],
     screenshots: [

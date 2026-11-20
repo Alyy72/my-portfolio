@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { caseStudies, getCaseStudy } from "@/lib/case-studies";
 import { ArchitectureExplorer } from "@/components/ArchitectureExplorer";
+import { ZahaRideReplay } from "@/components/ZahaRideReplay";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -31,6 +32,8 @@ export default async function CaseStudyPage({ params }: Props) {
         {study.title}
       </h1>
       <p className="mt-4 text-lg text-muted">{study.summary}</p>
+
+      {study.slug === "zaha" ? <ZahaRideReplay /> : null}
 
       <section className="mt-10 space-y-6 text-sm leading-relaxed text-neutral-700">
         <div>
